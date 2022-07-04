@@ -1,3 +1,5 @@
+let filtrados=[];
+let copias=[];
 window.onresize=function(){
 			let g=document.querySelectorAll(".ggaleria");
 			g.forEach(function(item,index){
