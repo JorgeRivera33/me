@@ -16,8 +16,12 @@ window.onresize=function(){
 			a.forEach(function(item,index){
 				item.addEventListener("change",function(){
 					let menu=item.parentNode.parentNode;
-					let array=eval(menu.getAttribute("base"));
+					let array=copias[Number(menu.getAttribute("base"))];
+					let contenedor=menu.nextElementSibling;
 					filtrar(menu,array);
+					contenedor.innerHTML="";
+					mostrarRecurso(contenedor);
+					mostrarBotones(contenedor);
 				});
 			});
 			let b=document.querySelectorAll(".stipo");
@@ -36,8 +40,12 @@ window.onresize=function(){
 			c.forEach(function(item,index){
 				item.addEventListener("change",function(){
 					let menu=item.parentNode.parentNode;
-					let array=eval(menu.getAttribute("base"));
+					let array=copias[Number(menu.getAttribute("base"))];
+					let contenedor=menu.nextElementSibling;
 					filtrar(menu,array);
+					contenedor.innerHTML="";
+					mostrarRecurso(contenedor);
+					mostrarBotones(contenedor);
 				});
 			});
 		}
