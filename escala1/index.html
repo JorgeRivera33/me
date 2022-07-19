@@ -7,7 +7,7 @@
 	<style type="text/css">
 		*{padding: 0; border: 0; margin: 0; box-sizing: border-box;}
 		#contenedor{padding: 0px;}
-		#cont_act{border: 1px solid red; padding: 0px;}
+		#cont_act{border: 1px solid blue; padding: 0px;}
 		#lienzo{border: 1px solid gray; width: 731px; height: 411px; transform-origin: center center; position: relative;}
 		.cuadro{
 			border: 1px solid black;
@@ -61,12 +61,12 @@
 			let pc=determinarsiespc();
 			if(pc){
 				anchoventana=window.innerWidth;
-				altoventana=window.innerHeight-25;
+				altoventana=window.innerHeight-30;
 				console.log(anchoventana,altoventana);
 			}else{
 				//si es movil
 				anchoventana=window.screen.availWidth;
-				altoventana=window.screen.availHeight-25;
+				altoventana=window.screen.availHeight-30;
 				console.log(anchoventana,altoventana);
 			}
 			let scale=Math.min(anchoventana/anchoapp,altoventana/altoapp);
