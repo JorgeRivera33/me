@@ -60,13 +60,13 @@
 			let altoapp=lienzo.offsetHeight;
 			let pc=determinarsiespc();
 			if(pc){
-				anchoventana=window.innerWidth-10;
-				altoventana=window.innerHeight-10;
+				anchoventana=window.innerWidth;
+				altoventana=window.innerHeight-20;
 				console.log(anchoventana,altoventana);
 			}else{
 				//si es movil
-				anchoventana=window.screen.availWidth-10;
-				altoventana=window.screen.availHeight-10;
+				anchoventana=window.screen.availWidth;
+				altoventana=window.screen.availHeight-20;
 				console.log(anchoventana,altoventana);
 			}
 			let scale=Math.min(anchoventana/anchoapp,altoventana/altoapp);
