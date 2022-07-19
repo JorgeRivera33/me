@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css">
+		*{padding: 0; border: 0; margin: 0; box-sizing: border-box;}
+		#contenedor{padding: 0px;}
+		#cont_act{border: 1px solid red; padding: 0px;}
+		#lienzo{border: 1px solid gray; width: 731px; height: 411px; transform-origin: center center; position: relative;}
+		.cuadro{
+			border: 1px solid black;
+			width: 205.5px;
+			height: 205.5px;
+			position: absolute;
+			top: 0; left: 0;
+		}
+		#c2{
+			top: 204.5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="contenedor">
+		<h1>Titulo de prueba</h1>
+		<p>
+			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic molestias, in dolore. Iure quae ratione impedit magni tenetur nemo sunt odio, nihil maiores officia ducimus consequuntur architecto cupiditate sed non. Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis amet, beatae ea enim. Et officiis enim amet dolorem sint rem molestiae quidem. Libero, quam. Corrupti, harum dolor repellendus sunt similique. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis culpa animi sit fugiat labore quo provident quidem, veniam neque, accusantium inventore, blanditiis. Ullam vitae sint magnam ipsum, similique sit quo!
+		</p>
+		<div id="cont_act">
+			<div id="lienzo">
+				<div class="cuadro" id="c1"></div>
+				<div class="cuadro" id="c2"></div>
+			</div>
+		</div>
+		<p>
+			Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui nobis perspiciatis commodi ad tenetur nostrum incidunt aliquam assumenda atque quos neque, nisi et, reprehenderit in, nulla quo perferendis eum, facilis. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit repellendus earum aliquid eligendi, distinctio corrupti reiciendis, maxime magni repudiandae delectus numquam doloribus magnam tempore libero quaerat dignissimos expedita culpa ut.
+		</p>
+	</div>
+	<script type="text/javascript">
+		let lienzo=document.querySelector("#lienzo");
+		window.onload=function(){
+			console.log("cargado");
+			window.onresize();
+		}
+		window.onresize=function(){
+			let anchopantalla=window.innerWidth;
+			let altopantalla=window.innerHeight;
+
+			let anchoapp=lienzo.offsetWidth;
+			let altoapp=lienzo.offsetHeight;
+
+			let scale=Math.min(anchopantalla/anchoapp,altopantalla/altoapp);
+			console.log(scale);
+			lienzo.style.transform=`translate(-50%,-50%) scale(${scale}) translate(50%,50%)`;
+			lienzo.parentNode.style.height=(411*scale)+"px";
+/*
+			lienzo.style.width=anchopantalla+"px";
+			let altura=(411*anchopantalla)/731;
+			if(altura>altopantalla){
+				let ancho=(731*altopantalla)/411;
+				lienzo.style.width=ancho+"px";
+				lienzo.style.height=altopantalla+"px";
+			}else{
+				lienzo.style.height=altura+"px";
+			}
+*/
+		}
+	</script>
+</body>
+</html>
