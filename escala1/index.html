@@ -7,7 +7,7 @@
 	<style type="text/css">
 		*{padding: 0; border: 0; margin: 0; box-sizing: border-box;}
 		#contenedor{padding: 0px;}
-		#cont_act{border: 1px solid blue; padding: 0px;}
+		#cont_act{border: 0px solid red; padding: 0px;}
 		#lienzo{border: 1px solid gray; width: 731px; height: 411px; transform-origin: center center; position: relative;}
 		.cuadro{
 			border: 1px solid black;
@@ -73,6 +73,7 @@
 			console.log(scale);
 			lienzo.style.transform=`translate(-50%,-50%) scale(${scale}) translate(50%,50%)`;
 			lienzo.parentNode.style.height=(411*scale)+"px";
+			centrarLienzo(scale);
 		}
 
 		function determinarsiespc(){
@@ -82,6 +83,17 @@
         	}else{
             	return(true);
         	}
+		}
+
+		function centrarLienzo(scale){
+			let padre=lienzo.parentNode;
+			let anchopadre=padre.offsetWidth;
+			let ancholienzo=lienzo.offsetWidth*scale;
+			console.log(anchopadre,ancholienzo);
+			if(anchopadre>ancholienzo){
+				let d=(anchopadre-ancholienzo)/2;
+				lienzo.style.left=d+"px";
+			}
 		}
 	</script>
 </body>
