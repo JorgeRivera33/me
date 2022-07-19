@@ -19,23 +19,33 @@
 		#c2{
 			top: 204.5px;
 		}
+		section{
+			padding: 20px;
+		}
 	</style>
 </head>
 <body>
 	<div id="contenedor">
-		<h1>Titulo de prueba</h1>
-		<p>
-			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic molestias, in dolore. Iure quae ratione impedit magni tenetur nemo sunt odio, nihil maiores officia ducimus consequuntur architecto cupiditate sed non. Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis amet, beatae ea enim. Et officiis enim amet dolorem sint rem molestiae quidem. Libero, quam. Corrupti, harum dolor repellendus sunt similique. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis culpa animi sit fugiat labore quo provident quidem, veniam neque, accusantium inventore, blanditiis. Ullam vitae sint magnam ipsum, similique sit quo!
-		</p>
+		<section>
+			<h1>Titulo de prueba</h1>
+			<p>
+				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic molestias, in dolore. Iure quae ratione impedit magni tenetur nemo sunt odio, nihil maiores officia ducimus consequuntur architecto cupiditate sed non. Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis amet, beatae ea enim. Et officiis enim amet dolorem sint rem molestiae quidem. Libero, quam. Corrupti, harum dolor repellendus sunt similique. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis culpa animi sit fugiat labore quo provident quidem, veniam neque, accusantium inventore, blanditiis. Ullam vitae sint magnam ipsum, similique sit quo!
+			</p>
+		</section>
+		
 		<div id="cont_act">
 			<div id="lienzo">
 				<div class="cuadro" id="c1"></div>
 				<div class="cuadro" id="c2"></div>
 			</div>
 		</div>
-		<p>
-			Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui nobis perspiciatis commodi ad tenetur nostrum incidunt aliquam assumenda atque quos neque, nisi et, reprehenderit in, nulla quo perferendis eum, facilis. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit repellendus earum aliquid eligendi, distinctio corrupti reiciendis, maxime magni repudiandae delectus numquam doloribus magnam tempore libero quaerat dignissimos expedita culpa ut.
-		</p>
+
+		<section>
+			<p>
+				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui nobis perspiciatis commodi ad tenetur nostrum incidunt aliquam assumenda atque quos neque, nisi et, reprehenderit in, nulla quo perferendis eum, facilis. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit repellendus earum aliquid eligendi, distinctio corrupti reiciendis, maxime magni repudiandae delectus numquam doloribus magnam tempore libero quaerat dignissimos expedita culpa ut.
+			</p>
+		</section>
+		
 	</div>
 	<script type="text/javascript">
 		let lienzo=document.querySelector("#lienzo");
@@ -44,27 +54,34 @@
 			window.onresize();
 		}
 		window.onresize=function(){
-			let anchopantalla=window.innerWidth;
-			let altopantalla=window.innerHeight;
-
+			let anchoventana="";
+			let altoventana="";
 			let anchoapp=lienzo.offsetWidth;
 			let altoapp=lienzo.offsetHeight;
-
-			let scale=Math.min(anchopantalla/anchoapp,altopantalla/altoapp);
+			let pc=determinarsiespc();
+			if(pc){
+				anchoventana=window.innerWidth;
+				altoventana=window.innerHeight;
+				console.log(anchoventana,altoventana);
+			}else{
+				//si es movil
+				anchoventana=window.screen.availWidth;
+				altoventana=window.screen.availHeight;
+				console.log(anchoventana,altoventana);
+			}
+			let scale=Math.min(anchoventana/anchoapp,altoventana/altoapp);
 			console.log(scale);
 			lienzo.style.transform=`translate(-50%,-50%) scale(${scale}) translate(50%,50%)`;
 			lienzo.parentNode.style.height=(411*scale)+"px";
-/*
-			lienzo.style.width=anchopantalla+"px";
-			let altura=(411*anchopantalla)/731;
-			if(altura>altopantalla){
-				let ancho=(731*altopantalla)/411;
-				lienzo.style.width=ancho+"px";
-				lienzo.style.height=altopantalla+"px";
-			}else{
-				lienzo.style.height=altura+"px";
-			}
-*/
+		}
+
+		function determinarsiespc(){
+			let navegador = navigator.userAgent;
+        	if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
+            		return(false);
+        	}else{
+            	return(true);
+        	}
 		}
 	</script>
 </body>
