@@ -61,12 +61,12 @@
 			let pc=determinarsiespc();
 			if(pc){
 				anchoventana=window.innerWidth;
-				altoventana=window.innerHeight-20;
+				altoventana=window.innerHeight-25;
 				console.log(anchoventana,altoventana);
 			}else{
 				//si es movil
 				anchoventana=window.screen.availWidth;
-				altoventana=window.screen.availHeight-20;
+				altoventana=window.screen.availHeight-25;
 				console.log(anchoventana,altoventana);
 			}
 			let scale=Math.min(anchoventana/anchoapp,altoventana/altoapp);
