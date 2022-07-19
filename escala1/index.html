@@ -50,7 +50,7 @@
 	<script type="text/javascript">
 		let lienzo=document.querySelector("#lienzo");
 		window.onload=function(){
-			console.log("cargado");
+			hideAddressBar();
 			window.onresize();
 		}
 		window.onresize=function(){
@@ -73,6 +73,7 @@
 			console.log(scale);
 			lienzo.style.transform=`translate(-50%,-50%) scale(${scale}) translate(50%,50%)`;
 			lienzo.parentNode.style.height=(411*scale)+"px";
+			lienzo.style.left="0px";
 			centrarLienzo(scale);
 		}
 
@@ -95,6 +96,21 @@
 				lienzo.style.left=d+"px";
 			}
 		}
+
+		function hideAddressBar(){
+		    if(!window.location.hash)
+		    { 
+		        if(document.height <= window.outerHeight + 10)
+		        {
+		            document.body.style.height = (window.outerHeight + 50) +'px';
+		            setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
+		        }
+		        else
+		        {
+		            setTimeout( function(){ window.scrollTo(0, 1); }, 0 ); 
+		        }
+		    }
+		} 
 	</script>
 </body>
 </html>
