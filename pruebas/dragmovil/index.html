@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css">
+		*{padding: 0; border: 0; margin: 0; box-sizing: border-box;}
+		#lienzo{border: 1px solid gray; width: 731px; height: 411px; background: url("img/f1.png"); background-size:cover; position: relative;}
+		#cuadro{
+			position: absolute;
+			left: 0px; top: 0px;
+			width: 90px; height: 90px;
+			background: lightgreen;
+		}
+		#cuadro3{
+			position: absolute;
+			left: 50px; top: 300px;
+			width: 90px; height: 90px;
+			background: lightblue;
+		}
+		#cuadro2{
+			position: absolute;
+			left: 300px; top: 0px;
+			width: 90px; height: 90px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="lienzo">
+		<div id="cuadro2" class="drag"></div>
+		<div id="cuadro" class="drag prueba" base="cuadro2"></div>
+		<div id="cuadro3" class="drag prueba" base="cuadro2"></div>
+	</div>
+	<script type="text/javascript">
+
+		//selector: selector de elemento "#cuadro" o selector por clase ".cuadro"
+		//detectarBase: recibe true o false, si es true busca el elemento en el atributo base
+		//funcion1: funcion que se ejecuta si detectarBase es verdadero y el elemento entra en la base
+		//          o funcion que se ejecuta cuando se suelta el elemento si detectarBase es false
+		//funcion2: si detectarBase es verdadero se ejecutara esta funcion si el elemento no esta dentro del elemento base
+		//distancia: si detectarBase es true, calcula la distancia para determinar que un elemento esta dntro de otro
+		//volverPuntoInicio: si detectarBase es true y el elemento al soltarlo no esta dentro de la base, se retorna al punto inicial
+
+		function drag(selector,detectarBase,funcion1,funcion2,distancia=5,volverPuntoInicio=false){
+			let elementPress="";
+			let pinitleft=0; let pintitop=0;
+			let cuadro=document.querySelector("#cuadro");
+			document.addEventListener('touchmove',onMouseMove);
+			document.addEventListener("touchstart",iniciodrag);
+			document.addEventListener("touchend",onMouseEnd);
+
+			function iniciodrag(event){
+				console.log("inicio");
+				console.log(event.touches[0].clientX,event.touches[0].clientY)
+				elementPress=buscarObjetoEn(event.touches[0].clientX,event.touches[0].clientY);
+				console.log(elementPress);
+				if(elementPress!==undefined){
+					elementPress.setAttribute("initposx",elementPress.offsetLeft);
+					elementPress.setAttribute("initposy",elementPress.offsetTop);
+					pinitleft=event.touches[0].clientX-elementPress.getBoundingClientRect().left;
+					pintitop=event.touches[0].clientY-elementPress.getBoundingClientRect().top
+				}
+			}
+
+			function onMouseMove(event){
+				console.log("mueve");
+				let pageX=event.pageX || event.touches[0].pageX;
+				let pageY=event.pageY || event.touches[0].pageY;
+				//let elementPress=buscarObjetoEn(pageX,pageY);
+				//console.log(elementPress);
+				if(elementPress!==undefined){
+					elementPress.style.left = pageX - pinitleft+ 'px';
+					elementPress.style.top = pageY -  pintitop+'px';
+				}else{
+					console.log("no hay");
+				}
+			}
+
+			function buscarObjetoEn(x,y){
+				let c=selector.charAt(0);
+				let elementos=[];
+				switch(c){
+					case '#':
+						elementos.push(document.querySelector(selector));
+					break;
+					case '.':
+						elementos=document.querySelectorAll(selector);
+					break;
+					default:
+						console.log("selector no configurado");
+					break;
+				}
+				console.log(elementos);
+				for(let i=elementos.length-1;i>=0;i--){
+					//console.log(elementos[i]);
+					let item=elementos[i];
+					let limIzq=item.offsetLeft;
+					let limDer=item.offsetLeft+item.offsetWidth;
+					let limArr=item.offsetTop;
+					let limAba=item.offsetTop+item.offsetHeight;
+					console.log(x,y);
+					console.log(limIzq,limDer,limArr,limAba);
+					if(x>=limIzq && x<=limDer && y>=limArr && y<=limAba){
+						console.log(item);
+						return(item);
+						break;
+					}
+				}			
+			}
+
+			function onMouseEnd(event){
+				if(elementPress!==undefined && elementPress!==""){
+					if(detectarBase){
+						let target=elementPress;
+						if(target.hasAttribute("base")){
+							let base=target.getAttribute("base");
+							let elementbase=document.querySelector("#"+base);
+							let targetlef=target.offsetLeft;
+							let targettop=target.offsetTop;
+							let elementbaseleft=elementbase.offsetLeft;
+							let elementbasetop=elementbase.offsetTop;
+							if(Math.abs(targettop-elementbasetop)<=distancia && Math.abs(targetlef-elementbaseleft)<=distancia){
+								//console.log("detectado");
+								if(typeof(funcion1)==="function"){
+									funcion1(elementPress);
+								}
+							}else{
+								//console.log("no esta");
+								if(volverPuntoInicio){
+									volverAlInicio();
+								}
+								if(typeof(funcion2)==="function"){
+									funcion2(elementPress);
+								}
+							}
+							elementPress="";
+						}else{
+							console.log("El elemento no tiene base");
+							if(volverPuntoInicio){
+								volverAlInicio();
+							}
+							if(typeof(funcion2)==="function"){
+								funcion2(elementPress);
+							}
+							elementPress="";
+						}
+					}else{
+						if(volverPuntoInicio){
+							volverAlInicio();
+						}
+						if(typeof(funcion1)==="function"){
+							funcion1(elementPress);
+						}
+					}
+				}else{
+					console.log("no presiono ningun elemento");
+				}
+			}
+
+			function volverAlInicio(){
+				let pix=Number(elementPress.getAttribute("initposx"));
+				let piy=Number(elementPress.getAttribute("initposy"));
+				setTimeout(function(){
+					elementPress.style.left=pix+"px";
+					elementPress.style.top=piy+"px";
+				},1000); 
+			}
+		}
+		function saludar(element){
+			element.style.display="none";
+		}
+		function despedir(element){
+			console.log(element);
+			console.log("chao");
+		}
+		drag('.drag',true,saludar,null,10,false);
+	</script>
+</body>
+</html>
