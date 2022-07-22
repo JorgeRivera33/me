@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css">
+		.sesiones{display: none; padding-left: 20px;}
+		.cursos{display: none; padding-left: 20px;}
+		a{margin-left: 20px;}
+		#lienzo{
+			max-width: 600px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="lienzo">
+		<h1>Pruebas Trimestrales</h1>
+		<p>
+			Oprima sobre la sede para desplegar los cursos. Oprima sobre el curso y seleccione la sesión que desea presentar.
+		</p>
+		<hr>
+		<div id="sedes">
+			<div class="sede">
+				<p>Sede A - Moralba</p>
+				<div class="cursos">
+					<div class="grado">
+						<p>Tercero</p>
+						<div class="sesiones">
+							<a href="https://forms.gle/cpkj8DyonbwJNWGs5">Sesión 1</a>
+							<a href="https://forms.gle/xQU5Uu5Q6uLbz2CDA">Sesión 2</a>
+						</div>
+					</div>
+					<div class="grado">
+						<p>Cuarto</p>
+						<div class="sesiones">
+							<a href="https://forms.gle/BRfKRGA2eDKyGULc7">Sesión 1</a>
+							<a href="https://forms.gle/4f7ZEX7tFjKnMxSf7">Sesión 2</a>
+						</div>
+					</div>
+					<div class="grado">
+						<p>Quinto</p>
+						<div class="sesiones">
+							<a href="https://forms.gle/PkZLkW26639GUucZ9">Sesión 1</a>
+							<a href="https://forms.gle/LwZo12uKefgBfYaZ6">Sesión 2</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="sede">
+				<p>Sede B - Quindio</p>
+				<div class="cursos">
+					<div class="grado">
+						<p>Tercero - 301</p>
+						<div class="sesiones">
+							<a href="https://forms.gle/gFiW3XnK1ewuiMkg9">Sesión 1</a>
+							<a href="https://forms.gle/iwYvhHzBGDQg7j6WA">Sesión 2</a>
+						</div>
+					</div>
+					<div class="grado">
+						<p>Tercero - 302</p>
+						<div class="sesiones">
+							<a href="https://forms.gle/65RS5h1ucQMQvP8L9">Sesión 1</a>
+							<a href="https://forms.gle/qyksQd6AmPEQ5VFj6">Sesión 2</a>
+						</div>
+					</div>
+					<div class="grado">
+						<p>Cuarto - 401</p>
+						<div class="sesiones">
+							<a href="https://forms.gle/84DLkekhcC6rCxdY7">Sesión 1</a>
+							<a href="https://forms.gle/QMjzRMtoZdFwyvBW8">Sesión 2</a>
+						</div>
+					</div>
+					<div class="grado">
+						<p>Quinto - 501</p>
+						<div class="sesiones">
+							<a href="https://forms.gle/H7A11KriVLJANoAg6">Sesión 1</a>
+							<a href="https://forms.gle/e8346GGk4wthT9Yt7">Sesión 2</a>
+						</div>
+					</div>
+					<div class="grado">
+						<p>Quinto - 502</p>
+						<div class="sesiones">
+							<a href="https://forms.gle/3s7udXzofvmGuxcH7">Sesión 1</a>
+							<a href="https://forms.gle/Nks6rySyZPnuWZ736">Sesión 2</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="sede">
+				<p>Sede C - Consuelo</p>
+				<div class="cursos">
+					<div class="grado">
+						<p>Tercero</p>
+						<div class="sesiones">
+							<a href="https://forms.gle/YHJCwJSsJeK2HkAW9">Sesión 1</a>
+							<a href="https://forms.gle/jZq17K38thrjqbf29">Sesión 2</a>
+						</div>
+					</div>
+					<div class="grado">
+						<p>Cuarto</p>
+						<div class="sesiones">
+							<a href="https://forms.gle/6dgmcYvt4Y7dDY9M6">Sesión 1</a>
+							<a href="https://forms.gle/pZZ8BL3NxqM8B6Qi9">Sesión 2</a>
+						</div>
+					</div>
+					<div class="grado">
+						<p>Quinto</p>
+						<div class="sesiones">
+							<a href="https://forms.gle/LauYmA1mdeuypLwE9">Sesión 1</a>
+							<a href="https://forms.gle/K1vW6RuzBjRBTdrb6">Sesión 2</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			let cursos=document.querySelectorAll(".cursos");
+			let sesiones=document.querySelectorAll(".sesiones");
+			let sedes=document.querySelectorAll(".sede");
+
+			sedes.forEach(function(item){
+				item.addEventListener("click",function(){
+					sedes.forEach(function(item){item.style.color="gray";});
+					cursos.forEach(function(item){item.style.display="none";});
+					this.style.color="black";
+					this.style.fontWeight="bold";
+					this.querySelector(".cursos").style.display="block";
+				});
+			});
+
+			let grados=document.querySelectorAll(".grado");
+			grados.forEach(function(item){
+				item.addEventListener("click",function(){
+					grados.forEach(function(item){item.style.color="gray";});
+					sesiones.forEach(function(item){item.style.display="none";});
+					this.style.color="black";
+					this.querySelector(".sesiones").style.display="block";
+				});
+			});
+			
+		}
+	</script>
+</body>
+</html>
