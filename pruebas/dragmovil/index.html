@@ -11,47 +11,150 @@
 			width: 100%;
 			aspect-ratio: 731/411;
 			position: relative;
+			background: url("img/f1.png");
+			background-size: cover;
+			user-select: none;
 		}
-		#cuadro{
+		#icono{
+			width: 8%;
+			aspect-ratio: 59/40;
+			background: url("img/icono.png");
+			background-size: 100% 100%;
 			position: absolute;
-			left: 0px; top: 0px;
-			height: 50%;
-			aspect-ratio: 90/90;
-			background: lightgreen;
+			left: 0.683%; top: 0%;
 		}
-		#cuadro2{
+		#itiempo {
+		    position: absolute;
+		    width: 4.24%;
+		    aspect-ratio: 31/31;
+		    background: url("img/itiempo.png");
+		    background-size: 100% 100%;
+		    left: 34%;
+		    top: 1.5%;
+		}
+		#tiempo{
 			position: absolute;
-			left: 0px; top: 50%;
-			height: 50%;
-			aspect-ratio: 90/90;
-			background: orangered;
+			left: 39%; top: 3.1%;
+			font-weight: bold;
 		}
+		#sombra{
+			width: 43.36%;
+			aspect-ratio: 317/391;
+			background: url("img/sombra.png");
+			background-size: 100% 100%;
+			position: absolute;
+			top: 2.67%; right: 5.47%;
+		}
+		#bamazo,#pamazo{
+			position: absolute;
+			width: 36.935%; 
+			aspect-ratio: 270/194;
+			background: url("img/amazonas.png");
+			background-size: 100% 100%;
+			left: 57.4256%;
+    		top: 50.498%;
+		}
+		#borino,#porino{
+			position: absolute;
+			width:26.4021%;
+			aspect-ratio:193/132;
+			left: 65.6913%;
+    		top: 33.2497%;
+			background: url("img/orinoquia.png");
+			background-size: 100% 100%;
+		}
+		#bpacif,#ppacif{
+			position: absolute;
+			width:12.0383%;aspect-ratio:88/196;
+			left: 51.1457%;
+    		top: 24.5704%;
+			background: url("img/pacifico.png");
+			background-size: 100% 100%;
+		}
+		#bandin,#pandin{
+			position: absolute;
+			width:18.4678%;aspect-ratio:135/187;
+			left: 57.8108%;
+    		top: 20.647%;
+			background: url("img/andina.png");
+			background-size: 100% 100%;
+		}
+		#bcarib,#pcarib{
+			position: absolute;
+			width:18.8782%;aspect-ratio:138/130;
+			left: 60.061%;
+    		top: 2.8285%;
+			background: url("img/caribe.png");
+			background-size: 100% 100%;
+		}
+		#binsu1,#pinsu1{
+			position: absolute;
+			width:4.5143%;aspect-ratio:33/74;
+			left: 52.2358%;
+    		top: 8.65268%;
+			background: url("img/insular1.png");
+			background-size: 100% 100%;
+		}
+		#binsu2,#pinsu2{
+			position: absolute;
+			width:3.9671%;aspect-ratio:29/61;
+			left: 56.607%;
+    		top: 7.39051%;
+			background: url("img/insular2.png");
+			background-size: 100% 100%;
+		}
+		.base{opacity: 0;}
+		.pieza{visibility: visible;}
 	</style>
 </head>
 <body>
 	<div id="lienzo">
-		<div id="cuadro2" class="drag movil"></div>
-		<div id="cuadro" class="drag" base="cuadro2"></div>
+		<div id="icono"></div>
+		<div id="itiempo"></div>
+		<div id="tiempo">00:00:00</div>
+		<div id="sombra"></div>
+		<div id="bamazo" class="base" style="left: 57.4256%;top: 50.498%;"></div>
+		<div id="bpacif" class="base" style="left: 51.1457%;top: 24.5704%;"></div>
+		<div id="bandin" class="base" style="left: 57.8108%;top: 20.647%;"></div>
+		<div id="borino" class="base" style="left: 65.6913%;top: 33.2497%;"></div>
+		<div id="bcarib" class="base" style="left: 60.061%;top: 2.8285%;"></div>
+		<div id="binsu1" class="base" style="left: 52.2358%;top: 8.65268%;"></div>
+		<div id="binsu2" class="base" style="left: 56.607%;top: 7.39051%;"></div>
+		<div id="pamazo" class="pieza" base="bamazo" style="left:7.74624%;top:40.2752%;"></div>
+		<div id="ppacif" class="pieza" base="bpacif" style="left:15.5737%;top:31.5047%;"></div>
+		<div id="pandin" class="pieza" base="bandin" style="left:18.2541%;top:36.8461%;"></div>
+		<div id="porino" class="pieza" base="borino" style="left:16.8092%;top:44.0351%;"></div>
+		<div id="pcarib" class="pieza" base="bcarib" style="left:20.6353%;top:48.7987%;"></div>
+		<div id="pinsu1" class="pieza" base="binsu1" style="left:18.0297%;top:46.0766%;"></div>
+		<div id="pinsu2" class="pieza" base="binsu2" style="left:33.1951%;top:59.9072%;"></div>
 	</div>
-
-	<script type="text/javascript">
-		let lienzo=document.querySelector("#lienzo");
-
-		window.onload=function(){
-			let btn = document.createElement("button");
-			  btn.textContent = 'Fulscreen!';
-			  btn.addEventListener('click', btnClicked);
-			  document.body.append(btn);
-			window.onresize();
+	<script type="text/javascript" id="funciones">
+		function crearBtnFullScreen(){
+			let btn=document.createElement("div");
+			btn.setAttribute("id","btnfulls");
+			btn.setAttribute("active","false");
+			btn.setAttribute("style","position:absolute;width: 3%;aspect-ratio: 1/1;right: 0.5%; top: 7%;			background: url('https://cdn-icons-png.flaticon.com/512/6874/6874447.png');			background-size: 100% 100%;background-color: white;border-radius: 13%;");
+			btn.addEventListener("click",function(){
+				let activo=this.getAttribute("active");
+				if(activo==="false"){
+					document.getElementById("lienzo").requestFullscreen();
+					this.setAttribute("active","true");
+				}else{
+					document.exitFullscreen();
+					this.setAttribute("active","false");
+				}
+			});
+			lienzo.append(btn);
 		}
-		window.onresize=function(){
-			adaptarLienzo();
-		}
 
-		function btnClicked(){
-		  document
-		    .getElementById("lienzo")
-		    .requestFullscreen();
+		function crearBtnClose(){
+			let btn=document.createElement("div");
+			btn.setAttribute("id","btnclose");
+			btn.setAttribute("style","position: absolute;width: 4%;aspect-ratio: 1/1;right: 0.1%; top: 0.3%;background: url('https://cdn-icons-png.flaticon.com/512/6276/6276642.png');			background-size: 100% 100%;");
+			btn.addEventListener("click",function(){
+				this.parentNode.style.display="none";
+			});
+			lienzo.append(btn);
 		}
 
 		function adaptarLienzo(){
@@ -64,9 +167,11 @@
 				//console.log("El ancho de pantalla es menor");
 				lienzo.style.width="auto";
 				lienzo.style.height=hpantalla+"px";
+			}else{
+				lienzo.style.width=wpantalla+"px";
+				lienzo.style.height="auto";
 			}
 		}
-
 
 		function drag(selector,detectarBase,funcion1,funcion2,distancia=5,volverPuntoInicio=false){
 			let elementPress="";
@@ -87,16 +192,16 @@
 				let elementos=buscarObjetoEn(lienzo,eventox,eventoy);
 				elementPress=filtrarElemento(selector,elementos);
 				if(elementPress!==undefined){
-					elementPress.setAttribute("initposx",elementPress.offsetLeft);
-					elementPress.setAttribute("initposy",elementPress.offsetTop);
+					elementPress.setAttribute("initposx",elementPress.style.left);
+					elementPress.setAttribute("initposy",elementPress.style.top);
 					pinitleft=(eventox-elementPress.getBoundingClientRect().left);
 					pintitop=(eventoy-elementPress.getBoundingClientRect().top);  
 				}
 			}
 			function onMouseMove(event){
-				let pageX=event.pageX || event.touches[0].pageX;
-				let pageY=event.pageY || event.touches[0].pageY;
 				if(elementPress!==undefined && elementPress!==""){
+					let pageX=event.pageX || event.touches[0].pageX;
+					let pageY=event.pageY || event.touches[0].pageY;
 					let dx=((pageX - pinitleft)*100)/lienzo.offsetWidth+"%";
 					let dy=((pageY -  pintitop)*100)/lienzo.offsetHeight+"%";
 					elementPress.style.left = dx;
@@ -174,29 +279,34 @@
 								if(typeof(funcion1)==="function"){
 									funcion1(elementPress);
 								}
+								elementPress="";
 							}else{
 								//console.log("no esta");
 								if(volverPuntoInicio){
 									volverAlInicio();
+								}else{
+									elementPress="";
 								}
 								if(typeof(funcion2)==="function"){
 									funcion2(elementPress);
 								}
 							}
-							elementPress="";
 						}else{
 							console.log("El elemento no tiene base");
 							if(volverPuntoInicio){
 								volverAlInicio();
+							}else{
+								elementPress="";
 							}
 							if(typeof(funcion2)==="function"){
 								funcion2(elementPress);
 							}
-							elementPress="";
 						}
 					}else{
 						if(volverPuntoInicio){
 							volverAlInicio();
+						}else{
+							elementPress="";
 						}
 						if(typeof(funcion1)==="function"){
 							funcion1(elementPress);
@@ -207,12 +317,14 @@
 				}
 			}
 			function volverAlInicio(){
-				let pix=Number(elementPress.getAttribute("initposx"));
-				let piy=Number(elementPress.getAttribute("initposy"));
+				let pix=elementPress.getAttribute("initposx");
+				let piy=elementPress.getAttribute("initposy");
+				console.log(pix,piy);
 				setTimeout(function(){
-					elementPress.style.left=pix+"px";
-					elementPress.style.top=piy+"px";
-				},1000); 
+					elementPress.style.left=pix;
+					elementPress.style.top=piy
+					elementPress="";
+				},0); 
 			}
 			function hasClass(el, cn){
 			    var classes = el.classList;
@@ -234,14 +346,52 @@
 			}
 			*/
 		}
-		function saludar(element){
-			element.style.display="none";
+
+	</script>
+	<script type="text/javascript" id="main">
+		let lienzo=document.querySelector("#lienzo");
+		let aciertos=0;
+
+		window.onload=function(){
+			crearBtnClose();
+			crearBtnFullScreen();
+			window.onresize();
+			drag(".pieza",true,contarAciertos,contarFallos,10,true);
 		}
-		function despedir(element){
-			//console.log(element);
-			//console.log("chao");
+		window.onresize=function(){
+			adaptarLienzo();
 		}
-		drag('.drag',true,saludar,despedir,10,false);
+
+		function contarAciertos(element){
+			let selector="#"+element.getAttribute("base");
+			let base=document.querySelector(selector);
+			let basel=base.style.left;
+			let baset=base.style.top;
+			element.style.left=basel;
+			element.style.top=baset;
+			aciertos++;
+			if(aciertos===7){
+				console.log("finalizo");
+			}
+		}
+
+		function contarFallos(){
+			console.log("mal");
+		}
+
+		function calcularPorcentajes(selector){
+			let a="";
+			let objs=document.querySelectorAll(selector);
+			objs.forEach(function(item,index){
+				let id=item.getAttribute("id");
+				let left=item.style.left;
+				console.log(left);
+				let top=item.style.top;
+				let c="#"+id+"{left:"+left+";"+"top:"+top+";"+"}";
+				a=a+c;
+			});
+			console.log(a);
+		}
 	</script>
 </body>
 </html>
