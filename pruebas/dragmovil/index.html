@@ -38,11 +38,22 @@
 		let lienzo=document.querySelector("#lienzo");
 
 		window.onload=function(){
+			let btn = document.createElement("button");
+			  btn.textContent = 'Fulscreen!';
+			  btn.addEventListener('click', btnClicked);
+			  document.body.append(btn);
 			window.onresize();
 		}
 		window.onresize=function(){
 			adaptarLienzo();
 		}
+
+		function btnClicked(){
+		  document
+		    .getElementById("lienzo")
+		    .requestFullscreen();
+		}
+
 		function adaptarLienzo(){
 			let wpantalla=window.innerWidth;
 			let hpantalla=window.innerHeight;
