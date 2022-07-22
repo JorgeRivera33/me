@@ -6,6 +6,9 @@
 	<title>Document</title>
 	<style type="text/css">
 		*{padding: 0; border: 0; margin: 0; box-sizing: border-box;}
+		#contLienzo{
+			width: 100%;
+		}
 		#lienzo{
 			border: 1px solid black;
 			width: 100%;
@@ -108,26 +111,29 @@
 	</style>
 </head>
 <body>
-	<div id="lienzo">
-		<div id="icono"></div>
-		<div id="itiempo"></div>
-		<div id="tiempo">00:00:00</div>
-		<div id="sombra"></div>
-		<div id="bamazo" class="base" style="left: 57.4256%;top: 50.498%;"></div>
-		<div id="bpacif" class="base" style="left: 51.1457%;top: 24.5704%;"></div>
-		<div id="bandin" class="base" style="left: 57.8108%;top: 20.647%;"></div>
-		<div id="borino" class="base" style="left: 65.6913%;top: 33.2497%;"></div>
-		<div id="bcarib" class="base" style="left: 60.061%;top: 2.8285%;"></div>
-		<div id="binsu1" class="base" style="left: 52.2358%;top: 8.65268%;"></div>
-		<div id="binsu2" class="base" style="left: 56.607%;top: 7.39051%;"></div>
-		<div id="pamazo" class="pieza" base="bamazo" style="left:7.74624%;top:40.2752%;"></div>
-		<div id="ppacif" class="pieza" base="bpacif" style="left:15.5737%;top:31.5047%;"></div>
-		<div id="pandin" class="pieza" base="bandin" style="left:18.2541%;top:36.8461%;"></div>
-		<div id="porino" class="pieza" base="borino" style="left:16.8092%;top:44.0351%;"></div>
-		<div id="pcarib" class="pieza" base="bcarib" style="left:20.6353%;top:48.7987%;"></div>
-		<div id="pinsu1" class="pieza" base="binsu1" style="left:18.0297%;top:46.0766%;"></div>
-		<div id="pinsu2" class="pieza" base="binsu2" style="left:33.1951%;top:59.9072%;"></div>
+	<div id="contLienzo">
+		<div id="lienzo">
+			<div id="icono"></div>
+			<div id="itiempo"></div>
+			<div id="tiempo">00:00:00</div>
+			<div id="sombra"></div>
+			<div id="bamazo" class="base" style="left: 57.4256%;top: 50.498%;"></div>
+			<div id="bpacif" class="base" style="left: 51.1457%;top: 24.5704%;"></div>
+			<div id="bandin" class="base" style="left: 57.8108%;top: 20.647%;"></div>
+			<div id="borino" class="base" style="left: 65.6913%;top: 33.2497%;"></div>
+			<div id="bcarib" class="base" style="left: 60.061%;top: 2.8285%;"></div>
+			<div id="binsu1" class="base" style="left: 52.2358%;top: 8.65268%;"></div>
+			<div id="binsu2" class="base" style="left: 56.607%;top: 7.39051%;"></div>
+			<div id="pamazo" class="pieza" base="bamazo" style="left:7.74624%;top:40.2752%;"></div>
+			<div id="ppacif" class="pieza" base="bpacif" style="left:15.5737%;top:31.5047%;"></div>
+			<div id="pandin" class="pieza" base="bandin" style="left:18.2541%;top:36.8461%;"></div>
+			<div id="porino" class="pieza" base="borino" style="left:16.8092%;top:44.0351%;"></div>
+			<div id="pcarib" class="pieza" base="bcarib" style="left:20.6353%;top:48.7987%;"></div>
+			<div id="pinsu1" class="pieza" base="binsu1" style="left:18.0297%;top:46.0766%;"></div>
+			<div id="pinsu2" class="pieza" base="binsu2" style="left:33.1951%;top:59.9072%;"></div>
+		</div>
 	</div>
+	
 	<script type="text/javascript" id="funciones">
 		function crearBtnFullScreen(){
 			let btn=document.createElement("div");
@@ -137,7 +143,7 @@
 			btn.addEventListener("click",function(){
 				let activo=this.getAttribute("active");
 				if(activo==="false"){
-					document.getElementById("lienzo").requestFullscreen();
+					document.getElementById("contLienzo").requestFullscreen();
 					this.setAttribute("active","true");
 				}else{
 					document.exitFullscreen();
