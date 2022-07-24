@@ -25,6 +25,7 @@
 			background-size: 100% 100%;
 			position: absolute;
 			left: 0.683%; top: 0%;
+			display:none;
 		}
 		#itiempo {
 		    position: absolute;
@@ -374,11 +375,12 @@
 			console.log(window.orientation);
 		if (window.orientation == 90 || window.orientation == -90) {
 			    console.log('landscape mode');
+			    setTimeout(function(){adaptarLienzo();},500);
 			    window.onresize();
 			    document.querySelector("#info").innerHTML="orientacion: landscape";
 			} else {
 			    console.log('portrait mode');
-			    window.onresize();
+			    adaptarLienzo();
 			    document.querySelector("#info").innerHTML="orientacion: portrait";
 			}
 		});
