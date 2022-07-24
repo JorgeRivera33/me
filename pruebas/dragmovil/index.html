@@ -6,9 +6,7 @@
 	<title>Document</title>
 	<style type="text/css">
 		*{padding: 0; border: 0; margin: 0; box-sizing: border-box;}
-		#contLienzo{
-			width: 100%;
-		}
+		#contLienzo{}
 		#lienzo{
 			border: 1px solid black;
 			width: 100%;
@@ -165,19 +163,18 @@
 			lienzo.append(btn);
 		}
 
-		function adaptarLienzo(){
+		function adaptarElemento(element){
 			let wpantalla=window.innerWidth;
 			let hpantalla=window.innerHeight;
-			let wlienzo=lienzo.offsetWidth;
-			let hlienzo=lienzo.offsetHeight;
-			//console.log(wpantalla,wlienzo,hpantalla,hlienzo);
-			if(hpantalla<hlienzo){
-				//console.log("El ancho de pantalla es menor");
-				lienzo.style.width="auto";
-				lienzo.style.height=hpantalla+"px";
+			let alto=(wpantalla*411)/731;
+			if(hpantalla<alto){
+				element.style.height=hpantalla+"px";
+				element.style.width="auto";
 			}else{
-				lienzo.style.width=wpantalla+"px";
-				lienzo.style.height="auto";
+				if(determinarsiespc()){
+					element.style.height="auto";
+					element.style.width=wpantalla+"px";
+				}
 			}
 		}
 
@@ -355,8 +352,19 @@
 			*/
 		}
 
+		function determinarsiespc() {
+				//retorna true si es pc false si es movil
+				let navegador = navigator.userAgent;
+				if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
+					return (false);
+				} else {
+					return (true);
+				}
+		}
+
 	</script>
 	<script type="text/javascript" id="main">
+		let contlienzo=document.querySelector("#contLienzo");
 		let lienzo=document.querySelector("#lienzo");
 		let aciertos=0;
 
@@ -367,28 +375,9 @@
 			drag(".pieza",true,contarAciertos,contarFallos,10,true);
 		}
 		window.onresize=function(){
-			adaptarLienzo();
+			adaptarElemento(lienzo);
+			adaptarElemento(contlienzo);
 		}
-
-		window.addEventListener("orientationchange", function() {
-			let wpantalla=window.innerWidth;
-			let hpantalla=window.innerHeight;
-			let wlienzo=lienzo.offsetWidth;
-			let hlienzo=lienzo.offsetHeight;
-			console.log(window.orientation);
-		if (window.orientation == 90 || window.orientation == -90) {
-			    console.log('landscape mode');
-			    window.scrollTo(0,1);
-			    setTimeout(function(){adaptarLienzo();},0);
-			    document.querySelector("#info").innerHTML=`orientacion: landscape \n orientacion:${window.orientation} \n wpantalla:${wpantalla} \n hpantalla:${hpantalla} \n wlienzo:${wlienzo} \n hlienzo:${hlienzo}`;
-			} else {
-			    console.log('portrait mode');
-			    window.scrollTo(0,1);
-			    setTimeout(function(){adaptarLienzo();},0);
-			    document.querySelector("#info").innerHTML=`orientacion: landscape \n orientacion:${window.orientation} \n wpantalla:${wpantalla} \n hpantalla:${hpantalla} \n wlienzo:${wlienzo} \n hlienzo:${hlienzo}`;
-			}
-		});
-
 		function contarAciertos(element){
 			let selector="#"+element.getAttribute("base");
 			let base=document.querySelector(selector);
