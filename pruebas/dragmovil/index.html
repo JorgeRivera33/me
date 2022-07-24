@@ -25,6 +25,7 @@
 			background-size: 100% 100%;
 			position: absolute;
 			left: 0.683%; top: 0%;
+			display:none;
 		}
 		#itiempo {
 		    position: absolute;
@@ -367,6 +368,17 @@
 		window.onresize=function(){
 			adaptarLienzo();
 		}
+
+		window.addEventListener("orientationchange", function() {
+			console.log(window.orientation);
+		if (window.orientation == 90 || window.orientation == -90) {
+			    console.log('landscape mode');
+			    window.onresize();
+			} else {
+			    console.log('portrait mode');
+			    window.onresize();
+			}
+		});
 
 		function contarAciertos(element){
 			let selector="#"+element.getAttribute("base");
