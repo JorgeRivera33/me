@@ -25,7 +25,6 @@
 			background-size: 100% 100%;
 			position: absolute;
 			left: 0.683%; top: 0%;
-			display:none;
 		}
 		#itiempo {
 		    position: absolute;
@@ -109,11 +108,13 @@
 		}
 		.base{opacity: 0;}
 		.pieza{visibility: visible;}
+		#info{position: absolute:  top:0; left: 0;}
 	</style>
 </head>
 <body>
 	<div id="contLienzo">
 		<div id="lienzo">
+			<div id="info">orientacion:</div>
 			<div id="icono"></div>
 			<div id="itiempo"></div>
 			<div id="tiempo">00:00:00</div>
@@ -374,9 +375,11 @@
 		if (window.orientation == 90 || window.orientation == -90) {
 			    console.log('landscape mode');
 			    window.onresize();
+			    document.querySelector("#info").innerHTML="orientacion: landscape";
 			} else {
 			    console.log('portrait mode');
 			    window.onresize();
+			    document.querySelector("#info").innerHTML="orientacion: portrait";
 			}
 		});
 
