@@ -108,7 +108,7 @@
 		}
 		.base{opacity: 0;}
 		.pieza{visibility: visible;}
-		#info{position: absolute;  top:0; left: 0; z-index:100;}
+		#info{position: absolute:  top:0; left: 0;}
 	</style>
 </head>
 <body>
@@ -378,12 +378,14 @@
 			console.log(window.orientation);
 		if (window.orientation == 90 || window.orientation == -90) {
 			    console.log('landscape mode');
-			    setTimeout(function(){adaptarLienzo();},500);
+			    window.scrollTo(0,1);
+			    setTimeout(function(){adaptarLienzo();},100);
 			    window.onresize();
 			    document.querySelector("#info").innerHTML=`orientacion: landscape \n orientacion:${window.orientation} \n wpantalla:${wpantalla} \n hpantalla:${hpantalla} \n wlienzo:${wlienzo} \n hlienzo:${hlienzo}`;
 			} else {
 			    console.log('portrait mode');
-			    setTimeout(function(){adaptarLienzo();},500);
+			    window.scrollTo(0,1);
+			    setTimeout(function(){adaptarLienzo();},100);
 			    document.querySelector("#info").innerHTML="orientacion: portrait";
 			}
 		});
