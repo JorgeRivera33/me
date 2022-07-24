@@ -380,13 +380,12 @@
 			    console.log('landscape mode');
 			    window.scrollTo(0,1);
 			    setTimeout(function(){adaptarLienzo();},100);
-			    window.onresize();
 			    document.querySelector("#info").innerHTML=`orientacion: landscape \n orientacion:${window.orientation} \n wpantalla:${wpantalla} \n hpantalla:${hpantalla} \n wlienzo:${wlienzo} \n hlienzo:${hlienzo}`;
 			} else {
 			    console.log('portrait mode');
 			    window.scrollTo(0,1);
 			    setTimeout(function(){adaptarLienzo();},100);
-			    document.querySelector("#info").innerHTML="orientacion: portrait";
+			    document.querySelector("#info").innerHTML=`orientacion: landscape \n orientacion:${window.orientation} \n wpantalla:${wpantalla} \n hpantalla:${hpantalla} \n wlienzo:${wlienzo} \n hlienzo:${hlienzo}`;
 			}
 		});
 
