@@ -25,7 +25,6 @@
 			background-size: 100% 100%;
 			position: absolute;
 			left: 0.683%; top: 0%;
-			display:none;
 		}
 		#itiempo {
 		    position: absolute;
@@ -372,12 +371,16 @@
 		}
 
 		window.addEventListener("orientationchange", function() {
+			let wpantalla=window.innerWidth;
+			let hpantalla=window.innerHeight;
+			let wlienzo=lienzo.offsetWidth;
+			let hlienzo=lienzo.offsetHeight;
 			console.log(window.orientation);
 		if (window.orientation == 90 || window.orientation == -90) {
 			    console.log('landscape mode');
 			    setTimeout(function(){adaptarLienzo();},500);
 			    window.onresize();
-			    document.querySelector("#info").innerHTML="orientacion: landscape";
+			    document.querySelector("#info").innerHTML=`orientacion: landscape \n orientacion:${window.orientation} \n wpantalla:${wpantalla} \n hpantalla:${hpantalla} \n wlienzo:${wlienzo} \n hlienzo:${hlienzo}`;
 			} else {
 			    console.log('portrait mode');
 			    adaptarLienzo();
