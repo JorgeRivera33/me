@@ -145,9 +145,9 @@
 			btn.addEventListener("click",function(){
 				let activo=this.getAttribute("active");
 				if(activo==="false"){
-					document.getElementById("lienzo").requestFullscreen();
+					setDimensionScreen(contlienzo);
+					document.getElementById("contLienzo").requestFullscreen();
 					this.setAttribute("active","true");
-					window.onresize();
 				}else{
 					document.exitFullscreen();
 					this.setAttribute("active","false");
@@ -364,6 +364,13 @@
 				} else {
 					return (true);
 				}
+		}
+
+		function setDimensionScreen(element){
+			let wp=window.innerWidth;
+			let hp=window.innerHeight;
+			element.style.width=wp+"px";
+			element.style.height=hp+"px";
 		}
 
 	</script>
