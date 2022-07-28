@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Document 0.1</title>
 	<style type="text/css">
 		*{padding: 0; border: 0; margin: 0; box-sizing: border-box;}
 		#contLienzo{
@@ -147,9 +147,11 @@
 				if(activo==="false"){
 					document.getElementById("contLienzo").requestFullscreen();
 					this.setAttribute("active","true");
+					window.onresize();
 				}else{
 					document.exitFullscreen();
 					this.setAttribute("active","false");
+					window.onresize();
 				}
 			});
 			lienzo.append(btn);
