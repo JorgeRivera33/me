@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document 0.2</title>
+	<title>Document 0.3</title>
 	<style type="text/css">
 		*{padding: 0; border: 0; margin: 0; box-sizing: border-box;}
 		#contLienzo{
@@ -367,8 +367,8 @@
 		}
 
 		function setDimensionScreen(element){
-			let wp=window.innerWidth;
-			let hp=window.innerHeight;
+			let wp=window.screen.availWidth;
+			let hp=window.screen.availHeight;
 			element.style.width=wp+"px";
 			element.style.height=hp+"px";
 		}
