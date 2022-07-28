@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document 0.4</title>
+	<title>Document 0.5</title>
 	<style type="text/css">
 		*{padding: 0; border: 0; margin: 0; box-sizing: border-box;}
 		#contLienzo{
@@ -164,6 +164,26 @@
 			btn.setAttribute("style","position: absolute;width: 4%;aspect-ratio: 1/1;right: 0.1%; top: 0.3%;background: url('https://cdn-icons-png.flaticon.com/512/6276/6276642.png');			background-size: 100% 100%;");
 			btn.addEventListener("click",function(){
 				this.parentNode.style.display="none";
+			});
+			lienzo.append(btn);
+		}
+
+		function crearBtnInfo(){
+			let btn=document.createElement("div");
+			btn.setAttribute("id","info");
+			btn.setAttribute("active","false");
+			btn.setAttribute("style","position:absolute;width: 3%;aspect-ratio: 1/1;right: 0.5%; top: 15%;			background: url('https://cdn-icons-png.flaticon.com/512/7452/7452343.png');			background-size: 100% 100%;background-color: white;border-radius: 13%;");
+			btn.addEventListener("click",function(){
+				let activo=this.getAttribute("active");
+				if(activo==="false"){
+					let pc=determinarsiespc();
+					let wpantalla=window.innerWidth;
+					let hpantalla=window.innerHeight;
+					let msg=`pc ${pc} wpantalla ${wpantalla} hpantalla ${hpantalla}`;
+					alert(msg);
+				}else{
+					
+				}
 			});
 			lienzo.append(btn);
 		}
@@ -383,6 +403,7 @@
 		window.onload=function(){
 			crearBtnClose();
 			crearBtnFullScreen();
+			crearBtnInfo();
 			window.onresize();
 			drag(".pieza",true,contarAciertos,contarFallos,10,true);
 		}
