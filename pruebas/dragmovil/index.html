@@ -145,7 +145,7 @@
 			btn.addEventListener("click",function(){
 				let activo=this.getAttribute("active");
 				if(activo==="false"){
-					document.getElementById("contLienzo").requestFullscreen();
+					document.getElementById("lienzo").requestFullscreen();
 					this.setAttribute("active","true");
 					window.onresize();
 				}else{
