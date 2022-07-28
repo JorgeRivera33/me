@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document 0.6</title>
+	<title>Document 0.7</title>
 	<style type="text/css">
 		*{padding: 0; border: 0; margin: 0; box-sizing: border-box;}
 		#contLienzo{
@@ -179,7 +179,10 @@
 					let pc=determinarsiespc();
 					let wpantalla=window.innerWidth;
 					let hpantalla=window.innerHeight;
-					let msg=`pc ${pc} wpantalla ${wpantalla} hpantalla ${hpantalla}`;
+					let alienzo=lienzo.offsetWidth;
+					let hlienzo=lienzo.offsetHeight;
+					let altura=(wpantalla*411)/731;
+					let msg=`pc ${pc} wpantalla ${wpantalla} hpantalla ${hpantalla} alienzo ${alienzo} hlienzo ${hlienzo} altura ${altura}`;
 					let p=document.createElement("p");
 					p.textContent=msg;
 					lienzo.append(p);
