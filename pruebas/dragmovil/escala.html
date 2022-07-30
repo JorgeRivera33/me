@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta 
+		name="description" 
+		content="Creando la funcion necesaria para escalar el lienzo y colocarlo en pantalla completa"
+	> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Redimensionar,Fullscreen</title>
+	<style type="text/css">
+		*{padding: 0; border: 0; margin: 0; box-sizing: border-box;}
+		body{overflow: hidden;}
+		#conlienzo{border: 0px solid red; width: 731px; height: 411px; position: absolute; aspect-ratio: 731/411;}
+		#lienzo{border: 1px solid gray; width: 731px; height: 411px; position: absolute; aspect-ratio: 731/411; background: url("https://cdn.pixabay.com/photo/2020/09/24/16/50/board-5599231_960_720.png"); background-size: 100% 100%;}
+	</style>
+</head>
+<body>
+	<div id="conlienzo">
+		<div id="lienzo"></div>
+	</div>
+	<script type="text/javascript">
+
+		let conlienzo=document.querySelector("#conlienzo");
+		let lienzo=document.querySelector("#lienzo");
+
+		window.onload=function(){
+			crearBtnFullScreen();
+			window.onresize();
+		}
+		window.onresize=function(){
+			redimensionar(conlienzo);
+			redimensionar(lienzo);
+		}
+
+		function redimensionar(element){
+			let pw; let ph;
+			pw=window.innerWidth;
+			ph=window.innerHeight;
+			//console.log(pw,ph);
+			let ancho=(731*ph)/411;
+			let alto=(411*pw)/731; 
+			//console.log(ancho, alto);
+			if(ancho>pw){
+				//console.log("el ancho del lienzo excede la pantalla");
+				if(alto>ph){
+					//console.log("el alto del lienzo excede la pantalla");
+					element.style.height="100%";
+					element.style.width="auto";
+				}else if(alto<ph){
+					//console.log("el alto del lienzo se acomoda a la pantalla");
+					element.style.height="auto";
+					element.style.width="100%";
+				}
+			}else if(ancho<pw){
+				//console.log("el ancho del lienzo se acomoda a la pantalla");
+				if(alto>ph){
+					//console.log("el alto del lienzo excede la pantalla");
+					element.style.height="100%";
+					element.style.width="auto";
+				}else if(alto<ph){
+					//console.log("el alto del lienzo se acomoda a la pantalla");
+					element.style.height="auto";
+					element.style.width="100%";
+				}
+			}
+		}
+
+		function crearBtnFullScreen(){
+			let btn=document.createElement("div");
+			btn.setAttribute("id","btnfulls");
+			btn.setAttribute("active","false");
+			btn.setAttribute("style","position:absolute;width: 3%;aspect-ratio: 1/1;right: 0.5%; top: 7%;			background: url('https://cdn-icons-png.flaticon.com/512/6874/6874447.png');			background-size: 100% 100%;background-color: white;border-radius: 13%;");
+			btn.addEventListener("click",function(){
+				let activo=this.getAttribute("active");
+				if(activo==="false"){
+					document.getElementById("conlienzo").requestFullscreen();
+					this.setAttribute("active","true");
+				}else{
+					document.exitFullscreen();
+					this.setAttribute("active","false");
+				}
+			});
+			lienzo.append(btn);
+		}
+	</script>
+</body>
+</html>
