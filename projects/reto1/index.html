@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta 
+		name="description" 
+		content="Creando la funcion necesaria para escalar el lienzo y colocarlo en pantalla completa"
+	> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Redimensionar,Fullscreen</title>
+	<style type="text/css">
+		*{padding: 0; border: 0; margin: 0; box-sizing: border-box;}
+		body{overflow: hidden;}
+		#conlienzo{border: 0px solid red; width: 731px; height: 411px; position: relative; aspect-ratio: 731/411; top: 0px; user-select: none;}
+		#lienzo{border: 1px solid gray; width: 731px; height: 411px; position: absolute; aspect-ratio: 731/411; background: url("img/f2.svg"); background-size: 100% 100%;}
+		.page{width: 100%; height: 100%;}
+
+		/*page1*/
+		#logoM{top: 0%; bottom: 10%; left: 0%; right: 0%; margin: auto; display: block; position:absolute; width:47.87%;}
+		#barra{width: 80%; height: 2%; background: white; position: absolute; bottom: 15%; left: 0%; right: 0%; margin: auto; border-radius: 5px; overflow: hidden;}
+		#carga{position: absolute: top: 0%; left: 0%; width: 0%; height: 100%; background: limegreen; border-radius: 5px;}
+		#fichload{position: absolute; bottom: 5%; left: 0%; right: 0%; margin: auto; width: 80%; text-align: center; font-style: italic; color: white;}
+		.gtext{position: absolute;}
+
+		/*page2*/
+		.logom{position:absolute; width: 8%; height: 12%; background: url("img/logoM.png"); background-size: 100% 100%; top: 0.5%; left: 0.5%; opacity: 0.8;}
+		.reto{border: 1px solid black; position: absolute; width: 100%; height: 100%;}
+		/*elimina los botones del input*/
+		input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+    		-webkit-appearance: none;margin: 0;
+    	}
+		input[type=number] { -moz-appearance:textfield; }
+		.input{position: absolute; text-align: center; border:2px solid black;}
+		.check{position: absolute; width: 6%; aspect-ratio: 1/1; background: url("img/check.png"); background-size: 100% 100%;}
+		/*page3*/
+		#candado{top: 0%; bottom: 10%; left: 0%; right: 0%; margin: auto; display: block; position:absolute; width:40%; filter: drop-shadow(1px 1px);}
+	</style>
+</head>
+<body>
+	
+	<div id="conlienzo">
+		<div id="lienzo">
+			<div class="page" id="page1" style="display: block;">
+				<img src="img/logoM.png" id="logoM">
+				<div id="barra"><div id="carga"></div></div>
+				<div id="fichload" class="gtext" style="font-size: 22px;">Loading...</div>
+			</div>
+			<div class="page" id="page2" style="display: none;">
+				<div class="logom"></div>
+				<div class="reto" id="reto1" style="display:block;">
+					<p class="gtext" style="font-size: 21.8929px;top: 17%;left: 8.34%;">
+						Observa con atención la siguiente relacion entre frutas y cantidades.
+					</p>
+					<img src="img/0001.png" style="position:absolute; top:30.4%; left:25.30%; width:43.22%;">
+					<p class="gtext" style="font-size: 21.8929px;top: 47%;left: 30%;">
+						¿Qué valor tiene la manzana?
+					</p>
+					<img src="img/0002.png" style="position:absolute; top:58%; left:38%; width:11%;">
+					<input type="Number" class="gtext" id="inp1" value="" style="position:absolute; top:58%; left:51%; width:11%; height:11%; text-align: center; border:2px solid black; font-size: 30px">
+					<div class="check" style="top:58%; left:63%;"></div>
+				</div>
+				<div class="reto" id="reto2" style="display:none;">
+					<p class="gtext" style="font-size: 21.8929px;top: 17%;left: 8.34%;">
+						Observa con atención la siguiente relacion entre frutas y cantidades.
+					</p>
+					<img src="img/0003.png" style="position:absolute; top:30.4%; left:25.30%; width:43.22%;">
+					<p class="gtext" style="font-size: 21.8929px;top: 60%;left: 30%;">
+						¿Qué valor tiene el banano?
+					</p>
+					<img src="img/0004.png" style="position:absolute; top:70%; left:38%; width:11%;">
+					<input type="Number" class="gtext input" id="inp2" value="" style="top:70%; left:51%; width:11%; height:11%; font-size: 30px">
+					<div class="check" style="top:70%; left:63%;"></div>
+				</div>
+				<div class="reto" id="reto3" style="display:none">
+					<p class="gtext" style="font-size: 21.8929px;top: 17%;left: 8.34%;">
+						Observa con atención la siguiente relacion entre frutas y cantidades.
+					</p>
+					<img src="img/0005.png" style="position:absolute; top:25%; left:25.30%; width:43.22%;">
+					<p class="gtext" style="font-size: 21.8929px;top: 67%;left: 30%;">
+						¿Qué valor tiene el coco?
+					</p>
+					<img src="img/0006.png" style="position:absolute; top:75%; left:38%; width:11%;">
+					<input type="Number" class="gtext input" id="inp2" value="" style="top:75%; left:51%; width:11%; height:11%; font-size: 30px">
+					<div class="check" style="top:75%; left:63%;"></div>
+				</div>
+				<div class="reto" id="reto4" style="display:none">
+					<p class="gtext" style="font-size: 21.8929px;top: 17%;left: 8.34%;">
+						Observa con atención la siguiente relacion entre frutas y cantidades. Calcula el valor que hace falta.
+					</p>
+					<img src="img/0007.png" style="position:absolute; top:32%; left:25.30%; width:43.22%;">
+					<input type="Number" class="gtext input" id="inp2" value="" style="top:75%; left:62%; width:11%; height:11%; font-size: 30px">
+					<div class="check" style="top:75%; left:74%;"></div>
+				</div>
+				<div class="reto" id="reto5" style="display:none">
+					<p class="gtext" style="font-size: 21.8929px;top: 17%;left: 8.34%;">
+						Observa con atención la siguiente relacion entre frutas y cantidades. Calcula el valor que hace falta.
+					</p>
+					<img src="img/0008.png" style="position:absolute; top:32%; left:25.30%; width:43.22%;">
+					<input type="Number" class="gtext input" id="inp2" value="" style="top:75%; left:62%; width:11%; height:11%; font-size: 30px">
+					<div class="check" style="top:75%; left:74%;"></div>
+				</div>
+			</div>
+			<div class="page" id="page3" style="display: none;">
+				<div class="logom"></div>
+				<img src="img/candado.png" id="candado">
+				<div class="gtext" style="font-size: 22px; top:85%; left:36%;">¡Reto superado!</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" id="variables">
+		let conlienzo=document.querySelector("#conlienzo");
+		let lienzo=document.querySelector("#lienzo");
+		let fichload=document.querySelector("#fichload");
+		let carga=document.querySelector("#carga");
+	</script>
+
+	<script type="text/javascript" id="funciones">
+		function crearBtnClose(){
+			let btn=document.createElement("div");
+			btn.setAttribute("id","btnclose");
+			btn.setAttribute("style","position: absolute;width: 3.1%;aspect-ratio: 1/1;right: 0.5%; top: 0.9%;background: url('https://cdn-icons-png.flaticon.com/128/6975/6975261.png');			background-size: 100% 100%;");
+			btn.addEventListener("click",function(){
+				this.parentNode.style.display="none";
+			});
+			lienzo.append(btn);
+		}
+		function crearBtnFullScreen(){
+			let btn=document.createElement("div");
+			btn.setAttribute("id","btnfulls");
+			btn.setAttribute("active","false");
+			btn.setAttribute("style","position:absolute;width: 3%;aspect-ratio: 1/1;right: 0.5%; top: 7%;			background: url('https://cdn-icons-png.flaticon.com/512/6874/6874447.png');			background-size: 100% 100%;background-color: white;border-radius: 13%;");
+			btn.addEventListener("click",function(){
+				let activo=this.getAttribute("active");
+				if(activo==="false"){
+					document.getElementById("conlienzo").requestFullscreen();
+					this.setAttribute("active","true");
+				}else{
+					document.exitFullscreen();
+					this.setAttribute("active","false");
+				}
+			});
+			lienzo.append(btn);
+		}
+	</script>
+	
+	<script type="text/javascript" id="codred">
+		window.addEventListener("load",function(){
+			mainredim();
+		});
+		window.addEventListener("resize",mainredim);
+
+		function mainredim(){
+			redimensionar(conlienzo);
+			redimensionar(lienzo);
+			escFuente();
+		}
+
+		function redimensionar(element){
+			let pw; let ph;
+			pw=window.innerWidth;
+			ph=window.innerHeight;
+			//console.log(pw,ph);
+			let ancho=(731*ph)/411;
+			let alto=(411*pw)/731; 
+			//console.log(ancho, alto);
+			if(ancho>pw){
+				//console.log("el ancho del lienzo excede la pantalla");
+				if(alto>ph){
+					//console.log("el alto del lienzo excede la pantalla");
+					element.style.height="100%";
+					element.style.width="auto";
+				}else if(alto<ph){
+					//console.log("el alto del lienzo se acomoda a la pantalla");
+					element.style.height="auto";
+					element.style.width="100%";
+				}
+			}else if(ancho<pw){
+				//console.log("el ancho del lienzo se acomoda a la pantalla");
+				if(alto>ph){
+					//console.log("el alto del lienzo excede la pantalla");
+					element.style.height=ph+"px";
+					element.style.width="auto";
+				}else if(alto<ph){
+					//console.log("el alto del lienzo se acomoda a la pantalla");
+					element.style.height="auto";
+					element.style.width="100%";
+				}
+			}
+		}
+
+		function escFuente(){
+			let textos=document.querySelectorAll(".gtext");
+			textos.forEach(function(item,index){
+				let t=Number(item.style.fontSize.split("px")[0]);
+				let hp=lienzo.parentNode.offsetHeight;
+				let nt=(hp*22)/411;
+				item.style.fontSize=nt+"px";
+			});
+		}
+	</script>
+
+	<script type="text/javascript" id="precarga">
+		let arrayimagenes=['logoM.png','f2.svg','check.png','candado.png','0001.png','0002.png','0003.png','0004.png','0005.png','0006.png','0007.png','0008.png'];
+		let arraysonidos=[];
+		let arrayvideos=[];
+
+		window.addEventListener("load",function(){
+			precargar(arrayimagenes,arraysonidos,arrayvideos);
+		});
+		function precargar(arrayimagenes,arraysonidos,arrayvideos){
+			let totalImagenes=0;
+			let totalSonidos=0;
+			let totalVideos=0;
+			if(arrayimagenes.length>0){
+				for(let i=0;i<arrayimagenes.length;i++){
+					let img=new Image();
+					img.src="img/"+arrayimagenes[i];
+					img.setAttribute("style","width:0px; height:0px; visibility:hidden; position:absolute; top:-1000px; left:-1000px;");
+					img.addEventListener("load",function(){
+						totalImagenes++;
+						lienzo.append(img);
+						contar();
+					},false);
+				}
+			}
+			if(arraysonidos.length>0){
+				for(let i=0;i<arraysonidos.length;i++){
+					let s=document.createElement("audio");
+					s.setAttribute("src","sounds/"+arraysonidos[i]);
+					s.setAttribute("style","width:0px; height:0px; visibility:hidden; position:absolute; top:-1000px; left:-1000px;");
+					document.querySelector("body").append(s);
+					s.addEventListener("canplaythrough",function(){
+						totalSonidos++;
+						contar();
+					},false);
+				}
+			}
+			if(arrayvideos.length>0){
+				for(let i=0;i<arraysonidos.length;i++){
+					let v=document.createElement("video");
+					v.setAttribute("src","videos/"+arrayvideos[i]);
+					s.setAttribute("style","width:0px; height:0px; visibility:hidden; position:absolute; top:-1000px; left:-1000px;");
+					document.querySelector("body").append(s);
+					v.addEventListener("canplaythrough",function(){
+						totalVideos++;
+						contar();
+					},false);
+				}
+			}
+			contar();
+			function contar(){
+				let total=arrayimagenes.length+arraysonidos.length+arrayvideos.length;
+				let total2=totalImagenes+totalSonidos+totalVideos;
+				let porcen=(total2*100)/total;
+				carga.style.width=porcen+"%";
+				if(totalImagenes==arrayimagenes.length && totalSonidos==arraysonidos.length && totalVideos==arrayvideos.length){
+					let total=arrayimagenes.length+arraysonidos.length+arrayvideos.length;
+					main();
+				}
+			}
+		}
+	</script>
+
+	<script type="text/javascript" id="main">
+		window.addEventListener("load",function(){
+			crearBtnClose();
+			crearBtnFullScreen();
+			let checks=document.querySelectorAll(".check");
+			checks.forEach(function(item){
+				item.addEventListener("click",function(){
+					evaluar(this.parentNode.id);
+				});
+			});
+		});
+		function main(){
+			setTimeout(function(){
+				document.querySelector("#page1").style.display="none";
+				document.querySelector("#page2").style.display="block";
+			},2000);
+		}
+		function evaluar(reto){
+			console.log(reto);
+			let nreto=""; let input=""; let valor="";
+			switch(reto){
+				case 'reto1':
+					nreto=document.querySelector("#reto1");
+					input=nreto.querySelector("input");
+					valor=input.value;
+					if(valor!==""){
+						if(valor==="10"){
+							console.log("bien");
+							document.querySelector("#reto1").style.display="none";
+							document.querySelector("#reto2").style.display="block";
+						}else{
+							//animacion
+							input.value="";
+						}
+					}else{
+						console.log("Esta vacio.");
+					}
+				break;
+				case 'reto2':
+					nreto=document.querySelector("#reto2");
+					input=nreto.querySelector("input");
+					valor=input.value;
+					if(valor!==""){
+						if(valor==="4"){
+							console.log("bien");
+							document.querySelector("#reto2").style.display="none";
+							document.querySelector("#reto3").style.display="block";
+						}else{
+							//animacion
+							input.value="";
+						}
+					}else{
+						console.log("Esta vacio.");
+					}
+				break;
+				case 'reto3':
+					nreto=document.querySelector("#reto3");
+					input=nreto.querySelector("input");
+					valor=input.value;
+					if(valor!==""){
+						if(valor==="2"){
+							console.log("bien");
+							document.querySelector("#reto3").style.display="none";
+							document.querySelector("#reto4").style.display="block";
+						}else{
+							//animacion
+							input.value="";
+						}
+					}else{
+						console.log("Esta vacio.");
+					}
+				break;
+				case 'reto4':
+					nreto=document.querySelector("#reto4");
+					input=nreto.querySelector("input");
+					valor=input.value;
+					if(valor!==""){
+						if(valor==="16"){
+							console.log("bien");
+							document.querySelector("#reto4").style.display="none";
+							document.querySelector("#page2").style.display="none";
+							document.querySelector("#page3").style.display="block";
+						}else{
+							//animacion
+							input.value="";
+						}
+					}else{
+						console.log("Esta vacio.");
+					}
+				break;
+			}
+		}
+	</script>
+</body>
+</html>
