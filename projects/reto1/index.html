@@ -342,6 +342,23 @@
 						if(valor==="16"){
 							console.log("bien");
 							document.querySelector("#reto4").style.display="none";
+							document.querySelector("#reto5").style.display="block";
+						}else{
+							//animacion
+							input.value="";
+						}
+					}else{
+						console.log("Esta vacio.");
+					}
+				break;
+				case 'reto5':
+					nreto=document.querySelector("#reto5");
+					input=nreto.querySelector("input");
+					valor=input.value;
+					if(valor!==""){
+						if(valor==="11"){
+							console.log("bien");
+							document.querySelector("#reto5").style.display="none";
 							document.querySelector("#page2").style.display="none";
 							document.querySelector("#page3").style.display="block";
 						}else{
