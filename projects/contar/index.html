@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Chinches</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+	<style type="text/css">
+		*{margin:0; padding:0; box-sizing:border-box;}
+		#lienzo{
+			border: 1px solid #C8C5C5;
+			max-width: 950px;
+			min-width: 300px;
+			min-height: 600px;
+			margin: 0 auto;
+			margin-top: 30px;
+			margin-bottom: 30px;
+			padding: 60px;
+			position: relative;
+		}
+		p{
+			margin-top: 20px;
+			margin-bottom: 20px;
+			font-size: 20px;
+		}
+		#objs{	
+			margin-top: 30px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			margin-bottom: 20px;
+		}
+		.c1{
+			width: 390px;
+			height: 320px;
+			padding: 5px;
+		}
+		.c2{
+			display: flex;
+			align-items: center;
+			margin-top: 10px;
+		}
+		.c{
+			border: 3px solid black;
+			width: 250px;
+			height: 250px;
+			border-radius: 50%;
+		}
+		.c3{
+			border: 1px solid black;
+			width: 200px;
+			height: 200px;
+			margin: 0 auto;
+			border-radius: 50%;
+			margin-top: 23px;
+			padding: 20px;
+			display: flex;
+			flex-wrap: wrap;
+			align-content: center;
+			justify-content: center;
+		}
+		.l{
+			border: 3px solid black;
+			width: 30px;
+			height: 2px;
+			background-color: black;
+		}
+		.n{
+			font-size: 30px;
+			border: 3px solid black;
+			border-radius: 10px;
+			width: 80px;
+			height: 80px;
+			text-align: center;
+		}
+		.mini{
+			width: 45px;
+			display: inline-block;
+		}
+		.ref{
+			position: absolute;
+			bottom: 20px;
+			right: 60px;
+			font-style: italic;
+		}
+		#menu{
+			border-bottom: 1px solid black;
+			width: 100%;
+			height: 50px;
+			display: flex;
+			padding-top: 4px;
+			justify-content: center;
+		}
+		.cmenu{
+			width: 40px;
+			height: 40px;
+			cursor: pointer;
+			margin-right: 10px;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="lienzo">
+		<h1>Actividad:</h1>
+		<p>Cuenta los dibujos y escribe el número</p>
+		<div id="objs"></div>
+		<div id="menu">
+			<img src="img/home.png" class="cmenu" id="home">
+			<img src="img/actualizar.png" class="cmenu" id="reload">
+		</div>
+		<div class="ref">Imágenes de findicons.com</div>
+	</div>
+
+	<script type="text/javascript">
+		var cant_img=11;
+		var cant_contenedores=12;
+		var objs=$("#objs");
+
+		$(function(){
+			crearContenedores(cant_contenedores);
+			llenarContenedores();
+			agregarEventoInput();
+			agregarEventoBotones();
+		});
+
+		function crearContenedores(cantidad){
+			for(var i=0;i<cantidad;i++){
+				var a='<div class="c1">'+
+					'<div class="c2">'+
+						'<div class="c">'+
+							'<div class="c3"></div>'+
+						'</div>'+
+						'<div class="l"></div>'+
+						'<input type="text" class="n">'+
+					'</div>'+
+				'</div>';
+				objs.append(a);
+			}
+		}
+
+		function llenarContenedores(){
+			//capturamos los contenedores c3
+			var c3=$(".c3");
+			//capturamos los contenedores n
+			var n=$(".n");
+			//recorremos llenando los contenedores
+			for(var i=0;i<c3.length;i++){
+				//elegimos la imagen al azar
+				var img=Math.floor(Math.random() * cant_img) + 1;
+				//elegimos cuantas imagenes vamos a poner de 1 hasta 10
+				var cant=Math.floor(Math.random() * 10) + 1;
+				//creamos las copias
+				for(var j=0;j<cant;j++){
+					//creamos la imagen
+					var cimg='<img class="mini" src="img/'+img+'.png">';
+					//la añadimos al contenedor en ese momento
+					$(c3[i]).append(cimg);
+				}
+				//agregamos la cantidad como atributo al n
+				$(n[i]).attr("cant",cant);
+			}
+		}
+
+		function agregarEventoInput(){
+			$(".n").on("input",function(){
+				var v=$(this).val();
+				if(v.length>2){
+					let a=v.slice(0,2);
+					$(this).val(a);
+				}
+				var n=$(this).attr("cant");
+				if(Number(v)===Number(n)){
+					$(this).css("background-color","#57EA73");
+				}else{
+					$(this).css("background-color","#F95B5B");
+				}
+			});
+		}
+
+		function agregarEventoBotones(){
+			//$("#reload").click(function(){window.location.reload();});
+			//$("#home").click(function(){window.location.assign("index.html");});
+			//console.log($("#lienzo").css("height"));
+		}
+	</script>
+</body>
+</html>
