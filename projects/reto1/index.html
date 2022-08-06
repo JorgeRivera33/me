@@ -194,9 +194,8 @@
 			textos.forEach(function(item,index){
 				let t=Number(item.style.fontSize.split("px")[0]);
 				let hp=lienzo.parentNode.offsetHeight;
-				let nt=(hp*22)/411;
+				let nt=(hp*t)/411;
 				item.style.fontSize=nt+"px";
-				alert("fuente:"+t+" nueva fuente:"+nt);
 			});
 		}
 	</script>
