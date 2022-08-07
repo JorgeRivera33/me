@@ -188,7 +188,7 @@
 				}
 			}
 		}
-/*
+
 		function escFuente(){
 			let textos=document.querySelectorAll(".gtext");
 			textos.forEach(function(item,index){
@@ -196,24 +196,6 @@
 				let hp=lienzo.parentNode.offsetHeight;
 				let nt=(hp*t)/411;
 				item.style.fontSize=nt+"px";
-			});
-		}
-*/
-		function escFuente(){
-			let textos=document.querySelectorAll(".gtext");
-			textos.forEach(function(item,index){
-				if(item.hasAttribute("fs")){
-					let t=Number(item.getAttribute("fs"));
-					let hp=lienzo.parentNode.offsetWidth;
-					let nt=(hp*t)/731;
-					item.style.fontSize=nt+"px";
-				}else{
-					let t=Number(item.style.fontSize.split("px")[0]);
-					item.setAttribute("fs",t);
-					let hp=lienzo.parentNode.offsetWidth;
-					let nt=(hp*t)/731;
-					item.style.fontSize=nt+"px";
-				}
 			});
 		}
 	</script>
