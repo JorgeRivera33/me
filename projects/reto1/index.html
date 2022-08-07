@@ -196,13 +196,13 @@
 					let t=Number(item.getAttribute("fs"));
 					let hp=lienzo.parentNode.offsetHeight;
 					let nt=(hp*t)/411;
-					item.style.fontSize=nt+"px";
+					item.style.fontSize=nt-1+"px";
 				}else{
 					let t=Number(item.style.fontSize.split("px")[0]);
 					item.setAttribute("fs",t);
 					let hp=lienzo.parentNode.offsetHeight;
 					let nt=(hp*t)/411;
-					item.style.fontSize=nt+"px";
+					item.style.fontSize=nt-1+"px";
 				}
 			});
 		}
