@@ -194,15 +194,15 @@
 			textos.forEach(function(item,index){
 				if(item.hasAttribute("fs")){
 					let t=Number(item.getAttribute("fs"));
-					let hp=lienzo.offsetHeight;
-					let nt=(hp*t)/411;
-					item.style.fontSize=nt-1+"px";
+					let hp=lienzo.offsetWidth;
+					let nt=(hp*t)/731;
+					item.style.fontSize=nt+"px";
 				}else{
 					let t=Number(item.style.fontSize.split("px")[0]);
 					item.setAttribute("fs",t);
-					let hp=lienzo.offsetHeight;
-					let nt=(hp*t)/411;
-					item.style.fontSize=nt-1+"px";
+					let hp=lienzo.offsetWidth;
+					let nt=(hp*t)/731;
+					item.style.fontSize=nt+"px";
 				}
 			});
 		}
