@@ -21,7 +21,7 @@
 		#barra{width: 80%; height: 2%; background: white; position: absolute; bottom: 15%; left: 0%; right: 0%; margin: auto; border-radius: 5px; overflow: hidden;}
 		#carga{position: absolute: top: 0%; left: 0%; width: 0%; height: 100%; background: limegreen; border-radius: 5px;}
 		#fichload{position: absolute; bottom: 5%; left: 0%; right: 0%; margin: auto; width: 80%; text-align: center; font-style: italic; color: white;}
-		.gtext{position: absolute;}
+		.gtext{position: absolute; width: 100%; text-align: center;}
 
 		/*page2*/
 		.logom{position:absolute; width: 8%; height: 12%; background: url("img/logoM.png"); background-size: 100% 100%; top: 0.5%; left: 0.5%; opacity: 0.8;}
@@ -49,11 +49,11 @@
 			<div class="page" id="page2" style="display: none;">
 				<div class="logom"></div>
 				<div class="reto" id="reto1" style="display:block;">
-					<p class="gtext" style="font-size: 20px;top: 17%;left: 8.34%;">
+					<p class="gtext" style="font-size: 20px;top: 17%;left: 0%;">
 						Observa con atención la siguiente relacion entre frutas y cantidades.
 					</p>
 					<img src="img/0001.png" style="position:absolute; top:30.4%; left:25.30%; width:43.22%;">
-					<p class="gtext" style="font-size: 20px;top: 47%;left: 30%;">
+					<p class="gtext" style="font-size: 20px;top: 47%;left: 0%;">
 						¿Qué valor tiene la manzana?
 					</p>
 					<img src="img/0002.png" style="position:absolute; top:58%; left:38%; width:11%;">
@@ -158,6 +158,7 @@
 		}
 
 		function redimensionar(element){
+			console.log("se redimensiona "+element);
 			let pw; let ph;
 			pw=window.innerWidth;
 			ph=window.innerHeight;
@@ -188,6 +189,7 @@
 					element.style.width="100%";
 				}
 			}
+			console.log("finaliza redimension de "+element);
 		}
 
 		function escFuente(){
