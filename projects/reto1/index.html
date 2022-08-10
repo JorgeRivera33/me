@@ -21,7 +21,7 @@
 		#barra{width: 80%; height: 2%; background: white; position: absolute; bottom: 15%; left: 0%; right: 0%; margin: auto; border-radius: 5px; overflow: hidden;}
 		#carga{position: absolute: top: 0%; left: 0%; width: 0%; height: 100%; background: limegreen; border-radius: 5px;}
 		#fichload{position: absolute; bottom: 5%; left: 0%; right: 0%; margin: auto; width: 80%; text-align: center; font-style: italic; color: white;}
-		.gtext{position: absolute; width: 100%; text-align: center;}
+		.gtext{position: absolute; width: 100%; text-align: center; padding:0% 5%;}
 
 		/*page2*/
 		.logom{position:absolute; width: 8%; height: 12%; background: url("img/logoM.png"); background-size: 100% 100%; top: 0.5%; left: 0.5%; opacity: 0.8;}
@@ -31,7 +31,7 @@
     		-webkit-appearance: none;margin: 0;
     	}
 		input[type=number] { -moz-appearance:textfield; }
-		.input{position: absolute; text-align: center; border:2px solid black;}
+		.input{position: absolute; text-align: center; border:2px solid black; padding: 0;}
 		.check{position: absolute; width: 6%; aspect-ratio: 1/1; background: url("img/check.png"); background-size: 100% 100%;}
 		/*page3*/
 		#candado{top: 0%; bottom: 10%; left: 0%; right: 0%; margin: auto; display: block; position:absolute; width:40%; filter: drop-shadow(1px 1px);}
@@ -57,15 +57,15 @@
 						¿Qué valor tiene la manzana?
 					</p>
 					<img src="img/0002.png" style="position:absolute; top:58%; left:38%; width:11%;">
-					<input type="Number" class="gtext" id="inp1" value="" style="position:absolute; top:58%; left:51%; width:11%; height:11%; text-align: center; border:2px solid black; font-size: 30px">
+					<input type="Number" class="gtext input" id="inp1" value="" style="top:58%; left:51%; width:11%; height:11%; font-size: 30px">
 					<div class="check" style="top:58%; left:63%;"></div>
 				</div>
 				<div class="reto" id="reto2" style="display:none;">
-					<p class="gtext" style="font-size: 20px;top: 17%;left: 8.34%;">
+					<p class="gtext" style="font-size: 20px;top: 17%;left: 0%;">
 						Observa con atención la siguiente relacion entre frutas y cantidades.
 					</p>
 					<img src="img/0003.png" style="position:absolute; top:30.4%; left:25.30%; width:43.22%;">
-					<p class="gtext" style="font-size: 20px;top: 60%;left: 30%;">
+					<p class="gtext" style="font-size: 20px;top: 60%;left: 0%;">
 						¿Qué valor tiene el banano?
 					</p>
 					<img src="img/0004.png" style="position:absolute; top:70%; left:38%; width:11%;">
@@ -73,11 +73,11 @@
 					<div class="check" style="top:70%; left:63%;"></div>
 				</div>
 				<div class="reto" id="reto3" style="display:none">
-					<p class="gtext" style="font-size: 20px;top: 17%;left: 8.34%;">
+					<p class="gtext" style="font-size: 20px;top: 17%;left: 0%;">
 						Observa con atención la siguiente relacion entre frutas y cantidades.
 					</p>
 					<img src="img/0005.png" style="position:absolute; top:25%; left:25.30%; width:43.22%;">
-					<p class="gtext" style="font-size: 20px;top: 67%;left: 30%;">
+					<p class="gtext" style="font-size: 20px;top: 67%;left: 0%;">
 						¿Qué valor tiene el coco?
 					</p>
 					<img src="img/0006.png" style="position:absolute; top:75%; left:38%; width:11%;">
@@ -85,7 +85,7 @@
 					<div class="check" style="top:75%; left:63%;"></div>
 				</div>
 				<div class="reto" id="reto4" style="display:none">
-					<p class="gtext" style="font-size: 20px;top: 17%;left: 8.34%;">
+					<p class="gtext" style="font-size: 20px;top: 17%;left: 0%;">
 						Observa con atención la siguiente relacion entre frutas y cantidades. Calcula el valor que hace falta.
 					</p>
 					<img src="img/0007.png" style="position:absolute; top:32%; left:25.30%; width:43.22%;">
@@ -93,7 +93,7 @@
 					<div class="check" style="top:75%; left:74%;"></div>
 				</div>
 				<div class="reto" id="reto5" style="display:none">
-					<p class="gtext" style="font-size: 20px;top: 17%;left: 8.34%;">
+					<p class="gtext" style="font-size: 20px;top: 17%;left: 0%;">
 						Observa con atención la siguiente relacion entre frutas y cantidades. Calcula el valor que hace falta.
 					</p>
 					<img src="img/0008.png" style="position:absolute; top:32%; left:25.30%; width:43.22%;">
@@ -104,7 +104,7 @@
 			<div class="page" id="page3" style="display: none;">
 				<div class="logom"></div>
 				<img src="img/candado.png" id="candado">
-				<div class="gtext" style="font-size: 22px; top:85%; left:36%;">¡Reto superado!</div>
+				<div class="gtext" style="font-size: 22px; top:85%; left:0%;">¡Reto superado!</div>
 			</div>
 		</div>
 	</div>
