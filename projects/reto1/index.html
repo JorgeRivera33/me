@@ -2,6 +2,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Merienda+One&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Sen:wght@700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
 	<meta charset="UTF-8">
 	<meta 
 		name="description" 
@@ -13,7 +18,8 @@
 		*{padding: 0; border: 0; margin: 0; box-sizing: border-box;}
 		body{overflow: hidden;}
 		#conlienzo{border: 0px solid red; width: 731px; height: 411px; position: relative; aspect-ratio: 731/411; top: 0px; user-select: none;}
-		#lienzo{border: 1px solid gray; width: 731px; height: 411px; position: absolute; aspect-ratio: 731/411; background: url("img/f2.svg"); background-size: 100% 100%; overflow: hidden;}
+		#lienzo{border: 0px solid gray; width: 731px; height: 411px; position: absolute; aspect-ratio: 731/411; overflow: hidden; background-color: #f3a61f;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23db900e' fill-opacity='0.4' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
 		.page{width: 100%; height: 100%;}
 
 		/*page1*/
@@ -21,11 +27,22 @@
 		#barra{width: 80%; height: 2%; background: white; border-radius: 5px; overflow: hidden; margin: 1% auto;}
 		#carga{position: absolute: top: 0%; left: 0%; width: 0%; height: 100%; background: limegreen; border-radius: 5px;}
 		#fichload{width: 100%; text-align: center; font-style: italic; color: white; text-align: center;}
-		.gtext{width: 100%; text-align: center; padding:0% 5%;}
+		.gtext{width: 100%; text-align: center; padding:0% 5%; font-family: 'sen', sans-serif;}
+		#botonp{width: 8%; aspect-ratio: 1/1; background: url("img/botonp.png"); background-size: 100% 100%; margin: 0 auto; display: block; margin-top: -1%; display: none;}
 
 		/*page2*/
-		.logom{position:absolute; width: 8%; height: 12%; background: url("img/logoM.png"); background-size: 100% 100%; top: 0.5%; left: 0.5%; opacity: 0.8;}
-		.reto{border: 1px solid black; position: absolute; width: 100%; height: 100%;}
+		.logom{position:absolute; width: 8%; height: 12%; background: url("img/logoM.png"); background-size: 100% 100%; top: 1.2%; left: 1.2%; opacity: 0.8;}
+		#medalla{width: 50%; height: 85%; background: url("img/medalla.png"); background-size: 100% 100%; position: absolute; top: 0;bottom: 0;left: 0;right: 0;margin: auto; display: none; opacity: 0;}
+		.reto{border: 0px solid black; position: absolute; width: 100%; height: 100%;}
+		.caer{
+			animation-name: animcaer;
+  			animation-duration: 0.5s;
+  			animation-fill-mode: forwards;
+		}
+		@keyframes animcaer {
+		  from {width: 100%; height: 135%; opacity: 0;}
+		  to {width: 50%; height: 85%; opacity: 1;}
+		}
 		/*elimina los botones del input*/
 		input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
     		-webkit-appearance: none;margin: 0;
@@ -47,6 +64,7 @@
 				<img class="pimg" src="img/logoM.png" id="logoM">
 				<div id="barra"><div id="carga"></div></div>
 				<div id="fichload" class="gtext" style="font-size: 22px;">Loading...</div>
+				<div id="botonp"></div>
 			</div>
 			<div class="page" id="page2" style="display: none;">
 				<div class="logom"></div>
@@ -112,6 +130,7 @@
 						<div class="check" style="top:75%; left:74%;"></div>	
 					</div>
 				</div>
+				<div id="medalla"></div>
 			</div>
 			<div class="page" id="page3" style="display: none;">
 				<div class="logom"></div>
@@ -121,11 +140,15 @@
 		</div>
 	</div>
 
+	
 	<script type="text/javascript" id="variables">
 		let conlienzo=document.querySelector("#conlienzo");
 		let lienzo=document.querySelector("#lienzo");
 		let fichload=document.querySelector("#fichload");
 		let carga=document.querySelector("#carga");
+		let medalla=document.querySelector("#medalla");
+		let botonp=document.querySelector("#botonp");
+		let barra=document.querySelector("#barra");
 	</script>
 
 	<script type="text/javascript" id="funciones">
@@ -224,8 +247,8 @@
 	</script>
 
 	<script type="text/javascript" id="precarga">
-		let arrayimagenes=['logoM.png','f2.svg','check.png','candado.png','0001.png','0002.png','0003.png','0004.png','0005.png','0006.png','0007.png','0008.png'];
-		let arraysonidos=[];
+		let arrayimagenes=['logoM.png','check.png','candado.png','0001.png','0002.png','0003.png','0004.png','0005.png','0006.png','0007.png','0008.png','ico.png','medalla.png','botonp.png'];
+		let arraysonidos=['funk.mp3','negativo.mp3','positivo.mp3','aplausos.mp3'];
 		let arrayvideos=[];
 
 		window.addEventListener("load",function(){
@@ -251,9 +274,11 @@
 				for(let i=0;i<arraysonidos.length;i++){
 					let s=document.createElement("audio");
 					s.setAttribute("src","sounds/"+arraysonidos[i]);
+					s.setAttribute("id",arraysonidos[i].split(".")[0]);
 					s.setAttribute("style","width:0px; height:0px; visibility:hidden; position:absolute; top:-1000px; left:-1000px;");
 					document.querySelector("body").append(s);
 					s.addEventListener("canplaythrough",function(){
+						console.log("soy sonido");
 						totalSonidos++;
 						contar();
 					},false);
@@ -285,6 +310,47 @@
 		}
 	</script>
 
+	<script type="text/javascript">
+		function transitionEndEventName () {
+		    let  i, undefined, el = document.createElement('div'),
+		        transitions = {
+		            'transition':'transitionend',
+		            'OTransition':'otransitionend',  // oTransitionEnd in very old Opera
+		            'MozTransition':'transitionend',
+		            'WebkitTransition':'webkitTransitionEnd'
+		        };
+
+		    for (i in transitions) {
+		        if (transitions.hasOwnProperty(i) && el.style[i] !== undefined) {
+		            return transitions[i];
+		        }
+		    }
+
+		    //se usa
+		    //var transitionEnd = transitionEndEventName();
+			//element.addEventListener(transitionEnd, theFunctionToInvoke, false);
+		}
+		function animationEndEventName () {
+		    let  i, undefined, el = document.createElement('div'),
+		        animations = {
+		            'animation':'animationend',
+		            'OAnimation':'oanimationend',  // oTransitionEnd in very old Opera
+		            'MozAnimation':'animationend',
+		            'WebkitAnimation':'webkitAnimationEnd'
+		        };
+
+		    for (i in animations) {
+		        if (animations.hasOwnProperty(i) && el.style[i] !== undefined) {
+		            return animations[i];
+		        }
+		    }
+
+		    //se usa
+		    //var transitionEnd = transitionEndEventName();
+			//element.addEventListener(transitionEnd, theFunctionToInvoke, false);
+		}
+	</script>
+
 	<script type="text/javascript" id="main">
 		window.addEventListener("load",function(){
 			crearBtnClose();
@@ -298,9 +364,17 @@
 		});
 		function main(){
 			setTimeout(function(){
-				document.querySelector("#page1").style.display="none";
-				document.querySelector("#page2").style.display="block";
-			},2000);
+				barra.style.display="none";
+				fichload.style.display="none";
+				botonp.style.display="block";
+				botonp.addEventListener("click",function(){
+					let funk=document.querySelector("#funk");
+					funk.setAttribute("loop","true");
+					funk.play();
+					document.querySelector("#page1").style.display="none";
+					document.querySelector("#page2").style.display="block";
+				});
+			},1000);
 		}
 		function evaluar(reto){
 			console.log(reto);
@@ -313,10 +387,14 @@
 					if(valor!==""){
 						if(valor==="10"){
 							console.log("bien");
-							document.querySelector("#reto1").style.display="none";
-							document.querySelector("#reto2").style.display="block";
+							sonarBien();
+							mostrarMedalla(function(){
+								document.querySelector("#reto1").style.display="none";
+								document.querySelector("#reto2").style.display="block";
+							});
 						}else{
 							//animacion
+							sonarMal();
 							input.value="";
 						}
 					}else{
@@ -330,10 +408,14 @@
 					if(valor!==""){
 						if(valor==="4"){
 							console.log("bien");
-							document.querySelector("#reto2").style.display="none";
-							document.querySelector("#reto3").style.display="block";
+							sonarBien();
+							mostrarMedalla(function(){
+								document.querySelector("#reto2").style.display="none";
+								document.querySelector("#reto3").style.display="block";
+							});
 						}else{
 							//animacion
+							sonarMal();
 							input.value="";
 						}
 					}else{
@@ -347,10 +429,14 @@
 					if(valor!==""){
 						if(valor==="2"){
 							console.log("bien");
-							document.querySelector("#reto3").style.display="none";
-							document.querySelector("#reto4").style.display="block";
+							sonarBien();
+							mostrarMedalla(function(){
+								document.querySelector("#reto3").style.display="none";
+								document.querySelector("#reto4").style.display="block";
+							});
 						}else{
 							//animacion
+							sonarMal();
 							input.value="";
 						}
 					}else{
@@ -364,10 +450,14 @@
 					if(valor!==""){
 						if(valor==="16"){
 							console.log("bien");
-							document.querySelector("#reto4").style.display="none";
-							document.querySelector("#reto5").style.display="block";
+							sonarBien();
+							mostrarMedalla(function(){
+								document.querySelector("#reto4").style.display="none";
+								document.querySelector("#reto5").style.display="block";
+							});
 						}else{
 							//animacion
+							sonarMal();
 							input.value="";
 						}
 					}else{
@@ -381,11 +471,19 @@
 					if(valor!==""){
 						if(valor==="11"){
 							console.log("bien");
-							document.querySelector("#reto5").style.display="none";
-							document.querySelector("#page2").style.display="none";
-							document.querySelector("#page3").style.display="block";
+							sonarBien();
+							mostrarMedalla(function(){
+								document.querySelector("#reto5").style.display="none";
+								document.querySelector("#page2").style.display="none";
+								document.querySelector("#page3").style.display="block";
+								let aplausos=document.querySelector("#aplausos");
+								aplausos.play();
+								let funk=document.querySelector("#funk");
+								funk.pause();
+							});
 						}else{
 							//animacion
+							sonarMal();
 							input.value="";
 						}
 					}else{
@@ -393,6 +491,26 @@
 					}
 				break;
 			}
+		}
+		function mostrarMedalla(funcion){
+			medalla.style.display="block";
+			medalla.classList.add("caer");
+			let medallaEnd = animationEndEventName();
+			medalla.addEventListener(medallaEnd, function(){
+				setTimeout(function(){
+					medalla.style.display="none";
+					medalla.classList.remove("caer");
+					funcion();
+				},500);
+			}, false);
+		}
+		function sonarBien(){
+			let positivo=document.querySelector("#positivo");
+			positivo.play();
+		}
+		function sonarMal(){
+			let negativo=document.querySelector("#negativo");
+			negativo.play();
 		}
 	</script>
 </body>
