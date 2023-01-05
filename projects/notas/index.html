@@ -241,7 +241,7 @@
 			<div class="notaName" contenteditable="true">Titulo de prueba</div>
 			<div class="notaText" contenteditable="true">Texto de prueba</div>
 		</div>
-		<div id="contBase" class="oculto" contenteditable="true">hola</div>
+		<div id="contBase" class="oculto" contenteditable="true"></div>
 		<div id="menu">
 			<div class="botones">
 				<div class="boton" id="btn_atras" onclick="regresar();"><</div>
@@ -547,9 +547,8 @@
 			}else if(!contieneClase(contBase,"oculto")){
 				if (window.confirm("¿Realmente quieres actualizar la base?")) {
 					let nuevaBase=contBase.textContent;
-					base=nuevaBase;
-					let data2=JSON.stringify(base);
-					localStorage.setItem("data2",data2);
+					localStorage.setItem("data2",nuevaBase);
+					window.location.reload(true);
 				}
 			}
 		}
