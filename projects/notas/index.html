@@ -43,12 +43,15 @@
 			justify-content: center;
 			font-weight: bold;
 		}
-		#contNotas,#notaNueva{
+		#contNotas,#notaNueva,#contBase{
 			border: 0px solid red;
 			width: 100%;
 			padding: 8%;
 			height: 77%;
 			overflow-y: auto;
+		}
+		#contBase{
+			border: 1px solid gray;
 		}
 		#notaNueva{
 			background-color: rgba(255, 255, 255,0.3);
@@ -59,6 +62,9 @@
 			height: 8%;
 			background-color: rgba(63, 191, 127,0.8);
 			border-top: 3px solid #067D0E;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 		.nota{
 			border: 1px solid white;
@@ -113,6 +119,8 @@
 		    padding: 5px;
 		    height: 45px;
 		    display: flex;
+		    align-content: center;
+		    justify-content: center;
 		}
 		.boton {
 		    border-radius: 50%;
@@ -129,6 +137,9 @@
 		}
 		.oculto{
 			display: none;
+		}
+		#btn_descargar{
+			transform: rotate(90deg);
 		}
 	</style>
 	<style type="text/css">
@@ -230,11 +241,14 @@
 			<div class="notaName" contenteditable="true">Titulo de prueba</div>
 			<div class="notaText" contenteditable="true">Texto de prueba</div>
 		</div>
+		<div id="contBase" class="oculto" contenteditable="true">hola</div>
 		<div id="menu">
 			<div class="botones">
 				<div class="boton" id="btn_atras" onclick="regresar();"><</div>
 				<div class="boton" id="btn_agregarTema" onclick="agregar();">+</div>
 				<div class="boton" id="btn_guardarTema" onclick="guardar();">G</div>
+				<!--<div class="boton" id="btn_descargar" onclick="descargar();">></div>-->
+				<div class="boton" id="btn_actBase" onclick="actualizar();">B</div>
 			</div>
 		</div>
 	</div>
@@ -244,6 +258,7 @@
 		let titulop=document.querySelector("#titulop");
 		let contNotas=document.querySelector("#contNotas");
 		let notaNueva=document.querySelector("#notaNueva");
+		let contBase=document.querySelector("#contBase");
 		let base=[];
 		//let arrayActivo=[];
 		let elementoActivo="";
@@ -446,11 +461,13 @@
 		function agregar(){
 			if(contieneClase(notaNueva,"oculto")){
 				agregarClase(contNotas,"oculto");
+				agregarClase(contBase,"oculto");
 				removerClase(notaNueva,"oculto");
 				notaNueva.querySelector(".notaName").innerHTML="Titulo de nota";
 				notaNueva.querySelector(".notaText").innerHTML="Contenido de nota";
 			}else{
 				agregarClase(notaNueva,"oculto");
+				agregarClase(contBase,"oculto");
 				removerClase(contNotas,"oculto");
 			}
 		}
@@ -527,6 +544,13 @@
 						edicion=false;
 					}
 				}
+			}else if(!contieneClase(contBase,"oculto")){
+				if (window.confirm("¿Realmente quieres actualizar la base?")) {
+					let nuevaBase=contBase.textContent;
+					base=nuevaBase;
+					let data2=JSON.stringify(base);
+					localStorage.setItem("data2",data2);
+				}
 			}
 		}
 		function eliminar(event){
@@ -572,7 +596,31 @@
 			app.style.height=window.innerHeight+"px";
 			app.style.display="block";
 		}
-		//agregar el evento touchend
+		function descargar(){
+			let data2=JSON.stringify(base);
+			guardarArchivoTxt("base.txt", data2);
+		}
+		function guardarArchivoTxt(nombre,contenido){
+			const a = document.createElement("a");
+	        const archivo = new Blob([contenido], { type: 'text/plain' });
+	        const url = URL.createObjectURL(archivo);
+	        a.href = url;
+	        a.download = nombre;
+	        a.click();
+        	URL.revokeObjectURL(url);
+		}
+		function actualizar(){
+			if(contieneClase(contBase,"oculto")){
+				contBase.textContent=JSON.stringify(base);
+				agregarClase(contNotas,"oculto");
+				agregarClase(notaNueva,"oculto");
+				removerClase(contBase,"oculto");
+			}else{
+				agregarClase(contBase,"oculto");
+				agregarClase(notaNueva,"oculto");
+				removerClase(contNotas,"oculto");
+			}
+		}
 	</script>
 	<script type="text/javascript">
 		function agregarElement(padre,string){
