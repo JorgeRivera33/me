@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/128/3209/3209265.png"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+	<title>-Notas-</title>
+	<style type="text/css">
+		*{border: 0; padding: 0; margin: 0; box-sizing: border-box;}
+		body{
+			font-family: 'Sen', sans-serif;
+		}
+		#app{
+			border: 0px solid gray;
+			width: 100%;
+			flex-wrap: wrap;
+			background-image: url("https://static.vecteezy.com/system/resources/previews/009/644/639/large_2x/cute-mint-green-abstract-background-concept-free-vector.jpg");
+			background-size: cover;
+			overflow-y: hidden;
+			display: none;
+		}
+		#limbo{
+			position: absolute;
+			top: -1000px;
+			left: -1000px;
+			width: 0px; height: 0px;
+			visibility: hidden;
+			user-select: none;
+		}
+		.titulo{
+			text-align: center;
+			width: 100%;
+			height: 15%;
+			font-size: 25px;
+			border-bottom: 3px solid #067D0E;
+			background-color: rgba(60, 179, 113,0.5);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: bold;
+		}
+		#contNotas,#notaNueva{
+			border: 0px solid red;
+			width: 100%;
+			padding: 8%;
+			height: 77%;
+			overflow-y: auto;
+		}
+		#notaNueva{
+			background-color: rgba(255, 255, 255,0.3);
+		}
+		#menu{
+			border: 0px solid red;
+			width: 100%;
+			height: 8%;
+			background-color: rgba(63, 191, 127,0.8);
+			border-top: 3px solid #067D0E;
+		}
+		.nota{
+			border: 1px solid white;
+			padding: 5px;
+			background-color: rgba(255, 255, 255,0.3);
+			border-radius: 5px;
+			margin-bottom: 10px;
+			position: relative;
+			cursor: pointer;
+		}
+		.menu{
+			position: absolute;
+			top: 5px; right: 5px;
+			width: 15px; height: 15px;
+			background-image: url("https://cdn-icons-png.flaticon.com/128/4204/4204600.png");
+			background-size: 100% 100%;
+			cursor: pointer;
+		}
+		.opciones{
+			border: 0px solid gray;
+			width: 15px;
+			height: 50px;
+			position: absolute;
+			top: 20px;
+			right: 5px;
+		}
+		.edit{
+			width: 15px;
+			height: 15px;
+			margin-top: 5px;
+			background-image: url("https://cdn-icons-png.flaticon.com/128/565/565722.png");
+			background-size: 100% 100%; cursor: pointer;
+		}
+		.elim{
+			width: 15px;
+			height: 15px;
+			margin-top: 5px;
+			background-image: url("https://cdn-icons-png.flaticon.com/128/3096/3096687.png");
+			background-size: 100% 100%; cursor: pointer;
+		}
+		.notaName{
+			font-weight: bold;
+			font-size: 16px;
+			padding: 3px;
+		}
+		.notaText{
+			padding: 3px;
+			font-size: 14px;
+		}
+		.botones {
+		    width: 100%;
+		    padding: 5px;
+		    height: 45px;
+		    display: flex;
+		}
+		.boton {
+		    border-radius: 50%;
+		    width: 33px;
+		    height: 33px;
+		    text-align: center;
+		    font-weight: bold;
+		    font-size: 28px;
+		    user-select: none;
+		    cursor: pointer;
+		    margin-left: 5px;
+		    background-color: #067D0E;
+		    color: white;
+		}
+		.oculto{
+			display: none;
+		}
+	</style>
+	<style type="text/css">
+		.scale-in-center {
+			-webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+			        animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+		}
+		@-webkit-keyframes scale-in-center {
+		  0% {
+		    -webkit-transform: scale(0);
+		            transform: scale(0);
+		    opacity: 1;
+		  }
+		  100% {
+		    -webkit-transform: scale(1);
+		            transform: scale(1);
+		    opacity: 1;
+		  }
+		}
+		@keyframes scale-in-center {
+		  0% {
+		    -webkit-transform: scale(0);
+		            transform: scale(0);
+		    opacity: 1;
+		  }
+		  100% {
+		    -webkit-transform: scale(1);
+		            transform: scale(1);
+		    opacity: 1;
+		  }
+		}
+
+		.scale-out-center {
+			-webkit-animation: scale-out-center 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+			        animation: scale-out-center 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+		}
+		@-webkit-keyframes scale-out-center {
+		  0% {
+		    -webkit-transform: scale(1);
+		            transform: scale(1);
+		    opacity: 1;
+		  }
+		  100% {
+		    -webkit-transform: scale(0);
+		            transform: scale(0);
+		    opacity: 1;
+		  }
+		}
+		@keyframes scale-out-center {
+		  0% {
+		    -webkit-transform: scale(1);
+		            transform: scale(1);
+		    opacity: 1;
+		  }
+		  100% {
+		    -webkit-transform: scale(0);
+		            transform: scale(0);
+		    opacity: 1;
+		  }
+		}
+
+	</style>
+	<style type="text/css">
+		#contNotas::-webkit-scrollbar {
+		    -webkit-appearance: none;
+		}
+
+		#contNotas::-webkit-scrollbar:vertical {
+		    width:10px;
+		}
+
+		#contNotas::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+		    display: none;
+		} 
+
+		#contNotas::-webkit-scrollbar:horizontal {
+		    height: 10px;
+		}
+
+		#contNotas::-webkit-scrollbar-thumb {
+		    background-color: #797979;
+		    border-radius: 20px;
+		    border: 2px solid #f1f2f3;
+		}
+
+		#contNotas::-webkit-scrollbar-track {
+		    border-radius: 10px;  
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div class="titulo">
+			<div id="titulop">Notas 2.0</div>
+		</div>
+		<div id="limbo"></div>
+		<div id="contNotas"></div>
+		<div id="notaNueva" class="oculto">
+			<div class="notaName" contenteditable="true">Titulo de prueba</div>
+			<div class="notaText" contenteditable="true">Texto de prueba</div>
+		</div>
+		<div id="menu">
+			<div class="botones">
+				<div class="boton" id="btn_atras" onclick="regresar();"><</div>
+				<div class="boton" id="btn_agregarTema" onclick="agregar();">+</div>
+				<div class="boton" id="btn_guardarTema" onclick="guardar();">G</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		let limbo=document.querySelector("#limbo");
+		let titulop=document.querySelector("#titulop");
+		let contNotas=document.querySelector("#contNotas");
+		let notaNueva=document.querySelector("#notaNueva");
+		let base=[];
+		//let arrayActivo=[];
+		let elementoActivo="";
+		let indicadores=[];
+		let edicion=false;
+	</script>
+	<script type="text/javascript">
+		function cargarDatos(namebase){
+			let mibase=localStorage.getItem(namebase);
+			if(mibase===null){
+				console.log("No existen datos para cargar.");
+			}else{
+				console.log("Los datos han sido cargados.");
+				let p=JSON.parse(mibase);
+				return(p);
+			}
+		}
+		function mostrarNotas(array){
+			array.forEach(function(item,index){
+				let nota=crearNota(item,index);
+				let elemento=agregarElement(limbo,nota);
+				agregarDelay(elemento,index);
+				agregarClase(elemento,"scale-in-center");
+				agregarEventoClick(elemento);
+				agregarEventoClickMenu(elemento);
+				agregarEventoDragEnd(elemento);
+				agregarEventoAnimacionEntradaEnd(elemento);
+				contNotas.appendChild(elemento);
+			});
+		}
+		function crearNota(elemento,referencia){
+			let nota=`<div class="nota" ref="${referencia}">
+				<div class="menu"></div>
+				<div class="opciones oculto">
+				<div class="edit" onclick="editar(event);"></div>
+				<div class="elim" onclick="eliminar(event);"></div>
+				</div>
+				<div class="notaName">${elemento.titulo}</div>
+				<div class="notaText oculto">${elemento.contenido}</div>
+				</div>`;
+			return(nota);
+		}
+		function agregarDelay(elemento,index){
+			elemento.style.animationDelay=(index/10)+"s";
+		}
+		function agregarEventoClick(elemento){
+			elemento.addEventListener("dblclick",function(){
+				elementoActivo=this;
+				indicadores.push(Number(this.getAttribute("ref")));
+				agregarAtodosEventoSalidaEnd();
+				agregarAtodosAnimacionSalida();
+				mostrarInformacion();
+			});
+		}
+		function agregarEventoClickMenu(elemento){
+			let menu=elemento.querySelector(".menu");
+			menu.addEventListener("click",function(e){
+				e.stopPropagation();
+				mostrarContenido(this);
+			});
+		}
+		function agregarEventoDragEnd(elemento){
+			elemento.addEventListener("dragend",function(){
+				console.log("me arrastraron");
+				buscarNuevaReferencia(this);
+				asignarNuevaReferencia();
+			});
+			elemento.addEventListener("touchend",function(){
+				console.log("me arrastraron");
+				buscarNuevaReferencia(this);
+				asignarNuevaReferencia();
+			})
+		}
+		function buscarNuevaReferencia(elemento){
+			let notas=contNotas.querySelectorAll(".nota");
+			notas.forEach(function(item,index){
+				if(item===elemento){
+					//console.log("la nueva referencia es "+index);
+					if(indicadores.length===0){
+						let ref=Number(elemento.getAttribute("ref"));
+						let obj=base[ref];
+						base.splice(ref,1);
+						base.splice(index,0,obj);
+						let data2=JSON.stringify(base);
+						localStorage.setItem("data2",data2);
+					}else{
+						let array=ubicarElementoEnArray();
+						let ref=Number(elemento.getAttribute("ref"));
+						let obj=array.notas[ref];
+						console.log(ref,index);
+						array.notas.splice(ref,1);
+						array.notas.splice(index,0,obj);
+						console.log(array.notas);
+						let data2=JSON.stringify(base);
+						localStorage.setItem("data2",data2);
+						console.log("guardado");
+					}
+				}else{
+					console.log("no encontrado");
+				}
+			});
+		}
+		function asignarNuevaReferencia(){
+			let notas=contNotas.querySelectorAll(".nota");
+			notas.forEach(function(item,index){
+				item.setAttribute("ref",index);
+			});
+		}
+		function mostrarContenido(elemento){
+			let padre=elemento.parentNode;
+			let contenido=padre.querySelector(".notaText");
+			let opciones=padre.querySelector(".opciones");
+			if(contieneClase(contenido,"oculto")){
+				padre.style.minHeight="70px";
+				removerClase(opciones,"oculto");
+				removerClase(contenido,"oculto");
+			}else{
+				padre.style.minHeight="auto";
+				agregarClase(opciones,"oculto");
+				agregarClase(contenido,"oculto");
+			}
+		}
+		function agregarEventoAnimacionEntradaEnd(elemento){
+			elemento.addEventListener("animationend",funcion1);
+		}
+		function funcion1(e){
+			e.target.removeAttribute("style");
+			removerClase(e.target,"scale-in-center");
+			e.target.removeEventListener("animationend",funcion1);
+		}
+		function agregarAtodosAnimacionSalida(){
+			let notas=document.querySelectorAll(".nota");
+			notas.forEach(function(item){
+				agregarClase(item,"scale-out-center");
+			});
+		}
+		function agregarAtodosEventoSalidaEnd(){
+			let notas=document.querySelectorAll(".nota");
+			notas.forEach(function(item){
+				item.addEventListener("animationend",funcion2); 
+			});
+		}
+		function funcion2(e){
+			e.target.remove();
+		}
+		function mostrarInformacion(){
+			let elemento=ubicarElementoEnArray();
+			if(elemento.notas.length>0){
+				setTimeout(function(){
+					titulop.textContent=elemento.titulo;
+					mostrarNotas(elemento.notas);
+				},500);
+			}else{
+				titulop.textContent=elemento.titulo;
+			}
+		}
+		function ubicarElementoEnArray(){
+			let cadena="";
+			indicadores.forEach(function(item,index){
+				if(index===0){
+					cadena=`base[${item}]`;
+				}else{
+					cadena=cadena+`.notas[${item}]`;
+				}
+			});
+			//console.log(cadena);
+			let c=eval(cadena);
+			return(c);
+		}
+		function regresar(){
+			indicadores.pop();
+			//let ultPos=indicadores[indicadores.length-1];
+			if(indicadores.length===0){
+				if(contNotas.children.length>0){
+					agregarAtodosEventoSalidaEnd();
+					agregarAtodosAnimacionSalida();
+					setTimeout(function(){
+						titulop.textContent="Notas 2.0";
+						mostrarNotas(base);
+					},500);
+				}else{
+					titulop.textContent="Notas 2.0";
+					mostrarNotas(base);
+				}
+			}else{
+				let elemento=ubicarElementoEnArray();
+				if(contNotas.children.length>0){
+					agregarAtodosEventoSalidaEnd();
+					agregarAtodosAnimacionSalida();
+					setTimeout(function(){
+						titulop.textContent=elemento.titulo;
+						mostrarNotas(elemento.notas);
+					},500);
+				}else{
+					titulop.textContent=elemento.titulo;
+						mostrarNotas(elemento.notas);
+				}
+			}
+		}
+		function agregar(){
+			if(contieneClase(notaNueva,"oculto")){
+				agregarClase(contNotas,"oculto");
+				removerClase(notaNueva,"oculto");
+				notaNueva.querySelector(".notaName").innerHTML="Titulo de nota";
+				notaNueva.querySelector(".notaText").innerHTML="Contenido de nota";
+			}else{
+				agregarClase(notaNueva,"oculto");
+				removerClase(contNotas,"oculto");
+			}
+		}
+		function guardar(){
+			if(!contieneClase(notaNueva,"oculto")){
+				if(edicion===false){
+					let obj=new Object();
+					obj.titulo=notaNueva.querySelector(".notaName").innerHTML;
+					obj.contenido=notaNueva.querySelector(".notaText").innerHTML;
+					obj.notas=[];
+					if(indicadores.length===0){
+						base.unshift(obj);
+						if(contNotas.children.length>0){
+							let data2=JSON.stringify(base);
+							localStorage.setItem("data2",data2);
+							agregar();
+							agregarAtodosEventoSalidaEnd();
+							agregarAtodosAnimacionSalida();
+							setTimeout(function(){
+								titulop.textContent="Notas 2.0";
+								mostrarNotas(base);
+							},500);
+						}else{
+							let data2=JSON.stringify(base);
+							localStorage.setItem("data2",data2);
+							agregar();
+							titulop.textContent="Notas 2.0";
+							mostrarNotas(base);
+						}
+					}else{
+						let elemento=ubicarElementoEnArray();
+						elemento.notas.unshift(obj);
+						if(contNotas.children.length>0){
+							let data2=JSON.stringify(base);
+							localStorage.setItem("data2",data2);
+							agregar();
+							agregarAtodosEventoSalidaEnd();
+							agregarAtodosAnimacionSalida();
+							setTimeout(function(){
+								titulop.textContent=elemento.titulo;
+								mostrarNotas(elemento.notas);
+							},500);
+						}else{
+							let data2=JSON.stringify(base);
+							localStorage.setItem("data2",data2);
+							agregar();
+							titulop.textContent=elemento.titulo;
+							mostrarNotas(elemento.notas);
+						}
+					}
+				}else{
+					if(indicadores.length===0){
+						let ref=Number(elementoActivo.getAttribute("ref"));
+						base[ref].titulo=notaNueva.querySelector(".notaName").innerHTML;
+						base[ref].contenido=notaNueva.querySelector(".notaText").innerHTML;
+						let data2=JSON.stringify(base);
+						localStorage.setItem("data2",data2);
+						elementoActivo.querySelector(".notaName").innerHTML=base[ref].titulo;
+						elementoActivo.querySelector(".notaText").innerHTML=base[ref].contenido;
+						agregarClase(notaNueva,"oculto");
+						removerClase(contNotas,"oculto");
+						edicion=false;
+					}else{
+						let ref=Number(elementoActivo.getAttribute("ref"));
+						let array=ubicarElementoEnArray();
+						array.notas[ref].titulo=notaNueva.querySelector(".notaName").innerHTML;
+						array.notas[ref].contenido=notaNueva.querySelector(".notaText").innerHTML;
+						let data2=JSON.stringify(base);
+						localStorage.setItem("data2",data2);
+						elementoActivo.querySelector(".notaName").innerHTML=array.notas[ref].titulo;
+						elementoActivo.querySelector(".notaText").innerHTML=array.notas[ref].contenido;
+						agregarClase(notaNueva,"oculto");
+						removerClase(contNotas,"oculto");
+						edicion=false;
+					}
+				}
+			}
+		}
+		function eliminar(event){
+			if (window.confirm("¿Realmente quieres eliminar esta nota?")) {
+				let padre=event.target.parentNode.parentNode;
+				if(indicadores.length===0){
+					let ref=Number(padre.getAttribute("ref"));
+					base.splice(ref,1);
+					let data2=JSON.stringify(base);
+					localStorage.setItem("data2",data2);
+					agregarAtodosEventoSalidaEnd();
+					agregarAtodosAnimacionSalida();
+					setTimeout(function(){
+						mostrarNotas(base);
+					},500);
+				}else{
+					let elemento=ubicarElementoEnArray();
+					let ref=Number(padre.getAttribute("ref"));
+					elemento.notas.splice(ref,1);
+					let data2=JSON.stringify(base);
+					localStorage.setItem("data2",data2);
+					agregarAtodosEventoSalidaEnd();
+					agregarAtodosAnimacionSalida();
+					setTimeout(function(){
+						mostrarNotas(elemento.notas);
+					},500);
+				}
+			}
+		}
+		function editar(event){
+			edicion=true;
+			let padre=event.target.parentNode.parentNode;
+			elementoActivo=padre
+			let titulo=padre.querySelector(".notaName").innerHTML;
+			let contenido=padre.querySelector(".notaText").innerHTML;
+			notaNueva.querySelector(".notaName").innerHTML=titulo;
+			notaNueva.querySelector(".notaText").innerHTML=contenido;
+			agregarClase(contNotas,"oculto");
+			removerClase(notaNueva,"oculto");
+		}
+		function acomodarApp(){
+			let app=document.querySelector("#app");
+			app.style.height=window.innerHeight+"px";
+			app.style.display="block";
+		}
+		//agregar el evento touchend
+	</script>
+	<script type="text/javascript">
+		function agregarElement(padre,string){
+			padre.innerHTML=padre.innerHTML.concat(string);
+			let hijo=padre.children[padre.children.length-1];
+			return(hijo);
+		}
+		function agregarClase(elemento, clase){
+			elemento.classList.add(clase);
+		}
+		function removerClase(elemento, clase){
+			elemento.classList.remove(clase);
+		}
+		function contieneClase(elemento,clase){
+			if(elemento.classList.contains(clase)){
+				return(true);
+			}else{
+				return(false);
+			}
+		}
+	</script>
+	<script type="text/javascript">
+		new Sortable(contNotas, {
+		    animation: 150,
+		    ghostClass: 'blue-background-class'
+		});
+	</script>
+	<script type="text/javascript">
+		window.onresize=function(){
+			acomodarApp();
+		}
+		window.onload=function(){
+			acomodarApp();
+			let datosCargados=cargarDatos("data2");
+			if(datosCargados===undefined){
+
+			}else{
+				base=datosCargados;
+				//arrayActivo=base;
+				mostrarNotas(base);
+			}
+		}		
+	</script>
+</body>
+</html>
