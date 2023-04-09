@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+	<title>QuieroConTic</title>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+		@import url('https://fonts.googleapis.com/css?family=Pacifico');
+		@import url('https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister');
+		*{padding: 0; margin: 0; box-sizing: border-box; border: 0;}
+		#lienzo{
+			width: 731px; 
+			height: 411px; 
+			border: 1px solid dimgray;
+			position: relative; 
+			user-select: none; 
+			overflow: hidden;
+			transition: all 0.5s linear;
+		}
+		.precarga{
+			width:0px;
+			height:0px;
+			position: absolute;
+			top: -1000px;
+			left: -1000px;
+		}
+		#btnplay{
+			display: none;
+			cursor: pointer;
+		}
+		#cont_silabas{
+			width: 90%; 
+			height: 250px; 
+			display: flex; 
+			flex-wrap: wrap;
+			justify-content: center; 
+			align-items: flex-start;
+			position: absolute;
+			top: 0; left: 0; bottom: 0; right: 0;
+			margin: auto;
+			gap: 20px;
+			padding-top: 20px;
+			display: none;
+		}
+		.silaba{
+			width: 100px; 
+			aspect-ratio: 1/1; 
+			border: 1px solid gray; 
+			border-radius: 5px; 
+			display: flex; 
+			justify-content: center; 
+			align-items: center; 
+			background-color: white; 
+			cursor: pointer; 
+			/*display: none;*/
+		}
+		.silaba span{
+			font-size: 30px; 
+			font-family: Poppins;
+		}
+		#btnrecargar{cursor: pointer;}
+		#home{cursor: pointer;}
+		#btnpause{display: none;}
+		.entradaArriba{
+			animation: bounceInDown; /* referring directly to the animation's @keyframe declaration */
+  			animation-duration: 1s; /* don't forget to set a duration! */
+		}
+		.si{
+			animation: shakeY;
+			animation-duration: 1s;
+		}
+		.no{
+			animation: shakeX;
+			animation-duration: 1s;
+		}
+	</style>
+</head>
+<body>
+	<div id="lienzo">
+		
+		<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+		<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+		<svg
+		   viewBox="0 0 731 411"
+		   version="1.1"
+		   id="svg5"
+		   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+		   sodipodi:docname="plantilla.svg"
+		   xml:space="preserve"
+		   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+		   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+		   xmlns:xlink="http://www.w3.org/1999/xlink"
+		   xmlns="http://www.w3.org/2000/svg"
+		   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+		     id="namedview7"
+		     pagecolor="#ffffff"
+		     bordercolor="#666666"
+		     borderopacity="1.0"
+		     inkscape:showpageshadow="false"
+		     inkscape:pageopacity="0.0"
+		     inkscape:pagecheckerboard="0"
+		     inkscape:deskcolor="#d1d1d1"
+		     inkscape:document-units="px"
+		     showgrid="false"
+		     inkscape:zoom="0.68111408"
+		     inkscape:cx="379.52526"
+		     inkscape:cy="176.18194"
+		     inkscape:window-width="1366"
+		     inkscape:window-height="705"
+		     inkscape:window-x="1358"
+		     inkscape:window-y="-8"
+		     inkscape:window-maximized="1"
+		     inkscape:current-layer="page1" /><defs
+		     id="defs2"><rect
+		       x="436.87528"
+		       y="170.46302"
+		       width="192.91922"
+		       height="127.59208"
+		       id="rect1685" /><inkscape:path-effect
+		       effect="bspline"
+		       id="path-effect829"
+		       is_visible="true"
+		       lpeversion="1"
+		       weight="33.333333"
+		       steps="2"
+		       helper_size="0"
+		       apply_no_weight="true"
+		       apply_with_weight="true"
+		       only_selected="false" /></defs><g
+		     inkscape:groupmode="layer"
+		     id="page2"
+		     inkscape:label="page2"
+		     style="display:none"
+		     sodipodi:insensitive="true"><image
+		       width="731"
+		       height="411"
+		       preserveAspectRatio="none"
+		       style="display:inline;image-rendering:optimizeQuality"
+		       xlink:href="img/fondo.jpg"
+		       id="image198-8-9"
+		       x="0"
+		       y="0"
+		       inkscape:label="fondo1" /><image
+		       width="175.56181"
+		       height="37.859364"
+		       preserveAspectRatio="none"
+		       style="display:inline;image-rendering:optimizeQuality"
+		       xlink:href="img/nombre.png"
+		       id="image323-5-0"
+		       x="48.194077"
+		       y="23.417343"
+		       inkscape:label="icono" /><text
+		       xml:space="preserve"
+		       style="font-weight:bold;font-size:24px;line-height:1.25;font-family:Goldman;-inkscape-font-specification:'Goldman Bold';letter-spacing:0px;word-spacing:0px;display:inline"
+		       x="57.692703"
+		       y="84.055481"
+		       id="text413-81-1"
+		       inkscape:label="texto1"><tspan
+		         sodipodi:role="line"
+		         id="tspan411-47-1"
+		         x="57.692703"
+		         y="84.055481"
+		         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'High Tower Text';-inkscape-font-specification:'High Tower Text Bold';fill:#ffffff">Resultados de la actividad.</tspan></text><text
+		       xml:space="preserve"
+		       style="font-weight:bold;font-size:24px;line-height:1.25;font-family:Goldman;-inkscape-font-specification:'Goldman Bold';letter-spacing:0px;word-spacing:0px;display:inline"
+		       x="473.90384"
+		       y="250.91833"
+		       id="text413-81-1-8"
+		       inkscape:label="texto1"><tspan
+		         sodipodi:role="line"
+		         id="tspan411-47-1-5"
+		         x="473.90384"
+		         y="250.91833"
+		         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'High Tower Text';-inkscape-font-specification:'High Tower Text Bold';fill:#ffffff">Aciertos.</tspan></text><image
+		       width="268.32513"
+		       height="268.32513"
+		       preserveAspectRatio="none"
+		       style="image-rendering:optimizeQuality"
+		       xlink:href="img/medalla.png"
+		       id="image1679"
+		       x="127.79697"
+		       y="112.20473" /><text
+		       xml:space="preserve"
+		       id="text1683"
+		       style="font-weight:bold;font-size:64px;line-height:1.25;font-family:Goldman;-inkscape-font-specification:'Goldman Bold';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1685);display:inline;fill:#ffffff"
+		       x="34.163998"
+		       y="0"
+		       transform="translate(-13.269576,-10.854844)"><tspan
+		         x="439.67096"
+		         y="226.46289"
+		         id="tspan1137">100%</tspan></text><g
+		       id="g459"
+		       transform="translate(-16.28204,-22)"><image
+		         width="44.564087"
+		         height="44.564087"
+		         preserveAspectRatio="none"
+		         style="image-rendering:optimizeQuality"
+		         xlink:href="img/btnrecargar.png"
+		         id="btnrecargar"
+		         x="540.5437"
+		         y="295.41336"
+		         inkscape:label="btnrecargar"
+		         inkscape:svg-dpi="1" /><image
+		         width="43.516666"
+		         height="43.516666"
+		         preserveAspectRatio="none"
+		         style="image-rendering:optimizeQuality"
+		         xlink:href="img/home.png"
+		         id="home"
+		         x="485.02704"
+		         y="295.41336"
+		         inkscape:svg-dpi="1" /></g></g><g
+		     inkscape:groupmode="layer"
+		     id="page1"
+		     inkscape:label="page1"
+		     style="display:none"
+		     sodipodi:insensitive="true"><image
+		       width="731"
+		       height="411"
+		       preserveAspectRatio="none"
+		       style="image-rendering:optimizeQuality"
+		       xlink:href="img/fondo.jpg"
+		       id="image198-8"
+		       x="0"
+		       y="0"
+		       inkscape:label="fondo1" /><image
+		       width="175.56181"
+		       height="37.859364"
+		       preserveAspectRatio="none"
+		       style="image-rendering:optimizeQuality"
+		       xlink:href="img/nombre.png"
+		       id="image323-5"
+		       x="48.194077"
+		       y="23.417339"
+		       inkscape:label="icono" /><text
+		       xml:space="preserve"
+		       style="font-weight:bold;font-size:24px;line-height:1.25;font-family:Goldman;-inkscape-font-specification:'Goldman Bold';letter-spacing:0px;word-spacing:0px"
+		       x="57.692699"
+		       y="80.055481"
+		       id="text413-81"
+		       inkscape:label="texto1"><tspan
+		         sodipodi:role="line"
+		         id="tspan411-47"
+		         x="57.692699"
+		         y="80.055481"
+		         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'High Tower Text';-inkscape-font-specification:'High Tower Text Bold';fill:#ffffff">Presiona la sílaba solicitada en el audio.</tspan></text><g
+		       id="btnaudio"
+		       transform="translate(532.8985,171.5667)"><circle
+		         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:0.876653;stroke-linecap:round"
+		         id="path1101"
+		         cx="-167.3985"
+		         cy="188.944"
+		         r="24.561674" /><image
+		         width="56.751461"
+		         height="56.751461"
+		         preserveAspectRatio="none"
+		         style="image-rendering:optimizeQuality"
+		         xlink:href="img/btnaudio.png"
+		         id="image1045"
+		         x="-195.77423"
+		         y="160.56827" /></g><image
+		       width="56.750999"
+		       height="56.750999"
+		       preserveAspectRatio="none"
+		       style="image-rendering:optimizeQuality"
+		       xlink:href="img/btnpause.png"
+		       id="btnpause"
+		       x="337.12451"
+		       y="332.13519"
+		       inkscape:svg-dpi="1" /></g><g
+		     inkscape:label="portada"
+		     inkscape:groupmode="layer"
+		     id="portada"
+		     style="display:inline"
+		     sodipodi:insensitive="true"><image
+		       width="731"
+		       height="411"
+		       preserveAspectRatio="none"
+		       style="image-rendering:optimizeQuality"
+		       xlink:href="img/fondo.jpg"
+		       id="image198"
+		       x="0"
+		       y="0"
+		       inkscape:label="fondo1" /><image
+		       width="544.76465"
+		       height="117.47682"
+		       preserveAspectRatio="none"
+		       style="image-rendering:optimizeQuality"
+		       xlink:href="img/nombre.png"
+		       id="image323"
+		       x="93.117676"
+		       y="101.18958"
+		       inkscape:label="icono" /><image
+		       width="55.916016"
+		       height="55.916016"
+		       preserveAspectRatio="none"
+		       style="image-rendering:optimizeQuality"
+		       xlink:href="img/btnplay.png"
+		       id="btnplay"
+		       x="337.54199"
+		       y="264.62451"
+		       inkscape:label="btnplay"
+		       inkscape:svg-dpi="1" /><text
+		       xml:space="preserve"
+		       style="font-weight:bold;font-size:24px;line-height:1.25;font-family:Goldman;-inkscape-font-specification:'Goldman Bold';letter-spacing:0px;word-spacing:0px"
+		       x="196.76172"
+		       y="227.22562"
+		       id="text413"
+		       inkscape:label="slogan"><tspan
+		         sodipodi:role="line"
+		         id="tspan411"
+		         x="196.76172"
+		         y="227.22562"
+		         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'High Tower Text';-inkscape-font-specification:'High Tower Text Bold';fill:#ffffff">- Fortaleciendo procesos lectores -</tspan></text><text
+		       xml:space="preserve"
+		       style="font-weight:bold;font-size:24px;line-height:1.25;font-family:Goldman;-inkscape-font-specification:'Goldman Bold';letter-spacing:0px;word-spacing:0px"
+		       x="324.33008"
+		       y="348.38541"
+		       id="loading"
+		       inkscape:label="loading"><tspan
+		         sodipodi:role="line"
+		         id="tspan411-4"
+		         x="324.33008"
+		         y="348.38541"
+		         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'High Tower Text';-inkscape-font-specification:'High Tower Text Bold';fill:#ffffff"><tspan
+		   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Matura MT Script Capitals';-inkscape-font-specification:'Matura MT Script Capitals Bold'"
+		   id="tspan492">loading..</tspan>.</tspan></text></g><g
+		     inkscape:groupmode="layer"
+		     id="layer3"
+		     inkscape:label="plantilla"
+		     style="display:inline"><image
+		       width="30.212313"
+		       height="30.212313"
+		       preserveAspectRatio="none"
+		       style="display:inline;image-rendering:optimizeQuality"
+		       xlink:href="img/btnfs.png"
+		       id="btnfs"
+		       x="696.78766"
+		       y="4"
+		       inkscape:label="btnfullscreen"
+		       inkscape:svg-dpi="1" /></g>
+		</svg>
+
+
+		<div id="cont_silabas">
+				<div class="silaba" paint="false"><span></span></div>
+				<div class="silaba" paint="false"><span></span></div>
+				<div class="silaba" paint="false"><span></span></div>
+				<div class="silaba" paint="false"><span></span></div>
+				<div class="silaba" paint="false"><span></span></div>
+				<div class="silaba" paint="false"><span></span></div>
+				<div class="silaba" paint="false"><span></span></div>
+				<div class="silaba" paint="false"><span></span></div>
+				<div class="silaba" paint="false"><span></span></div>
+				<div class="silaba" paint="false"><span></span></div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		const banco_videos=[];
+		const banco_sonidos=['audio/Bien.mp3','audio/Intentalo.mp3','audio/Ma.mp3','audio/Me.mp3','audio/Mi.mp3','audio/Mo.mp3','audio/Mu.mp3','audio/Presiona.mp3'];
+		const banco_imagenes=['img/btnfs.png','img/btnfs2.png','img/btnplay.png','img/btnrecargar.png','img/medalla.png'];
+		const silabas=['ma','me','mi','mo','mu','MA','ME','MI','MO','MU'];
+		
+		let silabaDictada="";
+		let aciertos=0;
+		let fallos=0;
+	</script>
+
+	<script type="text/javascript">
+		let totalAudios=0;
+		let totalImagenes=0;
+		let totalVideos=0;
+
+		function activarPrecargas(){
+			if(banco_sonidos.length>0){
+				precargarSonidos();
+			}
+			if(banco_imagenes.length>0){
+				precargarImagenes();
+			}
+			if(banco_videos.length>0){
+				precargarVideos();
+			}
+			//contarElementosCargados();
+		}
+
+		function precargarSonidos(){
+			banco_sonidos.forEach(function(item){
+				let audio=document.createElement("audio");
+				audio.setAttribute("src",item);
+				let nombre=item.split("/")[1].split(".")[0];
+				audio.setAttribute("id",nombre)
+				document.querySelector("#lienzo").appendChild(audio);
+				audio.addEventListener('canplaythrough',audioCargado,false)
+			});
+		}
+
+		function audioCargado(){
+			totalAudios++;
+			contarElementosCargados();
+		}
+
+		function precargarImagenes(){
+			banco_imagenes.forEach(function(item){
+				let foto=new Image();
+				foto.src=item;
+				foto.addEventListener("load",imagenCargada,false);
+				foto.classList.add('precarga');
+				document.querySelector("#lienzo").appendChild(foto);
+			});
+		}
+
+		function imagenCargada(){
+			totalImagenes++;
+			contarElementosCargados();
+		}
+
+		function precargarVideos(){
+			banco_videos.forEach(function(item){
+				let video=document.createElement("video");
+				video.setAttribute("src",item);
+				let nombre=item.split("/")[1].split(".")[0];
+				video.setAttribute("id",nombre)
+				video.classList.add('precarga');
+				document.querySelector("#lienzo").appendChild(video);
+				video.addEventListener('canplaythrough',videoCargado,false)
+			});
+		}
+
+		function videoCargado(){
+			totalVideos++;
+			contarElementosCargados();
+		}
+	</script>
+	<script type="text/javascript">
+		function escalarYCentrar() {
+		  // Obtenemos el div que queremos escalar y centrar
+		  let div = document.getElementById("lienzo");
+
+		  // Le aplicamos los estilos necesarios
+		  div.setAttribute('style','position:absolute; left:0%; top:0%; transform:translate(-50%, -50%); transform-origin: 0% 0%;');
+		  
+		  // Obtenemos las dimensiones de la ventana del navegador
+		  let anchoVentana = window.innerWidth;
+		  let altoVentana = window.innerHeight;
+		  
+		  // Calculamos el factor de escala en base al ancho y alto del div
+		  let factorAncho = anchoVentana / 731;
+		  let factorAlto = altoVentana / 411;
+		  let factorEscala = Math.min(factorAncho, factorAlto);
+		  
+		  // Escalamos el div
+		  div.style.transform = "scale(" + factorEscala + ")";
+		  
+		  // Centramos el div en la ventana
+		  let anchoEscalado = 731 * factorEscala;
+		  let altoEscalado = 411 * factorEscala;
+		  let margenHorizontal = (anchoVentana - anchoEscalado) / 2;
+		  let margenVertical = (altoVentana - altoEscalado) / 2;
+		  div.style.marginLeft = margenHorizontal + "px";
+		  div.style.marginTop = margenVertical + "px";
+		}
+		function contarElementosCargados(){
+			if(totalAudios===banco_sonidos.length && totalImagenes===banco_imagenes.length && totalVideos===banco_videos.length){
+				console.log("todo cargado");
+				document.querySelector("#loading").style.display="none";
+				document.querySelector("#btnplay").style.display="block";
+			}
+		}
+		function agregarEventoBtnInicio(){
+			const btn=document.querySelector("#btnplay");
+			btn.addEventListener('click',function(){
+				document.querySelector("#portada").style.display="none";
+				document.querySelector("#page1").style.display="block";
+				document.querySelector("#cont_silabas").style.display="flex";
+			});
+		}
+		function openFullscreen() {
+			let elem = document.documentElement;
+		  if (elem.requestFullscreen) {
+		    elem.requestFullscreen();
+		  } else if (elem.webkitRequestFullscreen) { /* Safari */
+		    elem.webkitRequestFullscreen();
+		  } else if (elem.msRequestFullscreen) { /* IE11 */
+		    elem.msRequestFullscreen();
+		  }
+		}
+		function closeFullscreen() {
+		  if (document.exitFullscreen) {
+		    document.exitFullscreen();
+		  } else if (document.webkitExitFullscreen) { /* Safari */
+		    document.webkitExitFullscreen();
+		  } else if (document.msExitFullscreen) { /* IE11 */
+		    document.msExitFullscreen();
+		  }
+		}
+		function agregarEventoFullScreen(){
+			let btnfs=document.querySelector("#btnfs");
+			btnfs.setAttribute('fs','false');
+			btnfs.addEventListener('click',function(){
+				let fs=this.getAttribute("fs");
+				if(fs==="false"){
+					openFullscreen();
+					this.setAttribute("fs","true");
+					//this.classList.add("btnfs2");
+					this.setAttribute("xlink:href","img/btnfs2.png");
+				}else{
+					closeFullscreen();
+					this.setAttribute("fs","false");
+					//this.classList.remove("btnfs2");
+					this.setAttribute("xlink:href","img/btnfs.png");
+				}
+			});
+		}
+		function desordenarArray(array) {
+			////
+		  array.sort(() => Math.random() - 0.5);
+		}
+		function colocarSilabas(){
+			let span_silabas=document.querySelectorAll(".silaba span");
+			span_silabas.forEach(function(item,index){
+				item.textContent=silabas[index];
+				setTimeout(function(){
+					item.parentNode.classList.add('entradaArriba');
+					item.parentNode.addEventListener('animationend',function(){
+						this.classList.remove('entradaArriba');
+					});
+					item.parentNode.style.display="flex";
+				},100);
+			});
+		}
+		function agregarEventoAudios(){
+			let audios=document.querySelectorAll("audio");
+			audios.forEach(function(item){
+				item.addEventListener("ended",function(){
+					console.log("finalizo"+this.id);
+					if(this.id==="Presiona"){
+						reproducir(silabas[0]);
+					}else{
+						document.querySelector("#btnpause").style.display="none";
+					}
+				});
+			});
+		}
+		function agregarEventosBoton(){
+			const segment1=document.querySelector("#btnaudio");
+			//segment1.classList.add('pulso');
+			segment1.addEventListener('click',()=>{
+				document.getElementById("Presiona").play();
+				document.querySelector("#btnpause").style.display="block";
+			});
+		}
+		function reproducir(silaba){
+			switch(silaba){
+				case 'ma':
+					document.getElementById("Ma").play();
+					silabaDictada='ma';
+				break;
+				case 'MA':
+					document.getElementById("Ma").play();
+					silabaDictada='ma';
+				break;
+				case 'me':
+					document.getElementById("Me").play();
+					silabaDictada='me';
+				break;
+				case 'ME':
+					document.getElementById("Me").play();
+					silabaDictada='me';
+				break;
+				case 'mi':
+					document.getElementById("Mi").play();
+					silabaDictada='mi';
+				break;
+				case 'MI':
+					document.getElementById("Mi").play();
+					silabaDictada='mi';
+				break;
+				case 'mo':
+					document.getElementById("Mo").play();
+					silabaDictada='mo';
+				break;
+				case 'MO':
+					document.getElementById("Mo").play();
+					silabaDictada='mo';
+				break;
+				case 'mu':
+					document.getElementById("Mu").play();
+					silabaDictada='mu';
+				break;
+				case 'MU':
+					document.getElementById("Mu").play();
+					silabaDictada='mu';
+				break;
+				case 'bien':
+					document.getElementById("Bien").play();
+				break;
+				case 'denuevo':
+					document.getElementById("Intentalo").play();
+				break;
+			}
+		}
+		function agregarEventosSilabas(){
+			let obj_silabas=document.querySelectorAll(".silaba");
+			obj_silabas.forEach(function(item){
+				item.addEventListener('click',function(){
+					let paint=this.getAttribute("paint");
+					let visible=document.getElementById("btnpause").style.display;
+					if(paint==="false" && visible==="none"){
+						let txt=this.textContent;
+						if(silabaDictada!==""){
+							let mayus=txt.toUpperCase();
+							let minus=txt.toLowerCase();
+							if(silabaDictada===mayus || silabaDictada===minus){
+								pintar('bien',this);
+								document.querySelector("#btnpause").style.display="block";
+								reproducir("bien");
+								this.classList.add("si");
+								silabas.shift();
+								//setTimeout(function(){reproducir(silabas[0]);},2100);
+								aciertos++;
+								if(aciertos===10){
+									finalizarActividad();
+								}
+							}else{
+								pintar('mal',this);
+								document.querySelector("#btnpause").style.display="block";
+								reproducir("denuevo");
+								this.classList.add("no");
+								this.addEventListener('animationend',function(){
+									this.classList.remove("no");
+								});
+								fallos++;
+							}
+						}
+					}
+				});
+			});
+		}
+		function pintar(texto,elemento){
+			let paint=elemento.getAttribute("paint");
+			if(texto==="bien"){
+				elemento.style.backgroundColor="limegreen";
+				elemento.setAttribute("paint","true");
+			}else{
+				elemento.style.backgroundColor="indianred";
+				//elemento.setAttribute("paint","true");
+			}
+		}
+		function finalizarActividad(){
+			setTimeout(function(){
+				document.querySelector("#tspan1137").textContent=((aciertos-fallos)*100)/10+'%';
+				document.querySelector("#cont_silabas").style.display="none";
+				document.querySelector("#page1").style.display="none";
+				document.querySelector("#page2").style.display="flex";
+			},1000);
+		}
+		function agregarEvnetosBotonRecargar(){
+			const recargar=document.querySelector("#btnrecargar");
+			recargar.addEventListener("click",function(){window.location.reload();});
+		}
+		function agregarEventoBotonHome(){
+			const home=document.querySelector("#home");
+			home.addEventListener('click',function(){alert("En construcción.");});
+		}
+	</script>
+	<script type="text/javascript">
+		window.onload=function(){
+			activarPrecargas();
+			agregarEventoFullScreen();
+			agregarEventoBtnInicio();
+			desordenarArray(silabas);
+			colocarSilabas();
+			desordenarArray(silabas);
+			agregarEventoAudios();
+			agregarEventosBoton();
+			agregarEventosSilabas();
+			agregarEvnetosBotonRecargar();
+			agregarEventoBotonHome();
+		}
+		window.addEventListener("load", escalarYCentrar);
+		window.addEventListener("resize", escalarYCentrar);
+	</script>
+</body>
+</html>
