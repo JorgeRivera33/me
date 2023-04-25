@@ -261,8 +261,8 @@
 				</div>
 				<div id="bocina"></div>
 				<div id="campos">
-					<div id="campo2" class="campo"></div>
 					<div id="campo1" class="campo"></div>
+					<div id="campo2" class="campo"></div>
 				</div>
 				<div id="btnEval">EVALUAR</div>
 			</div>
@@ -417,7 +417,7 @@
 		function colocarSilabas(silabas){
 			silabas.forEach(function(item){
 				let silaba=`<div class="silaba rotateIn">${item}</div>`;
-				campo[0].insertAdjacentHTML('beforeend',silaba);
+				campo[1].insertAdjacentHTML('beforeend',silaba);
 			});
 		}
 		function eventosBotonAudio(){
@@ -435,13 +435,13 @@
 			silabas.forEach(function(item){
 				item.addEventListener("click",function(){
 					let s=`<div class="silaba sinmargin bounceIn">${this.textContent}<div class='btncerrar'></div></div>`;
-					campo[1].insertAdjacentHTML('beforeend',s);
+					campo[0].insertAdjacentHTML('beforeend',s);
 					agregarEventoBotonEliminar();
 				});
 			});
 		}
 		function agregarEventoBotonEliminar(){
-			let zona=campo[1];
+			let zona=campo[0];
 			let cantidad=zona.children.length;
 			let ulthijo=zona.children[cantidad-1];
 			//let btn=ulthijo.querySelector(".btncerrar");
@@ -451,7 +451,7 @@
 		}
 		function eventosBotonEvaluar(){
 			btnEval.addEventListener('click',function(){
-				let zona=campo[1];
+				let zona=campo[0];
 				if(zona.children.length!==0){
 					let silabas=zona.querySelectorAll('.silaba');
 					let union="";
