@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>QuieroConTic</title>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+		@import url('https://fonts.googleapis.com/css?family=Pacifico');
+		@import url('https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister');
+		@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+		*{padding: 0; margin: 0; box-sizing: border-box; border: 0;}
+		body{
+			background: white;
+		}
+		#lienzo{
+			width: 100%;
+			max-width: 411px;
+			margin: 0 auto;
+			height: 800px;
+			padding: 20px;
+			user-select: none;
+			border: 1px solid dimgray;
+			overflow: hidden;
+			/*
+			background-color: #85FFBD;
+			background-image: linear-gradient(119deg, #85FFBD 0%, #FFFB7D 100%);
+			*/
+			background-color: #FBAB7E;
+			background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+
+		}
+		#fondo{
+		}
+		#menu{
+			width: 30px;
+			aspect-ratio: 1/1;
+			background-image: url('img/menu.png');
+			background-size: 100% 100%;
+			cursor: pointer;
+		}
+		#titulo{
+			font-family: Pacifico;
+			text-align: center;
+			font-size: 30px;
+		}
+		#usuario{
+			display: flex;
+			margin-top: 30px;
+			align-items: center;
+		}
+		#grupo1{
+			padding: 0 10px;
+		}
+		#avatar{
+			width: 60px;
+			aspect-ratio: 1/1;
+			background: url('img/iconouser.png');
+			background-size: 100% 100%;
+			margin-right: 10px;
+			border: 1px solid black;
+			border-radius: 50%;
+			background-color: white;
+		}
+		.txt1{
+			color: dimgray;
+		}
+		.nombre{
+			font-size: 20px;
+			font-weight: bold;
+			font-family: 'Roboto Slab'
+		}
+		.txtact{
+			color: red;
+			font-size: 22px;
+			margin-top: 30px;
+			font-family: 'lilita One';
+		}
+		.txtdes{
+			font-size: 18px;
+			font-family: Roboto slab;
+			margin-top: 10px;
+		}
+		#progreso{
+			width: 100%;
+			display: flex;
+			margin-top: 10px;
+			align-items: center;
+			justify-content: center;
+		}
+		#barra{
+			width: 90%;
+			position: relative;
+		}
+		#barra1{
+			width: 100%;
+			height: 10px;
+			background: limegreen;
+			border-radius: 5px;
+			opacity: 0.4;
+		}
+		#barra2{
+			width: 0%;
+			height: 10px;
+			border-radius: 5px;
+			background: limegreen;
+			position: absolute;
+			top: 0; left: 0;
+		}
+		#porc{
+			width: 10%;
+			text-align: center;
+			font-weight: bold;
+		}
+		#bocina{
+			width: 60px;
+			aspect-ratio: 1/1;
+			background: url('img/bocina.png');
+			background-size: 100% 100%;
+			margin: 10px auto;
+			cursor: pointer;
+		}
+		#zonaPalabras{
+			width: 100%;
+			border: 1px solid dimgray;
+			height: 150px;
+			margin-bottom: 10px;
+			padding: 10px;
+			border-radius: 5px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		#zonaOpciones{
+			width: 100%;
+			border: 1px solid dimgray;
+			height: 150px;
+			padding: 10px;
+			border-radius: 5px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+		}
+		#btnEval{
+			width: 50%;
+			height: 30px;
+			background: limegreen;
+			text-align: center;
+			color: white;
+			font-size: 20px;
+			padding-top: 3px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.silaba{
+			padding: 5px;
+			border: 1px solid dimgrey;
+			border-radius: 5px;
+			font-size: 25px;
+			margin-right: 5px;
+			cursor: pointer;
+			font-weight: bold;
+			font-family: Poppins;
+		}
+		#autorep{
+			width: 30px;
+			aspect-ratio: 1/1;
+			background: url('img/btnaudio.png');
+			background-size: 100% 100%;
+			background-color: white;
+			border-radius: 50%;
+			margin-right: 10px;
+			cursor: pointer;
+		}
+		#grupo2{
+			display: flex;
+			justify-content: center;
+			margin-top: 25px;
+		}
+		#final{
+			display: none;
+			padding: 10px;
+		}
+		#medalla{
+			width: 80%;
+			aspect-ratio: 1/1;
+			margin: 25px auto;
+			background: url('img/medalla.png');
+			background-size: 100% 100%;
+			display: flex;
+			justify-content: center;
+			padding-top: 50px;
+		}
+		#valor{
+			text-align: center;
+		    font-size: 30px;
+		    font-weight: bold;
+		    font-family: 'Poppins';
+		}
+	</style>
+</head>
+<body>
+	<div id="lienzo">
+		<div id="menu"></div>
+		<div id="titulo">QuieroConTic</div>
+		<div id="usuario">
+			<div id="avatar"></div>
+			<div id="saludo">
+				<div class="txt1">Bienvenido,</div>
+				<div class="nombre">Usuario Invitado</div>
+			</div>
+		</div>
+		<div id="grupo1">
+			<div class="txtact">Actividad:</div>
+			<div class="txtdes">Escucha el audio y conforma la palabra.</div>
+			<div id="progreso">
+				<div id="barra">
+					<div id="barra1"></div>
+					<div id="barra2" style="width:0%;"></div>
+				</div>
+				<div id="porc">0%</div>
+			</div>
+			<div id="bocina"></div>
+			<div id="zonaPalabras">loading...</div>
+			<div id="zonaOpciones">loading...</div>
+			<div id="grupo2">
+				<div id="autorep"></div>
+				<div id="btnEval">Evaluar</div>
+			</div>
+		</div>
+		<div id="final">
+			<div class="txtact">Resultado:</div>
+			<div class="txtdes">¡Has completado la actividad de formación de palabras con la letra M!</div>
+			<div id="medalla"></div>
+			<div id="valor">100%</div>
+		</div>
+		<div id="fondo"></div>
+	</div>
+
+	<!--<script type="text/javascript" src="js/escalarCentrar2.js"></script>-->
+	<script type="text/javascript" src="js/preload.js"></script>
+
+	<script type="text/javascript" id="varPreload">
+		const banco_videos=[];
+		const banco_sonidos=['sound/ama.mp3','sound/amo.mp3','sound/bien.mp3','sound/ema.mp3','sound/intentalo.mp3','sound/mamá.mp3','sound/mami.mp3','sound/meme.mp3','sound/memo.mp3','sound/mía.mp3','sound/mimo.mp3','sound/mío.mp3'];
+		const banco_imagenes=['img/iconouser.png','img/bocina.png','img/menu.png','img/btnaudio.png'];
+		function contarElementosCargados(){
+			if(totalAudios===banco_sonidos.length && totalImagenes===banco_imagenes.length && totalVideos===banco_videos.length){
+				setTimeout(function(){
+					console.log("Todo cargado");
+					limpiarZonas();
+					desordenarArray(ejer);
+					mostrarEjercicio();
+					eventosBotonAudio();
+					eventosSilabas();
+					eventosBotonEvaluar();
+					eventoAutoRep();
+				},1000);
+			}
+		}
+	</script>
+	<script type="text/javascript">
+		let indice=0;
+		let fallos=0;
+		let autor=false;
+		let ejer=[
+			{
+				'palabra':'mamá',
+				'silabas': 'ma má mi mo mu me'
+			},
+			{
+				'palabra':'ama',
+				'silabas':'a ma o mi me mo'
+			}/*
+			,
+			{
+				'palabra':'mimo',
+				'silabas':'ma mi me mo mu'
+			},
+			{
+				'palabra':'meme',
+				'silabas':'ma mi me mo mu'
+			},
+			{
+				'palabra':'amo',
+				'silabas':'a ma o mi me mo'
+			},
+			{
+				'palabra':'mía',
+				'silabas':'a ma o mi mí mo'
+			},
+			{
+				'palabra':'mío',
+				'silabas':'a ma o mi mí mo'
+			},
+			{
+				'palabra':'mami',
+				'silabas':'me ma mi mu mo'
+			},
+			{
+				'palabra':'memo',
+				'silabas':'me ma mi mu mo'
+			},
+			{
+				'palabra':'ema',
+				'silabas':'e ma o me i mo'
+			}*/
+		];
+	</script>
+	<script type="text/javascript">
+		function desordenarArray(array) {array.sort(() => Math.random() - 0.5);}
+		function mostrarEjercicio(){
+			if(ejer[indice]){
+				let e=ejer[indice];
+				palabra=e.palabra;
+				let silabas=e.silabas.split(" ");
+				desordenarArray(silabas);
+				colocarSilabas(silabas);
+			}else{
+				console.log("termino");
+				autor=false;
+				let vp=5/ejer.length;
+				let e=((fallos*vp)*100)/5;
+				let r=100-e;
+				document.querySelector("#valor").textContent=r+"%";
+				document.querySelector("#grupo1").style.display="none";
+				document.querySelector("#final").style.display="block";
+			}
+		}
+		function colocarSilabas(silabas){
+			let zonaSilabas=document.querySelector("#zonaOpciones");
+			silabas.forEach(function(item){
+				let silaba=`<div class="silaba">${item}</div>`;
+				zonaSilabas.insertAdjacentHTML('beforeend',silaba);
+			});
+		}
+		function eventosBotonAudio(){
+			let botonAudio=document.querySelector("#bocina");
+			botonAudio.addEventListener('click',function(){
+				if(palabra!==""){
+					let sonido=document.getElementById(palabra);
+					//sonido.setAttribute('playbackRate',0.1);
+					sonido.playbackRate=0.8;
+					sonido.play();
+				}
+			});
+		}
+		function limpiarZonas(){
+			let zonaPalabras=document.querySelector("#zonaPalabras");
+			let zonaOpciones=document.querySelector("#zonaOpciones");
+			zonaPalabras.innerHTML="";
+			zonaOpciones.innerHTML="";
+		}
+		function eventosSilabas(){
+			let silabas=document.querySelectorAll(".silaba");
+			silabas.forEach(function(item){
+				item.addEventListener("click",function(){
+					let zona=document.querySelector("#zonaPalabras");
+					let s=`<div class="silaba sinmargin">${this.textContent}<div class='btncerrar'></div></div>`;
+					zona.insertAdjacentHTML('beforeend',s);
+					agregarEventoBotonEliminar();
+				});
+			});
+		}
+		function agregarEventoBotonEliminar(){
+			let zona=document.querySelector("#zonaPalabras");
+			let cantidad=zona.children.length;
+			let ulthijo=zona.children[cantidad-1];
+			//let btn=ulthijo.querySelector(".btncerrar");
+			ulthijo.addEventListener('click',function(){
+				this.remove();
+			});
+		}
+		function eventosBotonEvaluar(){
+			let btn=document.querySelector("#btnEval");
+			btn.addEventListener('click',function(){
+				let zona=document.querySelector("#zonaPalabras");
+				if(zona.children.length!==0){
+					let silabas=zona.querySelectorAll('.silaba');
+					let union="";
+					silabas.forEach(function(item){
+						union=union+item.textContent;
+					});
+					if(union===palabra){
+						document.querySelector("#bien").play();
+						//mostrarImagen
+						setTimeout(function(){
+							limpiarZonas();
+							indice++;
+							palabra="";
+							actualizarBarra();
+							mostrarEjercicio();
+							eventosSilabas();
+							if(autor){
+								let sonido=document.getElementById(palabra);
+								//sonido.setAttribute('playbackRate',0.1);
+								sonido.playbackRate=0.8;
+								sonido.play();
+							}
+						},2000);
+					}else{
+						fallos++;
+						document.querySelector("#intentalo").play();
+						//efecto de no sobre las silabas
+					}
+				}else{
+					//document.querySelector("#rsonido").play();
+				}
+			});
+		}
+		function actualizarBarra(){
+			let barra=document.querySelector("#barra2");
+			let porc=document.querySelector("#porc");
+			let width=barra.style.width;
+			console.log(width);
+			let number=Number(width.split("%")[0]);
+			console.log(number);
+			number+=10;
+			barra.style.width=number+"%";
+			porc.textContent=number+"%";
+		}
+		function eventoAutoRep(){
+			let autorep=document.querySelector("#autorep");
+			autorep.addEventListener('click',function(){
+				if(autor){
+					autor=false;
+					autorep.style.backgroundColor="white";
+				}else{
+					autor=true;
+					autorep.style.backgroundColor="green";
+				}
+			});
+		}
+	</script>
+	<script type="text/javascript">
+		window.onload=function(){
+			activarPrecargas();
+		}
+	</script>
+</body>
+</html>
