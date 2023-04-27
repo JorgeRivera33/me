@@ -1,0 +1,167 @@
+*{border: 0; padding: 0; margin: 0; box-sizing: border-box;}
+		body{background-color: #EBE7E7;}
+		#app{
+			border: 1px solid white;
+			border-radius: 5px;
+			width: 800px;
+			padding: 70px 85px 70px 85px;
+			text-align: center;
+			margin: 0 auto;
+			margin-top: 70px;
+			margin-bottom: 70px;
+			background-color: white;
+			min-height: 750px;
+			box-shadow: 0px 0px 2px 2px #DDD7D7;
+			display: none;
+		}
+		.txt1{
+			text-align: right;
+			padding: 10px;
+			border-bottom: 1px dashed gray;
+			margin-bottom: 20px;
+			font-family: 'Yusei Magic', sans-serif;
+		}
+		h1{
+			margin-bottom: 30px;
+			font-family: 'Londrina Solid', cursive;
+			letter-spacing: 2px;
+		}
+		#texto{
+			text-align: left;
+		}
+		.parrafo{
+			margin-bottom: 10px;
+			font-size: 20px;
+			font-family: 'ABeeZee', sans-serif;
+		}
+		#autor{
+			text-align: right;
+			font-family: 'Alegreya', serif;
+			font-size: 20px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		#preg{
+			font-size: 20px;
+			text-align: left;
+			font-family: 'ABeeZee', sans-serif;
+			color: gray;
+			margin-top: 50px;
+			margin-bottom: 50px;
+			border-bottom: 1px solid gray;
+		}
+		#preguntas{
+			font-size: 20px;
+			text-align: left;
+			font-family: 'ABeeZee', sans-serif;
+			color: red;
+			display: flex;
+			flex-wrap: wrap;
+			margin-bottom: 10px;
+		}
+		.pregunta{
+			margin-bottom: 20px;
+			width: 45%;
+			margin-right: 4%;
+		}
+		.txtpreg{
+			margin-bottom: 10px;
+		}
+		.respuesta{
+			color: black;
+			cursor: pointer;
+			padding: 5px;
+		}
+		#msj,#intentos{
+			font-size: 20px;
+			font-family: 'Yusei Magic', sans-serif;
+			margin-bottom: 20px;
+		}
+		#intentos{
+			margin-top: -15px;
+		}
+		#evaluar{
+			display: none;
+		}
+		#evaluar,#continuar,#regresar{
+			border: 1px solid #0A9B14;
+			background-color: #33EB33;
+			color: white;
+			padding: 10px;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 20px;
+			font-family: 'Londrina Solid', cursive;
+			letter-spacing: 1px;
+			text-shadow: 0px 0px 2px black;
+			margin: 0 auto;
+		}
+		#evaluar:hover,#continuar:hover,#regresar:hover{
+			background-color: #11AA05;
+		}
+		#evaluar:active,#continuar:active,#regresar:active{
+			transform: scale(1.5);
+		}
+		#regresar{
+			margin-top: 10px;
+		}
+		#pie{
+			text-align: left;
+			padding: 10px;
+			border-top: 1px dashed gray;
+			margin-top: 50px;
+			font-family: 'Yusei Magic', sans-serif;
+		}
+		#part2{display: none}
+
+@media only screen and (max-width: 817px) {
+  body {
+    background-color: lightblue;
+  }
+  #app{
+  	width: 100%;
+  	margin-top: 0px;
+	margin-bottom: 0px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+  #app{
+  	width: 100%;
+  	padding: 40px 40px 70px 40px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  body {
+    background-color: lightblue;
+  }
+  #app{
+  	width: 100%;
+  }
+  #preguntas{
+  	display: block;
+  }
+  .pregunta{
+  	margin: 0 auto;
+  	margin-bottom: 20px;
+  	width: 100%;
+  }
+  #evaluar{
+  	margin-top: 50px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  body {
+    background-color: lightblue;
+  }
+  #app{
+  	width: 100%;
+  }
+  .txt1{
+	text-align: center;
+	}
+}

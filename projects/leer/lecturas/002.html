@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=ABeeZee&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital@1&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+	<title>QuieroConTic</title>
+	<link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+	<div id="app">
+		<div class="txt1">
+			<div>Ejercicios de comprensión lectora</div>
+			<div>Proyecto transversal TIC</div>
+			<div>Colegio Moralba S.O</div>
+		</div>
+		<h1 id="titulo"></h1>
+		<div id="part1">
+			<div id="texto"></div>
+			<div id="autor"></div>
+			<button id="continuar">Continuar</button>
+		</div>
+		<div id="part2">
+			<div id="preg">Preguntas de comprensión:</div>
+			<div id="preguntas"></div>
+			<div id="msj"></div>
+			<div id="intentos"></div>
+			<button id="evaluar">Evaluar</button>
+			<button id="regresar">Regresar</button>
+		</div>
+		<div id="pie">Texto tomado de: </div>
+	</div>
+	<script type="text/javascript">
+		const pagina="https://www.orientacionandujar.es/";
+		const link="https://www.orientacionandujar.es/wp-content/uploads/2017/04/50-ejercicios-de-comprension-lectora-.pdf";
+		const vtitulo="Estrellas voladoras";
+		const vtexto=`¡Mamá, mamá, corre, ven a la ventana! -gritó María.
+
+		¿Qué pasa?
+
+		Mira. ¡En el jardín hay estrellitas voladoras! un
+
+		- ¡Qué bonitas son! -contestó la mamá. Pero no son estrellas: son luciérnagas. Se suelen ver en las noches de verano.
+
+		-¿Son peligrosas las luciérnagas!. ¿Pican? -preguntó María.
+
+		- No son nada peligrosas -contestó mamá.
+
+		María bajó al jardín. Al poco rato volvió a subir gritando:
+
+		- iMamá, mamá!. He cogido una luciérnaga y la he metido en este tarro de cristal. La voy a poner en mi cuarto y así me alumbrará toda la noche.
+
+		- ¡Oh, pobre luciérnaga!. ¿Crees de verdad que te va a alumbrar?. ¿No ves que ya no tiene luz?
+
+		- Porque las luciérnagas tienen luz solamente en la oscuridad -dijo Maria. Apaguemos la luz y ya verás, mamá.
+
+		La mamá apagó la luz. Pero la luciérnaga del tarro no daba ni un rayito de luz. 
+
+		¿Y por qué no alumbra? -preguntó María.
+
+		Porque está triste y se siente prisionera. ¿Qué harías tú si te encerraran?.
+
+		María comprendió que debía soltar a la luciérnaga. Se fue a la ventana y abrió el tarro. La luciérnaga salió volando dejando un rastro de luz.`;
+
+		const vautor="Silvana Carnevali";
+		const cuestionario=[
+			{
+				"opciones": [
+				"A. Lucecitas.",
+				"B. Estrellitas.",
+				"C. Luciérnagas."
+				],
+				"pregunta": "¿Qué volaba en el jardín realmente?",
+				"respuesta": "ABCD"
+			},
+			{
+				"opciones": [
+				"A. En las noches de otoño.",
+				"B. En las noches de verano.",
+				"C. En las noches de invierno."
+				],
+				"pregunta": "¿Cuándo se suelen ver las luciérnagas?",
+				"respuesta": "ACBD"
+			},
+			{
+				"opciones": [
+				"A. En un tarro de cristal.",
+				"B. En una caja.",
+				"C. En una bolsa de plástico."
+				],
+				"pregunta": "¿Dónde encierra a la luciérnaga?",
+				"respuesta": "CBAD"
+			},
+			{
+				"opciones": [
+				"A. Porque sólo alumbra de día.",
+				"B. Porque estaba triste y prisionera.",
+				"C. Porque sólo alumbraba con la luz encendida."
+				],
+				"pregunta": "¿Por qué no alumbra la luciérnaga?",
+				"respuesta": "CABD"
+			},
+			{
+				"opciones": [
+				"A. Estrella.",
+				"B. María.",
+				"C. Lucera."
+				],
+				"pregunta": "¿Cómo se llamaba la niña del cuento?",
+				"respuesta": "CABD"
+			},
+			{
+				"opciones": [
+				"A. Se quedó dentro.",
+				"B. Cantó.",
+				"C. Salió volando."
+				],
+				"pregunta": "¿Qué hizo la luciérnaga cuando se abrió el tarro?",
+				"respuesta": "BACD"
+			},
+			{
+				"opciones": [
+				"A. En el jardín.",
+				"B. Dentro de la casa.",
+				"C. En el parque."
+				],
+				"pregunta": "¿Dónde estaban las luciérnagas?",
+				"respuesta": "BCAD"
+			},
+			{
+				"opciones": [
+				"A. Si, pican.",
+				"B. No.",
+				"C. Solo si las molestas."
+				],
+				"pregunta": "¿Son peligrosas las luciérnagas?",
+				"respuesta": "CABD"
+			}
+			];
+	</script>
+	<script type="text/javascript" src="../js/code.js"></script>
+</body>
+</html>

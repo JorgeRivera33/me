@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=ABeeZee&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital@1&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+	<title>QuieroConTic</title>
+	<link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+	<div id="app">
+		<div class="txt1">
+			<div>Ejercicios de comprensión lectora</div>
+			<div>Proyecto transversal TIC</div>
+			<div>Colegio Moralba S.O</div>
+		</div>
+		<h1 id="titulo"></h1>
+		<div id="part1">
+			<div id="texto"></div>
+			<div id="autor"></div>
+			<button id="continuar">Continuar</button>
+		</div>
+		<div id="part2">
+			<div id="preg">Preguntas de comprensión:</div>
+			<div id="preguntas"></div>
+			<div id="msj"></div>
+			<div id="intentos"></div>
+			<button id="evaluar">Evaluar</button>
+			<button id="regresar">Regresar</button>
+		</div>
+		<div id="pie">Texto tomado de: </div>
+	</div>
+	<script type="text/javascript">
+		const pagina="https://www.orientacionandujar.es/";
+		const link="https://www.orientacionandujar.es/wp-content/uploads/2017/04/50-ejercicios-de-comprension-lectora-.pdf";
+		const vtitulo="La semilla";
+		const vtexto="Érase una vez una semilla que cayó entre las rocas y no podía salir.\nSe puso muy triste y dijo:\n-Nunca llegaré a ser una planta, sin tierra, sin agua y sin sol.\nUn pájaro oyó a la semilla y fue a ver a la madre tierra.\n-La semilla está atrapada entre las rocas y no puede salir.\nEntonces, la madre tierra llamó al sol y a la lluvia.\nLos tres juntos fueron donde la semilla y le dijeron:\nAbre tus ojitas\nal viento y al sol.\nNacerá tu tallo\nuna bellar flor.\nLa lluvia comenzó a caer. La semilla se hundió en la tierra fértil. Tomó la fuerza con el agua y el sol y empezó a germinar.\nLas hojas parecían dos ojitos verdes maravillados del mundo. El tallo siguió creciendo y creciendo... De pronto nació un capullo y luego brotó la flor: un círculo con pecas rodeado de pétalos amarillos.\n¡Aquella flor tan hermosa era un girasol!";
+		const vautor="Isabel Freire de Matos";
+		const cuestionario=[
+			{
+				'pregunta':'¿Dónde cayó la semilla?',
+				'opciones':[
+					'A. Entre las hojas',
+					'B. En el camino',
+					'C. Entre las rocas'
+				],
+				'respuesta':'ABCD'
+			},
+			{
+				'pregunta':'¿A quién fue a ver el pajarito?',
+				'opciones':[
+					'A. A la madre tierra',
+					'B. A las hojas',
+					'C. A la madre semilla'
+				],
+				'respuesta':'CBAD'
+			},
+			{
+				'pregunta':'¿A quién llamó la tierra madre?',
+				'opciones':[
+					'A. A la tierra y el sol',
+					'B. Al sol y a la lluvia',
+					'C. A la tierra y a la lluvia'
+				],
+				'respuesta':'ACBD'
+			},
+			{
+				'pregunta':'¿Cómo tomó fuerza la semilla?',
+				'opciones':[
+					'A. Con el sol y con el viento',
+					'B. Con el agua y el viento',
+					'C. Con el agua y el sol'
+				],
+				'respuesta':'ABCD'
+			},
+			{
+				'pregunta':'¿Qué parecían las hojas?',
+				'opciones':[
+					'A. Dos piedras preciosas',
+					'B. Dos ojitos verdes',
+					'C. Dos ojitos azules'
+				],
+				'respuesta':'ACBD'
+			},
+			{
+				'pregunta':'¿De qué color eran los petalos de la flor que brotó?',
+				'opciones':[
+					'A. Blancos',
+					'B. Rojos',
+					'C. amarillos'
+				],
+				'respuesta':'ABCD'
+			},
+			{
+				'pregunta':'¿Qué flor era la que nació?',
+				'opciones':[
+					'A. Un girasol',
+					'B. Una margarita',
+					'C. Una rosa'
+				],
+				'respuesta':'BCAD'
+			}
+		];
+	</script>
+	<script type="text/javascript" src="../js/code.js"></script>
+</body>
+</html>

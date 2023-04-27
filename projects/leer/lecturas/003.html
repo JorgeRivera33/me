@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=ABeeZee&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital@1&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+	<title>QuieroConTic</title>
+	<link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+	<div id="app">
+		<div class="txt1">
+			<div>Ejercicios de comprensión lectora</div>
+			<div>Proyecto transversal TIC</div>
+			<div>Colegio Moralba S.O</div>
+		</div>
+		<h1 id="titulo"></h1>
+		<div id="part1">
+			<div id="texto"></div>
+			<div id="autor"></div>
+			<button id="continuar">Continuar</button>
+		</div>
+		<div id="part2">
+			<div id="preg">Preguntas de comprensión:</div>
+			<div id="preguntas"></div>
+			<div id="msj"></div>
+			<div id="intentos"></div>
+			<button id="evaluar">Evaluar</button>
+			<button id="regresar">Regresar</button>
+		</div>
+		<div id="pie">Texto tomado de: </div>
+	</div>
+	<script type="text/javascript">
+		const pagina="https://www.orientacionandujar.es/";
+		const link="https://www.orientacionandujar.es/wp-content/uploads/2017/04/50-ejercicios-de-comprension-lectora-.pdf";
+		const vtitulo="Los panecillos de pasas";
+		const vtexto=`Una vez, un padre le dijo a su hijo:\n-Por favor, vete deprisa al correo y tráeme treinta sellos.\nY la madre añadió:\n-Ve a la panadería y compra tres panecillos de pasas.\nEl niño salió corriendo con el dinero.\nComo el correo estaba cerca, se quedó un ratito a jugar en la calle con unos niños.\nLuego fue corriendo al correo y compró tres sellos.\nDespués fue a la panadería y compró treinta panecillos de pasas.\nAl llegar a casa, el padre se echó a reír y dijo:\n-Bueno, pues ahora pegaré panecillos de pasas en mis cartas.\nY la madre también se echó a reír.\nPrepararon la merienda y comieron tantos panecillos de pasas que tuvieron dolor de tripa.`;
+
+		const vautor="Úrsula Wolfer";
+		const cuestionario=[
+			{
+				"opciones": [
+				"A. Al comercio de la esquina.",
+				"B. A la ferretería.",
+				"C. Al correo."
+				],
+				"pregunta": "¿A dónde manda el padre al hijo?",
+				"respuesta": "ABCD"
+			},
+			{
+				"opciones": [
+				"A. Que vaya a la carnicería.",
+				"B. Que vaya a la panadería.",
+				"C. Que vaya a la frutería."
+				],
+				"pregunta": "¿Qué le dice la madre?",
+				"respuesta": "ACBD"
+			},
+			{
+				"opciones": [
+				"A. Cuatro.",
+				"B. Tres.",
+				"C. Treinta."
+				],
+				"pregunta": "¿Cuántos sellos compra?",
+				"respuesta": "ACBD"
+			},
+			{
+				"opciones": [
+				"A. Cuatro.",
+				"B. Tres.",
+				"C. Treinta."
+				],
+				"pregunta": "¿Cuántos panecillos compró?",
+				"respuesta": "ABCD"
+			},
+			{
+				"opciones": [
+				"A. Dolor de tripa.",
+				"B. Dolor de cabeza.",
+				"C. Dolor de muelas."
+				],
+				"pregunta": "¿Qué les pasa por comer tantos panecillos?",
+				"respuesta": "BCAD"
+			},
+			{
+				"opciones": [
+				"A. En el parque.",
+				"B. En la calle.",
+				"C. En la casa de su amigo."
+				],
+				"pregunta": "¿Dónde se entretuvo el niño?",
+				"respuesta": "ACBD"
+			},
+			{
+				"opciones": [
+				"A. Lo regañó.",
+				"B. Se puso a llorar.",
+				"C. Se echo a reir."
+				],
+				"pregunta": "¿Qué hizo el padre cuando llegó el hijo a la casa?",
+				"respuesta": "BACD"
+			},
+			{
+				"opciones": [
+				"A. En la cena.",
+				"B. En el desayuno.",
+				"C. En la merienda."
+				],
+				"pregunta": "¿Cuándo se comieron los panecillos?",
+				"respuesta": "BAC"
+			}
+		];
+	</script>
+	<script type="text/javascript" src="../js/code.js"></script>
+</body>
+</html>
