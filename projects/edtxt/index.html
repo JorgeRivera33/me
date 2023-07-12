@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link  rel="icon" href="../imgteclado/favicon.png" type="image/png" />
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	<title>QuieroConTic</title>
+</head>
+<body>
+	<div id="lienzo">
+		<div class="space" id="space1">
+			<div class="spaceint">
+				<div id="nivel"></div>
+				<h2>Ejercicio de teclado</h2>
+				<h3>Actividad:</h3>
+				<p id="desc"></p>
+				<h3>Resultado:</h3>
+				<textarea id="areaeje" readonly="true" onselectstart="return false;" onmousedown="return false;"></textarea>
+			</div>
+		</div>
+		<div class="space" id="space2">
+			<div class="spaceint">
+				<h2>Ejercicio de teclado</h2>
+				<h3>Ejercicio:</h3>
+				<textarea id="areatxt"></textarea>
+				<div id="imgr2"></div>
+				<div id="menu">
+					<div class="boton" id="recargar"></div>
+				</div>
+				<div id="control">
+					<div id="back" class="btncontrol"></div>
+					<div id="next" class="btncontrol"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/function2.js"></script>
+	<script type="text/javascript">
+		let a=[
+		{
+			'r':'M u l t i m e d i a',
+			'e':'Multimedia',
+			't':[37,38,39,40,8,32],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla espaciadora, separa con un espacio las letras de la palabra que aparece en el ejercicio.'
+		},
+		{
+			'r':'C o m u n i c a c i o n e s',
+			'e':'Comunicaciones',
+			't':[37,38,39,40,8,32],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla espaciadora, separa con un espacio las letras de la palabra que aparece en el ejercicio.'
+		},
+		{
+			'r':'A l f o m b r a',
+			'e':'Alfombra',
+			't':[37,38,39,40,8,32],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla espaciadora, separa con un espacio las letras de la palabra que aparece en el ejercicio.'
+		},
+		{
+			'r':'Tecnología',
+			'e':'T e c n o l o g í a',
+			't':[37,38,39,40,8],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla de retroceso (backspace), borra los espacios entre las letras de la palabra que aparece en el ejercicio.'
+		},
+		{
+			'r':'Colombia',
+			'e':'C o l o m b i a',
+			't':[37,38,39,40,8],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla de retroceso (backspace), borra los espacios entre las letras de la palabra que aparece en el ejercicio.'
+		},
+		{
+			'r':'Aplicación',
+			'e':'A p  l i  c ac   i  ó   n',
+			't':[],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla de retroceso (backspace), borra los espacios entre las letras de la palabra que aparece en el ejercicio.'
+		},
+		{
+			'r':'Archivo',
+			'e':'A r  c   h    i    v  o',
+			't':[37,38,39,40,8],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla de retroceso (backspace), borra los espacios entre las letras de la palabra que aparece en el ejercicio.'
+		},
+		{
+			'r':'c o m p u t a d o r',
+			'e':'',
+			't':[],
+			'b':[],
+			'd':'Escribe la palabra computador separada por espacios sencillos en el espacio que aparece en el ejercicio.'
+		},
+		{
+			'r':'el computador y sus partes',
+			'e':'',
+			't':[],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla espaciadora, escribe con espacios las palabras que aparece en el ejercicio.'
+		},
+		{
+			'r':'uno, dos, tres, cuatro.',
+			'e':'',
+			't':[],
+			'b':[],
+			'd':'Escribe las siguientes palabras separadas por una coma y un espacio.'
+		},
+		{
+			'r':'A\nn\ni\nm\na\nl\ne\ns',
+			'e':'Animales',
+			't':[37,38,39,40,13,8],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla Enter, separa con un salto de linea las letras de la palabra que aparece en el ejercicio.'
+		},
+		{
+			'r':'P\nr\no\ng\nr\ne\ns\no',
+			'e':'Progreso',
+			't':[37,38,39,40,13,8],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla Enter, separa con un salto de linea las letras de la palabra que aparece en el ejercicio.'
+		},
+		{
+			'r':'S\ni\ns\nt\ne\nm\na\ns',
+			'e':'Sistemas',
+			't':[37,38,39,40,13,8],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla Enter, separa con un salto de linea las letras de la palabra que aparece en el ejercicio.'
+		},
+		{
+			'r':'Chocolate',
+			'e':'C\nh\no\nc\no\nl\na\nt\ne',
+			't':[37,38,39,40,13,8],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla retroceso (backspace), borra los saltos de linea para unir la palabra que aparece en el ejercicio.'
+		},
+		{
+			'r':'Vainilla',
+			'e':'V\na\ni\nn\ni\nl\nl\na',
+			't':[37,38,39,40,13,8],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla retroceso (backspace), borra los saltos de linea para unir la palabra que aparece en el ejercicio.'
+		},
+		{
+			'r':'Melocotón',
+			'e':'M\ne\nl\no\nc\no\nt\nó\nn',
+			't':[37,38,39,40,13,8],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla retroceso (backspace), borra los saltos de linea para unir la palabra que aparece en el ejercicio.'
+		},
+		{
+			'r':'i\nm\np\nr\ne\ns\no\nr\na',
+			'e':'',
+			't':[],
+			'b':[],
+			'd':'Escribe la palabra impresora separada por salto de linea en el espacio que aparece en el ejercicio.'
+		},
+		{
+			'r':'Micrófono',
+			'e':'Mi\ncró\nfo\nno',
+			't':[37,38,39,40,13,8],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla retroceso (backspace), borra los saltos de linea para unir la palabra que aparece en el ejercicio.'
+		},
+		{
+			'r':'El hijo de rana rin rin renacuajo.',
+			'e':'Elhijoderanarinrinrenacuajo.',
+			't':[37,38,39,40,32,8],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla espaciadora, separa las palabras de la frase que aparece en el ejercicio.'
+		},
+		{
+			'r':'El mouse del computador.',
+			'e':'E\nl m  o\n\tuse d    e\nl co\nm    pu    t\na\n\ndo    r\n\t\t.',
+			't':[37,38,39,40,32,8],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla retroceso (backspace), borra los saltos de linea y espacios para unir la frase que aparece en el ejercicio.'
+		},
+		{
+			'r':'perro gato\nloro vaca\nleón cabra\nmosca oso',
+			'e':'perrogatolorovacaleóncabramoscaoso',
+			't':[37,38,39,40,32,8,13],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla espaciadora y la tecla Enter, separa las palabras y agrega saltos de linea hasta obtener el resultado en el ejercicio.'
+		},
+		{
+			'r':'BiNaRiO',
+			'e':'',
+			't':[],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla retroceso (backspace) y la tecla Bloq Mayús, Escribe la siguiente palabra con mayusculas y minusculas.'
+		},
+		{
+			'r':'MoScA',
+			'e':'',
+			't':[],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla retroceso (backspace) y la tecla Bloq Mayús, Escribe la siguiente palabra con mayusculas y minusculas.'
+		},
+		{
+			'r':'JuEgO',
+			'e':'',
+			't':[],
+			'b':[],
+			'd':'Haciendo uso de las teclas de desplazamiento o del mouse junto con la tecla retroceso (backspace) y la tecla Bloq Mayús, Escribe la siguiente palabra con mayusculas y minusculas.'
+		},
+		{
+			'r':'Perro\nGato',
+			'e':'Perro',
+			't':[],
+			'b':[80],
+			'd':'Escribe la palabra Gato debajo de la palabra Perro.'
+		},
+		{
+			'r':'Perro\nLoro\nGato',
+			'e':'Perro\nGato',
+			't':[],
+			'b':[71,80],
+			'd':'Escribe la palabra Loro debajo de la palabra Perro.'
+		},
+		{
+			'r':'Perro\nVaca\nLoro\nOveja\nGato',
+			'e':'Perro\nLoro\nGato',
+			't':[],
+			'b':[80,71,76],
+			'd':'Escribe la palabra Vaca debajo de la palabra Perro y escribe la palabra Oveja debajo de la palabra Loro.'
+		},
+		{
+			'r':'Perro\n\nVaca\n\nLoro\n\nOveja\n\nGato',
+			'e':'Perro\nVaca\nLoro\nOveja\nGato',
+			't':[13,37,38,39,40,8],
+			'b':[],
+			'd':'Agrega saltos de linea debajo de cada palabra.'
+		},
+		{
+			'r':'Perro\nVaca\nLoro\nOveja\nGato',
+			'e':'Perro\n\nVaca\n\n\nLoro\n\nOveja\nGato',
+			't':[8,37,38,39,40],
+			'b':[],
+			'd':'Elimina los espacios debajo de cada palabra.'
+		},
+		{
+			'r':'Koala\nPerro',
+			'e':'Perro',
+			't':[],
+			'b':[80],
+			'd':'Sobre la palabra Perro agrega la palabra Koala.'
+		},
+		{
+			'r':'Uno\nDos\nTres\nCuatro\nCinco',
+			'e':'Uno\nTres\nCinco',
+			't':[],
+			'b':[78,69],
+			'd':'Sobre la palabra Tres agrega la palabra Dos, y sobre la palabra Cinco agrega la palabra Cuatro.'
+		},
+		{
+			'r':'Años\nRegalo Pastel Feliz\nCumpleaños',
+			'e':'Pastel',
+			't':[],
+			'b':[84],
+			'd':'Sobre la palabra Pastel agrega la palabra Años, a la derecha agrega la palabra Feliz, a la izquierda la palabra Regalo y debajo la palabra Cumpleaños.'
+		},
+		{
+			'r':'Cielo\nPadre Zorro Madre\nTierra',
+			'e':'Zorro',
+			't':[],
+			'b':[90],
+			'd':'Sobre la palabra Zorro agrega la palabra Cielo, a la derecha agrega la palabra Madre, a la izquierda la palabra Padre y debajo la palabra Tierra.'
+		},
+		{
+			'r':'El hijo de rana, rin rin renacuajo \nsalió esta mañana muy tieso y muy majo \ncon pantalón corto corbata a la moda \nsombrero encintado y chupa de boda',
+			'e':'El hijo de rana, rin rin renacuajo salió esta mañana muy tieso y muy majo con pantalón corto corbata a la moda sombrero encintado y chupa de boda',
+			't':[37,38,39,40,13,8],
+			'b':[],
+			'd':'Separa los versos de la siguiente estrofa, utilizando la tecla enter para agregar saltos de línea'
+		},
+		{
+			'r':'El hijo de rana, rin rin renacuajo \n\nsalió esta mañana muy tieso y muy majo \n\ncon pantalón corto corbata a la moda \n\nsombrero encintado y chupa de boda',
+			'e':'El hijo de rana, rin rin renacuajo \nsalió esta mañana muy tieso y muy majo \ncon pantalón corto corbata a la moda \nsombrero encintado y chupa de boda',
+			't':[37,38,39,40,13,8],
+			'b':[],
+			'd':'Separa los versos de la siguiente estrofa, utilizando la tecla enter para agregar saltos de línea'
+		},
+		{
+			'r':'El hijo de rana, rin rin renacuajo \nsalió esta mañana muy tieso y muy majo \ncon pantalón corto corbata a la moda \nsombrero encintado y chupa de boda',
+			'e':'El hijo de rana, rin rin renacuajo \n\nsalió esta mañana muy tieso y muy majo \n\ncon pantalón corto corbata a la moda \n\nsombrero encintado y chupa de boda',
+			't':[37,38,39,40,13,8],
+			'b':[],
+			'd':'Separa los versos de la siguiente estrofa, utilizando la tecla enter para agregar saltos de línea'
+		},
+		{
+			'r':'El hijo de rana, rin rin renacuajo \nsalió esta mañana muy tieso y muy majo \ncon pantalón corto corbata a la moda \nsombrero encintado y chupa de boda',
+			'e':'\n\nEl hijo de rana, rin rin renacuajo \n\n\nsalió esta mañana muy tieso y muy majo \n\n\n\ncon pantalón corto corbata a la moda \n\n\n\n\nsombrero encintado y chupa de boda',
+			't':[37,38,39,40,13,8],
+			'b':[],
+			'd':'Separa los versos de la siguiente estrofa, utilizando la tecla enter para agregar saltos de línea'
+		},
+		{
+			'r':'El hijo de rana, rin rin renacuajo \n\nsalió esta mañana muy tieso y muy majo \n\ncon pantalón corto corbata a la moda \n\nsombrero encintado y chupa de boda',
+			'e':'\n\nEl hijo de rana, rin rin renacuajo \n\n\nsalió esta mañana muy tieso y muy majo \n\n\n\ncon pantalón corto corbata a la moda \n\n\n\n\nsombrero encintado y chupa de boda',
+			't':[37,38,39,40,13,8],
+			'b':[],
+			'd':'Pendiente...'
+		},
+		{
+			'r':'El hijo de rana, rin rin renacuajo salió esta mañana muy tieso y muy majo con pantalón corto corbata a la moda sombrero encintado y chupa de boda',
+			'e':'\n\nEl hijo de rana, rin rin renacuajo \n\n\nsalió esta mañana muy tieso y muy majo \n\n\n\ncon pantalón corto corbata a la moda \n\n\n\n\nsombrero encintado y chupa de boda',
+			't':[37,38,39,40,13,8],
+			'b':[],
+			'd':'Pendiente...'
+		},
+		{
+			'r':'Lista\n1. Arroz del país.\n2. Jamón.\n3. Galletas, Mermelada y Gaseosa.\n4. Brócoli.',
+			'e':'',
+			't':[],
+			'b':[],
+			'd':'Pendiente...'
+		},
+		{
+			'r':'¿Cómo te llamas?',
+			'e':'Cómo te llamas',
+			't':[],
+			'b':[],
+			'd':'Pendiente...'
+		},
+		{
+			'r':'¡Muy bien!',
+			'e':'Muy bien',
+			't':[],
+			'b':[],
+			'd':'Pendiente...'
+		},
+		{
+			'r':'"Frase entre comillas"',
+			'e':'Frase entre comillas',
+			't':[],
+			'b':[],
+			'd':'Pendiente...'
+		},
+		{
+			'r':'# estoy cansad@',
+			'e':'estoy cansad',
+			't':[],
+			'b':[],
+			'd':'Pendiente...'
+		},
+		{
+			'r':'/* Solo soy un comentario */',
+			'e':'Solo soy un comentario',
+			't':[],
+			'b':[],
+			'd':'Pendiente...'
+		}
+
+		];
+	</script>
+	<script type="text/javascript">
+		let areaeje=s_element("#areaeje");
+		let areatxt=s_element("#areatxt");
+		let btnrecargar=s_element("#recargar");
+		let menu=s_element("#menu");
+		let control=s_element("#control");
+		let imgr2=s_element("#imgr2");
+		let nivel=s_element("#nivel");
+		let desc=s_element("#desc");
+		let back=s_element("#back");
+		let next=s_element("#next");
+		let indice=0;
+
+		onAllLoad(function(){
+			mostrarPregunta(indice);
+			activarEval();
+			activarBtnControl();
+		});
+
+	</script>
+</body>
+</htm
+
