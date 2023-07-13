@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+	<script type="text/javascript" src="js/escalarCentrar.js"></script>
+	<script type="text/javascript" src="js/preload.js"></script>
+	<title>MoralbaMovilidad</title>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet');
+		@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet');
+		@import url('https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister');
+		@import url('https://fonts.googleapis.com/css2?family=Ysabeau+Infant:wght@300&display=swap" rel="stylesheet');
+		*{border: 0; padding: 0; margin: 0; box-sizing: border-box; position: absolute;}
+		#lienzo{
+			width: 731px;
+			height: 411px;
+			display: flex;
+			justify-content: center;
+			align-content: center;
+			align-items: center;
+			position: relative;
+			overflow: hidden;
+			user-select: none;
+		}
+		#fondo{
+			background-image: url('img/fondo2.jpg');
+			top: 0; left: 0;
+			width: 731px;
+			height: 411px;
+		}
+		.diap{
+			top: 0px; left: 0px;
+			width: 100%; height: 100%;
+		}
+
+		/*diap1*/
+		#diap1{
+		}
+		#caso{
+			width: 100%;
+			top: 150px; left: 0;
+			text-align: center;
+			font-size: 80px;
+			font-family: 'Acme', cursive;
+		}
+		#loading{
+			width: 100%;
+			top: 240px; left: 0;
+			text-align: center;
+			font-size: 25px;
+			font-family: 'Love Ya Like A Sister';
+		}
+
+		/*diap2*/
+		#diap2{
+			display: none;
+		}
+		#cuadro{
+			top: 60px;
+		    left: 130px;
+		    width: 500px;
+		    height: 300px;
+		    opacity: 1;
+		    background-color: #6978EB;
+		    border-radius: 10px;
+		}
+		#texto1{
+		    top: 100px;
+		    left: 190px;
+		    width: 400px;
+		    color: white;
+		}
+		#titulo {
+		    font-weight: bold;
+		    font-size: 22px;
+		    font-family: 'Acme', cursive;
+		    letter-spacing: 1px;
+		    transition: left 0.5s ease;
+		    position: relative;
+		}
+		#txt{
+			margin-top: 10px;
+		    font-size: 20px;
+		    font-family: 'Ysabeau Infant', sans-serif;
+		    position: relative;
+		}
+		#continuar1{
+			position: absolute;
+		    top: 220px;
+		    left: 330px;
+		    padding: 5px;
+		    cursor: pointer;
+		    font-family: 'Love Ya Like A Sister';
+		    font-size: 18px;
+		}
+		#policia1{
+			top: 150px;
+		    left: 80px;
+		    width: 100px;
+		    height: 220px;
+		}
+
+		/*diap3*/
+		#diap3{
+			display: none;
+		}
+		#escena{
+			width: 875px;
+			height: 508px;
+			top: -32px; left: -73px;
+		}
+		#autocafe{
+			top: 80px; left: 480px;
+			width: 70px;
+		}
+		#autoverde{
+			top: 300px; left: 170px;
+			width: 70px;
+		}
+		#autoazul{
+			top: 282px; left: 518px;
+			width: 70px;
+		}
+		#pare1{
+			top: 170px;
+			left: 450px;
+			width: 18px;
+			cursor: pointer;
+		}
+		#pare2{
+			top: 156px;
+			left: 252px;
+			width: 18px;
+			cursor: pointer;
+		}
+		#vidrio,#vidrio2,#vidrio3{
+			top: 0px; left: 0px;
+			width: 100%;
+			height: 100%;
+			background-color: black;
+			opacity: 0.5;
+		}
+		#vidrio2,#vidrio3{
+			display: none;
+		}
+		#pare_big{
+			top: 40px;
+			left: 190px;
+			width: 350px;
+			cursor: pointer;
+			display: none;
+		}
+		#camara1{
+			top: 50px; left: 180px;
+			width: 300px;
+		}
+		#btnplay{
+			top: 230px;
+		    left: 300px;
+		    width: 100px;
+		    border: 2px solid white;
+		    border-radius: 50%;
+		    cursor: pointer;
+		}
+		#btnplay_aux{
+		    top: 350px;
+		    left: 334px;
+		    width: 50px;
+		    border: 2px solid white;
+		    border-radius: 50%;
+		    cursor: pointer;
+		    display: none;
+		}
+		#circulo{
+			top: 130px; left: 400px;
+			width: 120px;
+			display: none;
+		}
+
+		/*diap4*/
+		#diap4{
+			display: none;
+		}
+		#cuadro2{
+			top: 60px;
+		    left: 130px;
+		    width: 500px;
+		    height: 300px;
+		    opacity: 1;
+		    background-color: #6978EB;
+		    border-radius: 10px;
+		}
+		#texto2{
+		    top: 100px;
+		    left: 190px;
+		    width: 400px;
+		    color: white;
+		}
+		#titulo2{
+		    font-weight: bold;
+		    font-size: 22px;
+		    font-family: 'Acme', cursive;
+		    letter-spacing: 1px;
+		    transition: left 0.5s ease;
+		    position: relative;
+		}
+		#txt2{
+			margin-top: 10px;
+		    font-size: 20px;
+		    font-family: 'Ysabeau Infant', sans-serif;
+		    position: relative;
+		}
+		#opciones{
+			position: relative;
+			display: flex;
+			justify-content: space-around;
+			height: 100px;
+			margin-top: 10px;
+		}
+		.opcion{
+			position: static;
+			display: block;
+			width: 100px;
+			cursor: pointer;
+		}
+		#camara2{
+			position: relative;
+			top: 0px;
+			left: -24px;
+			width: 35px;
+		}
+		#continuar2{
+			position: absolute;
+		    top: 200px;
+		    left: 315px;
+		    padding: 5px;
+		    cursor: pointer;
+		    font-family: 'Love Ya Like A Sister';
+		    width: 130px;
+		    font-size: 18px;
+		}
+		#policia2{
+			top: 156px;
+		    left: 80px;
+		    width: 100px;
+		    height: 220px;
+		}
+
+		/*diap5*/
+		#diap5{
+			display: none;
+		}
+		#cuadro3{
+			top: 60px;
+		    left: 130px;
+		    width: 500px;
+		    height: 300px;
+		    opacity: 1;
+		    background-color: #F62539;
+		    border-radius: 10px;
+		}
+		#texto3{
+		    top: 100px;
+		    left: 190px;
+		    width: 400px;
+		    color: white;
+		}
+		#titulo3{
+		    font-weight: bold;
+		    font-size: 22px;
+		    font-family: 'Acme', cursive;
+		    letter-spacing: 1px;
+		    transition: left 0.5s ease;
+		    position: relative;
+		}
+		#txt3{
+			margin-top: 10px;
+		    font-size: 22px;
+		    font-family: 'Ysabeau Infant', sans-serif;
+		    position: relative;
+		}
+		#camara3{
+			position: relative;
+			top: 0px;
+			left: -24px;
+			width: 35px;
+		}
+		#continuar3{
+			position: absolute;
+		    top: 170px;
+		    left: 155px;
+		    padding: 5px;
+		    cursor: pointer;
+		    font-family: 'Love Ya Like A Sister';
+		    width: 130px;
+		    font-size: 18px;
+		}
+		#policia3{
+			top: 156px;
+		    left: 80px;
+		    width: 100px;
+		    height: 220px;
+		}
+
+		/*diap6*/
+		#diap6{
+			display: none;
+		}
+		#cuadro4{
+			top: 60px;
+		    left: 130px;
+		    width: 500px;
+		    height: 300px;
+		    opacity: 1;
+		    background-color: #4BC554;
+		    border-radius: 10px;
+		}
+		#texto4{
+		    top: 100px;
+		    left: 190px;
+		    width: 400px;
+		    color: white;
+		}
+		#titulo4{
+		    font-weight: bold;
+		    font-size: 22px;
+		    font-family: 'Acme', cursive;
+		    letter-spacing: 1px;
+		    transition: left 0.5s ease;
+		    position: relative;
+		}
+		#txt4{
+			margin-top: 10px;
+		    font-size: 22px;
+		    font-family: 'Ysabeau Infant', sans-serif;
+		    position: relative;
+		}
+		#camara4{
+			position: relative;
+			top: 0px;
+			left: -24px;
+			width: 35px;
+		}
+		#continuar4{
+			position: absolute;
+		    top: 220px;
+		    left: 330px;
+		    padding: 5px;
+		    cursor: pointer;
+		    font-family: 'Love Ya Like A Sister';
+		    width: 130px;
+		    font-size: 18px;
+		}
+		#policia4{
+			top: 156px;
+		    left: 80px;
+		    width: 100px;
+		    height: 220px;
+		}
+
+		/*ui*/
+		#ui{
+			border: 0px solid dimgray;
+			width: 100%;
+			height: 30px;
+			position: absolute;
+			top: 0px; left: 0px;
+			padding: 2px;
+			display: flex;
+			justify-content: right;
+		}	
+		#monedero{
+			position: absolute;
+			top: 5px; left: 600px;
+			width: 90px; height: 30px;
+			background-image: url('img/monedero.svg');
+			background-size: 100% 100%;
+		}
+		#cant_monedero{
+			position: absolute;
+			width: 40px;
+			top: -2px; left: 33px;
+			color: white;
+			font-family: 'Pacifico', cursive;
+			text-align: right;
+		}
+		#medallero{
+			position: absolute;
+			top: 5px; left: 533px;
+			width: 60px; height: 30px;
+			background-image: url('img/medallero.svg');
+			background-size: 100% 100%;
+		}
+		#cant_medallero{
+			position: absolute;
+			top: -2px; left: 40px;
+			color: white;
+			font-family: 'Pacifico', cursive;
+		}
+
+		#menu {
+		  position: absolute;
+		  top: 5px; right: 35px;
+		  z-index: 2;
+		}
+		.btnmenu{
+			position: absolute;
+			width: 30px; height: 30px;
+			left: 0px;
+			opacity: 0;
+			transition: top 0.5s ease, opacity 0.5s ease;
+			cursor: pointer;
+		}
+		#btnmenu{
+			top: 0px;
+			width: 30px; height: 30px;
+			background-image: url('img/menu.svg'); 
+			background-size: 100% 100%; 
+			transition: transform 0.5s ease;
+			animation-duration: 1s;
+			position: absolute;
+			z-index: 2;
+			cursor: pointer;
+			background-color: white;
+			border-radius: 50%;
+		}
+		#btnfulls{
+			top: 0px;
+			background-image: url('img/btnfs.svg'); 
+			background-size: 100% 100%; 
+			animation-duration: 1s;
+		}
+		#btncerrar{
+			top: 0px;
+			background-image: url('img/btncerrar2.svg'); 
+			background-size: 100% 100%;
+			animation-duration: 1.5s;
+		}
+
+		/*Emergentes*/
+		#emergentes{
+			position: absolute;
+		    top: 0px;
+		    left: 0px;
+		    width: 100%;
+		    height: 100%;
+		    display: none;
+		}
+		#operacion_grande{
+			position: absolute;
+		    align-items: center;
+		    opacity: 0;
+		    transition: transform 0.2s ease, opacity 0.2s;
+		    transform: scale(10);
+		    z-index: 2;
+		    width: 430px;
+		    top: 140px;
+		    left: 140px;
+		    height: 130px;
+		    display: none;
+		}
+		#img_monedas{
+			width: 130px;
+			width: 130px;
+		    aspect-ratio: 1/1;
+		    top: 0px;
+		    left: 0px;
+		}
+		#signo{
+			font-size: 100px;
+		    font-family: 'Pacifico', cursive;
+		    top: -30px;
+		    left: 130px;
+		}
+		#cantidad_monedas{
+			font-size: 100px;
+		    font-family: 'Pacifico', cursive;
+		    top: -30px;
+		    left: 200px;
+		    color: white;
+		}
+		#medalla_grande{
+			position: absolute;
+			width: 180px;
+			aspect-ratio: 1/1;
+			transition: transform 0.2s ease, opacity 0.2s;
+			transform: scale(10);
+			opacity: 0;
+			z-index: 2;
+			top: 120px;
+    		left: 260px;
+    		display: none;
+		}
+
+		/*Animaciones*/
+		.pulse{
+		  animation: pulse;
+		  animation-duration: 0.5s;
+		  animation-iteration-count: infinite;
+		}
+	</style>
+</head>
+<body>
+	<div id="marco">
+		<div id="lienzo">
+			<div id="fondo"></div>
+			<!--diap1-->
+			<div class="diap" id="diap1">
+				<img src="img/fondo1.svg">
+				<div id="caso">CASO: 001</div>
+				<div id="loading" class="pulse">Loading...</div>
+			</div>
+			<!--diap2-->
+			<div class="diap" id="diap2">
+				<div id="cuadro"></div>
+				<div id="texto1">
+					<div id="titulo">CASO: 001</div>
+					<div id="txt">
+						Nuestra cámara de seguridad, grabó el momento en el cual, por poco, se produce un accidente. Observa el vídeo y determina cuál fue el vehículo que no cumplió las normas de tránsito.
+					</div>
+					<div id="continuar1">Continuar</div>
+				</div>
+				<img src="img/pidle.svg" id="policia1">
+			</div>
+			<!--diap3-->
+			<div class="diap" id="diap3">
+				<img id="escena" src="img/escena.svg">
+				<img id="autocafe" src="img/autocafe.svg">
+				<img id="autoverde" src="img/autoverde.svg">
+				<img id="autoazul" src="img/autoazul.svg">
+				<img id="pare1" src="img/pare1.svg">
+				<img id="pare2" src="img/pare2.svg">
+				<div id="vidrio"></div>
+				<img id="pare_big" src="img/pare.svg">
+				<img id="camara1" src="img/camara.svg">
+				<img id="btnplay" src="img/btnplay.svg">
+				<img id="btnplay_aux" src="img/btnplay.svg">
+				<img id="circulo" src="img/circulo.svg" class="pulse">
+			</div>
+			<!--diap4-->
+			<div class="diap" id="diap4">
+				<div id="cuadro2"></div>
+				<div id="texto2">
+					<div id="titulo2">Caso: 001</div>
+					<div id="txt2">
+						¿Quién ha incumplido las normas de tránsito?
+					</div>
+					<div id="opciones">
+						<img id="opcion1" class="opcion" src="img/autocafe.svg"></img>
+						<img id="opcion2" class="opcion" src="img/autoazul.svg"></img>
+						<img id="opcion3" class="opcion" src="img/autoverde.svg"></img>
+					</div>
+					<div id="continuar2">
+						Ver vídeo
+						<img id="camara2" src="img/camara.svg"></img>
+					</div>
+				</div>
+				<img src="img/pintro.svg" id="policia2">
+			</div>
+			<!--diap5-->
+			<div class="diap" id="diap5">
+				<div id="cuadro3"></div>
+				<div id="texto3">
+					<div id="titulo3">Caso: 001</div>
+					<div id="txt3">
+						En el vídeo, el auto de color azul no respeta la señal de PARE, tenía que detenerse y luego de mirar a la derecha e izquierda, continuar avanzando.
+					</div>
+					<div id="continuar3">
+						Ver vídeo
+						<img id="camara3" src="img/camara.svg"></img>
+					</div>
+				</div>
+				<img src="img/pmal.svg" id="policia3">
+				<div id="vidrio2"></div>
+			</div>
+			<!--diap6-->
+			<div class="diap" id="diap6">
+				<div id="cuadro4"></div>
+				<div id="texto4">
+					<div id="titulo4">Caso: 001</div>
+					<div id="txt4">
+						¡Muy bien!, en el vídeo, el auto de color azul no respeta la señal de PARE, tenía que detenerse y luego de mirar a la derecha e izquierda, continuar avanzando.
+					</div>
+					<div id="continuar4">Continuar</div>
+				</div>
+				<img src="img/pbien.svg" id="policia4">
+				<div id="vidrio3"></div>
+			</div>
+			<!--ui-->
+			<div id="ui">
+				<div id="monedero">
+					<div id="cant_monedero">2500</div>
+				</div>
+				<div id="medallero">
+					<div id="cant_medallero">1</div>
+				</div>
+				<!--menu-->
+				<div id="menu" class="">
+					<div id="btnmenu"></div>
+					<div id="btnfulls" class="btnmenu"></div>
+					<div id="btncerrar" class="btnmenu"></div>
+				</div>
+			</div>
+			<!--emergentes-->
+			<div id="emergentes">
+				<div id="operacion_grande">
+					<img id="img_monedas" src="img/dinero.svg"></img>
+					<div id="signo">+</div>
+					<div id="cantidad_monedas">2500</div>
+				</div>
+				<img id="medalla_grande" src="img/insignia.svg"></img>
+			</div>
+		</div>
+	</div>
+	<!--script control-->
+	<script type="text/javascript">
+		function mostrarDiap(numero){
+			ocultarDiaps();
+			let diap=document.getElementById("diap"+numero);
+			diap.style.display="block";
+		}
+		function ocultarDiaps(){
+			let diaps=document.querySelectorAll(".diap");
+			diaps.forEach(function(item){item.style.display="none";});
+		}
+		function mostrarUi(){
+			document.getElementById('ui').style.display="flex";
+		}
+	</script>
+
+	<!--script precargas-->
+	<script type="text/javascript">
+		let banco_imagenes=[
+			'img/autoazul.svg',
+			'img/autocafe.svg',
+			'img/autoverde.svg',
+			'img/btncerrar2.svg',
+			'img/btnfs.svg',
+			'img/btnfs2.svg',
+			'img/btnplay.svg',
+			'img/camara.svg',
+			'img/circulo.svg',
+			'img/dinero.svg',
+			'img/escena.svg',
+			'img/fondo1.svg',
+			'img/fondo2.jpg',
+			'img/insignia.svg',
+			'img/medallero.svg',
+			'img/menu.svg',
+			'img/monedero.svg',
+			'img/pare.svg',
+			'img/pare1.svg',
+			'img/pare2.svg',
+			'img/pbien.svg',
+			'img/pidle.svg',
+			'img/pintro.svg',
+			'img/pmal.svg'
+		];
+		let banco_sonidos=[];
+		let banco_videos=[];
+		function contarElementosCargados(){
+			if(totalAudios===banco_sonidos.length && totalImagenes===banco_imagenes.length && totalVideos===banco_videos.length){
+				console.log("todo cargado");
+				setTimeout(function(){
+					mostrarDiap(2);
+					mostrarUi();
+				},2000);
+			}
+		}
+	</script>
+
+	<!--script central-->
+	<script type="text/javascript">
+		//document.addEventListener('DOMContentLoaded', function() {
+
+		let premio=true; 
+
+		window.onload=function(){
+			activarPrecargas();
+			agregarEventos();
+			//mostrarDiap(3);
+		}
+		function agregarEventos(){
+			//botones continuar
+			let elementsContinuar=document.querySelectorAll('[id^="continuar"]');
+			elementsContinuar.forEach(function(item){
+				item.addEventListener("click",function(){
+					switch(this.id){
+						case 'continuar1':
+							mostrarDiap(3);
+						break;
+						case 'continuar2':
+							document.getElementById('btnplay_aux').style.display="block";
+							mostrarDiap(3);
+						break;
+						case 'continuar3':
+							document.getElementById('circulo').style.display="block";
+							document.getElementById('btnplay_aux').style.display="block";
+							mostrarDiap(3);
+						break;
+						case 'continuar4':
+							enviarDatos();
+						break;
+					}
+				});
+			});
+
+			//btnplay
+			let btn_play=document.getElementById('btnplay');
+			btn_play.addEventListener('click',function(){
+				document.getElementById("vidrio").style.display="none";
+				document.getElementById("camara1").style.display="none";
+				this.style.display="none";
+				reproducirCaso();
+			});
+
+			//btnplay_aux
+			let btn_aux=document.getElementById('btnplay_aux');
+			btn_aux.addEventListener('click',function(){
+				document.getElementById('pare_big').style.display="none";
+				this.style.display="none";
+				reproducirCaso();
+			});
+
+			//pares
+			let btn1=document.getElementById('pare1');
+			let btn2=document.getElementById('pare2');
+			[btn1,btn2].forEach(function(item){
+				item.addEventListener('click',function(){
+					document.getElementById('pare_big').style.display="block";
+				});
+			});
+
+			//pare_big
+			let parebig=document.getElementById('pare_big');
+			parebig.addEventListener('click',function(){this.style.display="none";});
+
+			//claseopcion
+			let opciones=document.querySelectorAll(".opcion");
+			opciones.forEach(function(item){
+				item.addEventListener('click',function(){
+					switch(this.id){
+						case 'opcion1':
+							mostrarDiap(5);
+							premiar('resta');
+						break;
+						case 'opcion2':
+							mostrarDiap(6);
+							premiar('suma');
+						break;
+						case 'opcion3':
+							mostrarDiap(5);
+							premiar('resta');
+						break;
+					}
+				});
+			});
+		}
+		
+		function reproducirCaso(){
+			let autoazul=document.getElementById("autoazul");
+			let autoverde=document.getElementById("autoverde");
+			let autocafe=document.getElementById("autocafe");
+			moverA(autoazul,82,171,3);
+			moverA(autoverde,220,308,1.5);
+			moverA(autocafe,147,368,1.5);
+			autoazul.addEventListener('transitionend',reestablecerCaso);
+		}
+		function moverA(element,top,left,time){
+			element.style.transition=`top ${time}s ease, left ${time}s ease`;
+			setTimeout(function(){
+				element.style.top=top+"px";
+				element.style.left=left+"px";
+			},0);
+		}
+		function reestablecerCaso(e){
+			e.target.removeEventListener('transitionend',reestablecerCaso);
+			setTimeout(function(){
+				mostrarDiap(4);
+				let autoazul=document.getElementById("autoazul");
+				let autoverde=document.getElementById("autoverde");
+				let autocafe=document.getElementById("autocafe");
+				let autos=[autoazul,autoverde,autocafe];
+				autos.forEach(function(item){
+					item.removeAttribute('style');
+				});
+			},1000);			
+		}
+		function premiar(opera){
+			if(opera==="suma" && premio===true){
+				document.getElementById("vidrio3").style.display="block";
+				mostrarMedallaYopera(500);
+				premio=false;
+			}else if(opera==="resta"){
+				document.getElementById("vidrio2").style.display="block";
+				mostrarOperaGrandeYrestar(500);
+				premio=false;
+			}
+		}
+
+		function enviarDatos(){
+			let datos = {
+			    iframe: 'mis1',
+			    dinero: document.getElementById('cant_monedero').textContent,
+			    medallas: document.getElementById('cant_medallero').textContent,
+			};
+  			window.parent.postMessage(datos, '*');
+		}
+	</script>
+
+	<!--script del menu-->
+	<script type="text/javascript">
+		let menu=document.getElementById("menu");
+		let btnmenu=document.getElementById("btnmenu");
+		let btnfulls=document.getElementById("btnfulls");
+		let btncerrar=document.getElementById("btncerrar");
+
+		btnmenu.addEventListener("click", function(){
+			if(menu.classList.contains('open')){
+				plegarMenu();
+			}else{
+				desplegarMenu();
+			}
+		});
+		btnfulls.addEventListener("click",function(){
+			toggleFullscreen(document.getElementById("marco"));
+		});
+		btncerrar.addEventListener("click",function(){
+			console.log("esperando codigo para cerrar");
+		});
+		function desplegarMenu(){
+			btnmenu.style.transform="rotate(90deg)";
+			addStyle(btnfulls,{'top':'35px','opacity':'1'});
+			addStyle(btncerrar,{'top':'70px','opacity':'1'});
+			menu.classList.add("open");
+		}
+		function plegarMenu(){
+			btnmenu.style.transform="rotate(0deg)";
+			addStyle(btnfulls,{'top':'0px','opacity':'0'});
+			addStyle(btncerrar,{'top':'0px','opacity':'0'});
+			menu.classList.remove("open");
+		}
+		function toggleFullscreen(element) {
+		  if (
+		    !document.fullscreenElement &&
+		    !document.mozFullScreenElement && 
+		    !document.webkitFullscreenElement && 
+		    !document.msFullscreenElement
+		  ) { // El elemento no está en modo de pantalla completa
+		    colocarFullS(element);
+			ponerIconoQF();
+			plegarMenu();
+		  } else { // El elemento está en modo de pantalla completa
+		    quitarFullS(element);
+		    ponerIconoF();
+		    plegarMenu();
+		  }
+		}
+		function colocarFullS(element){
+			if (element.requestFullscreen) {
+		      element.requestFullscreen();
+		    } else if (element.mozRequestFullScreen) {
+		      element.mozRequestFullScreen();
+		    } else if (element.webkitRequestFullscreen) {
+		      element.webkitRequestFullscreen();
+		    } else if (element.msRequestFullscreen) {
+		      element.msRequestFullscreen();
+		    }
+		}
+		function quitarFullS(element){
+			if (document.exitFullscreen) {
+		      document.exitFullscreen();
+		    } else if (document.mozCancelFullScreen) {
+		      document.mozCancelFullScreen();
+		    } else if (document.webkitExitFullscreen) {
+		      document.webkitExitFullscreen();
+		    } else if (document.msExitFullscreen) {
+		      document.msExitFullscreen();
+		    }
+		}
+		function ponerIconoQF(){btnfulls.style.backgroundImage="url('img/btnfs2.svg')";}
+		function ponerIconoF(){btnfulls.style.backgroundImage="url('img/btnfs.svg')";}
+		function addStyle(element, stylejson) {
+		    for (const property in stylejson) {
+		        //console.log(`${property}: ${stylejson[property]}`);
+		        element.style[property] = stylejson[property];
+		    }
+		}
+	</script>
+
+	<!--script del monedero y medallero-->
+	<script type="text/javascript">
+		let cant_operar=500;
+		let cant_monedero=document.getElementById("cant_monedero");
+		let cant_medallero=document.getElementById("cant_medallero");
+		let operacion_grande=document.getElementById("operacion_grande");
+		let cantidad_monedas=document.getElementById("cantidad_monedas");
+		let medalla_grande=document.getElementById("medalla_grande");
+		let signo=document.getElementById("signo");
+		let emergentes=document.getElementById("emergentes");
+
+		function sumarMonedero(){
+			window.requestAnimationFrame(mostrarSuma);
+		}
+		function mostrarSuma(){
+			setTimeout(function(){
+				let valor_actual=Number(cant_monedero.textContent);
+				let nuevo_valor=valor_actual+10;
+				if(cant_operar!==0){
+					cant_operar-=10;
+					cant_monedero.textContent=nuevo_valor;
+					if(cant_operar<=0){
+						window.cancelAnimationFrame(mostrarSuma);
+						actualizarGrande("+");
+						cuentaTerminada();
+					}else{
+						window.requestAnimationFrame(mostrarSuma);
+						actualizarGrande("+");
+					}
+				}
+			},50);
+		}
+		function restarMonedero(){
+			window.requestAnimationFrame(mostrarResta);
+		}
+		function mostrarResta(){
+			setTimeout(function(){
+				let valor_actual=Number(cant_monedero.textContent);
+				let nuevo_valor=valor_actual-10;
+				if(cant_operar!==0){
+					cant_operar-=10;
+					cant_monedero.textContent=nuevo_valor;
+					if(cant_operar<=0){
+						window.cancelAnimationFrame(mostrarResta);
+						actualizarGrande("-");
+						cuentaTerminada();
+					}else{
+						window.requestAnimationFrame(mostrarResta);
+						actualizarGrande("-");
+					}
+				}
+			},50);
+		}
+		function cuentaTerminada(){
+			let valor_monedero=Number(cant_monedero.textContent);
+			if(valor_monedero<=0){console.log("Game Over");}
+			setTimeout(function(){
+				operacion_grande.style.opacity="0";
+				setTimeout(function(){
+					operacion_grande.style.display="none";
+					document.getElementById("vidrio2").style.display="none";
+					document.getElementById("vidrio3").style.display="none";
+					reestablecerOperaGrandeMedalla();
+				},300);
+			},1000);
+		}
+		function sumarMedallas(){
+			let valor_actual=Number(cant_medallero.textContent);
+			setTimeout(function(){cant_medallero.textContent=valor_actual+1;},500);
+		}
+		function mostrarOperaGrande(){
+			addStyle(operacion_grande,{'display':'flex'});
+			setTimeout(function(){
+				addStyle(operacion_grande,{'transform':'scale(1)','opacity':'1'});
+			},1)
+		}
+		function actualizarGrande(opera){
+			if(opera==="+"){
+				signo.style.color="green";
+				signo.textContent="+";
+			}else{
+				signo.style.color="red";
+				signo.textContent="-";
+			}
+			cantidad_monedas.textContent=cant_monedero.textContent;
+		}
+		function mostrarMedallaGrande(){
+			addStyle(medalla_grande,{'display':'block'});
+			setTimeout(function(){
+				addStyle(medalla_grande,{'transform':'scale(1)','opacity':'1'});
+				setTimeout(function(){
+					addStyle(medalla_grande,{'opacity':'0'});
+				},1000);
+			},0)
+		}
+		function mostrarMedallaYopera(valor){
+			cant_operar=valor;
+			emergentes.style.display="block";
+			mostrarMedallaGrande();
+			sumarMedallas();
+			setTimeout(function(){
+				sumarMonedero();
+				mostrarOperaGrande();
+			},1000);
+		}
+		function operarSumaConValor(valor){
+			cant_operar=valor;
+			sumarMonedero();			
+		}
+		function mostrarOperaGrandeYrestar(valor){
+			cant_operar=valor;
+			emergentes.style.display="block";
+			mostrarResta();
+			mostrarOperaGrande();
+		}
+		function reestablecerOperaGrandeMedalla(){
+			emergentes.style.display="none";
+			addStyle(operacion_grande,{'transform': 'scale(10)'});
+			addStyle(medalla_grande,{'transform': 'scale(10)'});
+		}
+	</script>
+</body>
+</html>

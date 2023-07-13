@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<!--mestas-->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--libreria de animación-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+	<!--scripts-->
+	<script type="text/javascript" src="js/escalarCentrar.js"></script>
+	<script type="text/javascript" src="js/preload.js"></script>
+	<script type="text/javascript" src="js/recibirDatosIframe.js"></script>
+	<!--titulo-->
+	<title>MoralbaMovilidad</title>
+	<!--estilos-->
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet');
+		@import url('https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister');
+		@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+		*{border: 0; padding: 0; margin: 0; box-sizing: border-box;}
+		#lienzo{
+			width: 731px;
+			height: 411px;
+			display: flex;
+			justify-content: center;
+			align-content: center;
+			align-items: center;
+			position: relative;
+			overflow: hidden;
+			user-select: none;
+		}
+		#fondo{
+			background-image: url('img/fondo1.svg');
+			background-size: 100% 100%;
+			position: absolute;
+			top: 0; left: 0;
+			width: 731px;
+			height: 411px;
+		}
+		.text{position: absolute;}
+		#txt1{
+			font-size: 20px;
+			top: 120px;
+			font-family: 'Acme', sans-serif;
+		}
+		#txt2{
+			font-size: 80px;
+			top: 140px;
+			font-family: 'Lilita One';
+		}
+		#txt3{
+			top: 240px;
+			font-size: 20px;
+			font-family: 'Londrina Solid';
+		}
+		#txt4{
+			top: 300px;
+			font-size: 20px;
+			font-family: 'Love Ya Like A Sister';
+		}
+		#btnplay{
+			position: absolute;
+			width: 50px;
+			border: 2px solid black;
+			border-radius: 50%;
+			top: 276px;
+			display: none;
+			cursor: pointer;
+		}
+		#pintro{
+			position: absolute;
+			width: 150px;
+			top: 50px;
+			left: 80px;
+			display: none;
+		}
+		#txt5{
+			top: 110px;
+			left: 270px;
+			font-family: 'Londrina Solid';
+			font-size: 20px;
+			display: none;
+		}
+		#cmisiones{
+			border: 0px solid dimgray;
+			width: 380px;
+			height: 180px;
+			position: absolute;
+			top: 140px;
+			left: 270px;
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			align-content: center;
+			flex-wrap: wrap;
+			display: none;
+		}
+		.mis{
+			border: 1px solid dimgrey;
+			width: 40px;
+			height: 40px;
+			margin: 5px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 5px;
+			font-family: 'Love Ya Like A Sister';
+			font-size: 20px;
+			cursor: pointer;
+			display: none;
+		}
+		.mis:hover{
+			background-color: lightblue;
+			border: 2px solid black;
+			font-weight: bold;
+		}
+		iframe{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+			display: none;
+		}
+	</style>
+	<!--animaciones-->
+	<style type="text/css">
+		.bounceIn{animation: bounceIn; animation-duration: 1s; animation-iteration-count: infinite;}
+		.bounceInLeft{animation: bounceInLeft; animation-duration: 1s;}
+		.bounceInRight{animation: bounceInRight; animation-duration: 1s;}
+		.backInDown{animation: backInDown; animation-duration: 1s;}
+		.tada{animation: tada; animation-duration: 1s;}
+		.flipInX{animation: flipInX; animation-duration: 2s;}
+		.flipOutX{animation: flipOutX; animation-duration: 2s;}
+
+		.entrada1{animation: backInUp; animation-duration: 1s;}
+		.entrada2{animation: backInUp; animation-duration: 1.5s;}
+		.entrada3{animation: backInUp; animation-duration: 2s;}
+		.entrada4{animation: backInUp; animation-duration: 2.5s; animation-iteration-count: infinite;}
+
+		.entrada1s{animation: backOutDown; animation-duration: 1s; animation-delay:0s; animation-fill-mode: forwards;}
+		.entrada2s{animation: backOutDown; animation-duration: 1s; animation-delay:0.5s; animation-fill-mode: forwards;}
+		.entrada3s{animation: backOutDown; animation-duration: 1s; animation-delay:1s; animation-fill-mode: forwards;}
+		.entrada4s{animation: backOutDown; animation-duration: 1s; animation-delay:1.5s; animation-fill-mode: forwards;}
+	</style>
+</head>
+<body>
+	<div id="lienzo">
+		<div id="fondo"></div>
+		<div id="txt1" class="text entrada1">Colegio Moralba Sur Oriental</div>
+		<div id="txt2" class="text entrada2">Movilidad</div>
+		<div id="txt3" class="text entrada3">Proyectos transversales TIC y Riesgos</div>
+		<div id="txt4" class="text entrada4">Loading...</div>
+		<img id="btnplay" src="img/btnplay2.png" class="bounceIn">
+		<img id="pintro" src="img/pintro.svg">
+		<div id="txt5" class="text">Misiones:</div>
+		<div id="cmisiones">
+			<div class="mis" id="mis1">1</div>
+			<div class="mis" id="mis2">2</div>
+			<div class="mis" id="mis3">3</div>
+			<div class="mis" id="mis4">4</div>
+			<div class="mis" id="mis5">5</div>
+			<div class="mis" id="mis6">6</div>
+			<div class="mis" id="mis7">7</div>
+			<div class="mis" id="mis8">8</div>
+			<div class="mis" id="mis9">9</div>
+			<div class="mis" id="mis10">10</div>
+			<div class="mis" id="mis11">11</div>
+			<div class="mis" id="mis12">12</div>
+			<div class="mis" id="mis13">13</div>
+			<div class="mis" id="mis14">14</div>
+			<div class="mis" id="mis15">15</div>
+			<div class="mis" id="mis16">16</div>
+			<div class="mis" id="mis17">17</div>
+			<div class="mis" id="mis18">18</div>
+			<div class="mis" id="mis19">19</div>
+			<div class="mis" id="mis20">20</div>
+			<div class="mis" id="mis20">21</div>
+		</div>
+		<div id="iframes">
+			<iframe id="iframe" src="mis/mis1/mis1.html" frameborder="0"></iframe>
+		</div>
+	</div>
+
+	<!--scripts-->
+	<script type="text/javascript">
+		let txt1=document.getElementById("txt1");
+		let txt2=document.getElementById("txt2");
+		let txt3=document.getElementById("txt3");
+		let txt4=document.getElementById("txt4");
+		let txt5=document.getElementById("txt5");
+		let btnplay=document.getElementById("btnplay");
+		let pintro=document.getElementById("pintro");
+		let cmisiones=document.getElementById("cmisiones");
+		let iframe_activo;
+		let total_dinero=0;
+		let total_medallas=0;
+	</script>
+
+	<script type="text/javascript" id="varPreload">
+		const banco_videos=[];
+		const banco_sonidos=[];
+		const banco_imagenes=[];
+		function contarElementosCargados(){
+			if(totalAudios===banco_sonidos.length && totalImagenes===banco_imagenes.length && totalVideos===banco_videos.length){
+				setTimeout(function(){
+					main();
+				},1000);
+			}
+		}
+	</script>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			activarPrecargas();
+			btnplay.addEventListener('click',function(){
+				darAnimacionSalida();
+			});
+		}
+
+		function main(){
+			console.log("todo cargado");
+			quitarAnimEntrada();
+			mostrarBotonPlay();
+		}
+
+		function quitarAnimEntrada(){
+			txt3.addEventListener('animationend', f1);
+		}
+
+		function f1(){
+			txt1.classList.remove('entrada1');
+			txt2.classList.remove('entrada2');
+			txt3.classList.remove('entrada3');
+			txt4.classList.remove('entrada4');
+			txt4.classList.add('bounceIn');
+			txt3.removeEventListener('animationend',quitarAnimEntrada);
+		}
+
+		function mostrarBotonPlay(){
+			setTimeout(function(){
+				txt4.style.display="none";
+				btnplay.style.display="block";
+			},2000);
+		}
+
+		function darAnimacionSalida(){
+			txt1.classList.add('entrada1s');
+			txt2.classList.add('entrada2s');
+			txt3.classList.add('entrada3s');
+			txt4.classList.add('entrada4s');
+			btnplay.classList.add('entrada4s');
+			btnplay.addEventListener('animationend',f2);
+		}
+
+		function f2(){
+			btnplay.removeEventListener('animationend',f2);
+			mostrarMenu();
+		}
+
+		function mostrarMenu(){
+			pintro.style.display="block";
+			pintro.classList.add("bounceInLeft");
+			cmisiones.style.display="flex";
+			cmisiones.classList.add("bounceInRight");
+			txt5.style.display="block";
+			txt5.classList.add("backInDown");
+			cmisiones.addEventListener("animationend",f3)
+			//darAnimMisiones();
+			enlazarActividad();
+		}
+
+		function f3(){
+			let miss=document.querySelectorAll(".mis");
+			miss.forEach(function(item){
+				item.style.display="flex";
+				item.classList.add("tada");
+			});
+		}
+
+		function enlazarActividad(){
+			let miss=document.querySelectorAll(".mis");
+			miss.forEach(function(item){
+				item.addEventListener("click",function(){
+					let id=this.id;
+					iframe_activo=document.querySelector(`iframe[src="mis/mis1/${id}.html"]`);
+					iframe_activo.classList.add("flipInX");
+					iframe_activo.style.display="block";
+					iframe_activo.addEventListener('animationend',f4);
+				});
+			});
+		}
+
+		function f4(){
+			iframe_activo.removeEventListener('animationend',f4);
+			iframe_activo.classList.remove("flipInX");
+		}
+
+		function procesarDatosIframe(datos){
+			console.log(datos.iframe, datos.dinero, datos.medallas);
+			total_dinero=total_dinero+Number(datos.dinero);
+			total_medallas=total_medallas+Number(datos.medallas);
+			//document.querySelector(`iframe[src="mis/mis1/${datos.iframe}.html"]`);
+			iframe_activo.classList.add('flipOutX');
+			iframe_activo.addEventListener('animationend',f5);
+		}
+		function f5(){
+			iframe_activo.removeEventListener('animationend',f5);
+			iframe_activo.style.display="none";
+		}
+	</script>
+</body>
+</html>

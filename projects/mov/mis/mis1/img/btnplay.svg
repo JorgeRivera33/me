@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   viewBox="0 0 426.44 426.44"
+   id="svg21452"
+   sodipodi:docname="btnplay.svg"
+   width="426.44"
+   height="426.44"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs21456" />
+  <sodipodi:namedview
+     id="namedview21454"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.03125"
+     inkscape:cx="213.33333"
+     inkscape:cy="213.33333"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg21452" />
+  <ellipse
+     style="opacity:1;fill:#ffffff;fill-rule:evenodd;stroke-linecap:round"
+     id="path21510"
+     cx="227.81"
+     cy="220.53593"
+     rx="134.7191"
+     ry="144.89957" />
+  <path
+     fill="#2b79c2"
+     d="M 426.44,213.22 A 213.22,213.22 0 0 1 213.22,426.44 213.22,213.22 0 0 1 0,213.22 213.22,213.22 0 0 1 213.22,0 213.22,213.22 0 0 1 426.44,213.22 Z M 186.96,107.65 a 23.2,23.2 0 0 0 -37.23,18.48 v 174.12 a 23.2,23.2 0 0 0 37.23,18.48 l 114.66,-87.06 a 23.2,23.2 0 0 0 0,-36.96 z"
+     id="path21450" />
+</svg>

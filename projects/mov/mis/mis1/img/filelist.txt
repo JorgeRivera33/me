@@ -1,0 +1,24 @@
+autoazul.svg
+autocafe.svg
+autoverde.svg
+btncerrar2.svg
+btnfs.svg
+btnfs2.svg
+btnplay.svg
+camara.svg
+escena.svg
+filelist.txt
+fondo1.svg
+fondo2.jpg
+medallero.svg
+menu.svg
+monedero.svg
+pare.svg
+pare1.svg
+pare2.svg
+pbien.svg
+pidle.svg
+pintro.svg
+pmal.svg
+
+cdm dir /b>filelist.txt
