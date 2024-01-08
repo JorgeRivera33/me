@@ -1,0 +1,37 @@
+*{padding: 0; border: 0; margin: 0; box-sizing: border-box;}
+#app{position: relative; width: 1024px; height: 576px; margin: 0 auto; user-select: none;}
+.lienzo{border: 1px solid gray; width: 1024px; height: 576px; position: relative; top: 0; bottom: 0; left: 0; right: 0; margin: auto; overflow: hidden; display:none; background-color: white;}
+.lienzo:first-child{display:block;}
+.elemt{font-family: "Roboto Slab";}
+#marco{position: absolute; z-index: 100; width: 1022px; height: 575px; transform: translate(0px, 0px);}
+#tema{padding: 5px; position: absolute; width: 160px; z-index: 100; left: 139px; top: 9px; height: 58px; transform: translate(0px, 0px); font-size: 22px; font-weight: bold; color: rgb(255, 255, 255);}
+#btn_iniciar{position: absolute; z-index: 100; left: -290px; top: -390px; width: 118px; height: 92px; transform: translate(753px, 758px);}
+#nombre_app{padding: 5px; position: absolute; width: 516px; z-index: 100; left: 504px; top: 165px; height: 121px; transform: translate(-234px, 0px); font-size: 72px; font-family: Pacifico;}
+#subtema{padding: 5px; position: absolute; width: 463px; z-index: 100; left: 409px; top: 260px; height: 106px; transform: translate(-132px, 0px); text-align: center; font-size: 22px; font-family: "Roboto Slab";}
+#icono_birrete{position: absolute; z-index: 100; left: -369px; top: -675px; width: 118px; height: 101px; transform: translate(376px, 670px);}
+#birrete1{position: absolute; z-index: 100; left: -99px; top: -537px; width: 118px; height: 101px; transform: translate(376px, 670px);}
+#marco2{position: absolute; z-index: 100; width: 1022px; height: 575px; transform: translate(0px, 0px);}
+#icono_birrete2{position: absolute; z-index: 100; left: -369px; top: -675px; width: 118px; height: 101px; transform: translate(376px, 670px);}
+#tema2{padding: 5px; position: absolute; width: 160px; z-index: 100; left: 139px; top: 9px; height: 58px; transform: translate(0px, 0px); font-size: 22px; font-weight: bold; color: rgb(255, 255, 255);}
+#txt_actividad{padding: 5px; position: absolute; width: 125px; z-index: 100; left: 96px; top: 114px; color: rgb(234, 6, 6); font-weight: bold; height: 44px; transform: translate(0px, 0px); font-size: 22px;}
+#txt_desAct{padding: 5px; position: absolute; width: 867px; z-index: 100; left: 95px; top: 148px; height: 45px; transform: translate(0px, 0px); font-size: 18px;}
+#base_name{position: absolute; z-index: 100; left: -16px; top: 466px; width: 196px; height: 36px; transform: translate(0px, -1px);}
+#dialogo{padding: 5px; position: absolute; width: 773px; z-index: 100; left: 37px; top: 501px; height: 54px; transform: translate(0px, 0px); font-size: 18px; color: rgb(13, 13, 13);}
+#name_profe{padding: 5px; position: absolute; width: 130px; z-index: 100; left: 23px; top: 466px; height: 45px; transform: translate(0px, 0px); font-size: 20px; color: rgb(255, 255, 255);}
+#icono_profe{position: absolute; z-index: 100; left: 940px; top: 487px; width: 68px; height: 75px; transform: translate(0px, 0px);}
+#profe{position: absolute; z-index: 100; left: 475px; top: -349px; width: 220px; height: 545px; transform: translate(293.281px, 528.77px);}
+#ejercicio{padding: 5px; position: absolute; width: 470px; z-index: 100; left: 169px; top: 266px; height: 58px; transform: translate(0px, 0px); font-size: 48px; font-family: "Roboto Slab";}
+#input_base{border: 1px solid dimgray; padding: 5px; position: absolute; width: 80px; z-index: 100; left: 566px; top: 269px; height: 79px; transform: translate(0px, 0px); text-align: center; font-size: 48px;}
+#input_exponente{border: 1px solid dimgray; padding: 5px; position: absolute; width: 32px; z-index: 100; left: 618px; top: 268px; height: 35px; transform: translate(0px, 0px); text-align: center; font-size: 24px;}
+#mano_base{position: absolute; z-index: 100; left: 174px; top: -186px; width: 97px; height: 86px; transform: translate(448px, 482px);}
+#mano_exponente{position: absolute; z-index: 100; left: 186px; top: -251px; width: 97px; height: 86px; transform: translate(448px, 482px) rotate(-18.8745deg);}
+#cuenta1{padding: 5px; position: absolute; width: 38px; z-index: 100; left: 169px; top: 262px; height: 67px; transform: translate(3px, 50px); font-size: 36px; font-family: Pacifico;}
+#cuenta5{padding: 5px; position: absolute; width: 38px; z-index: 100; left: 483px; top: 262px; height: 67px; transform: translate(2px, 49px); font-size: 36px; font-family: Pacifico;}
+#cuenta4{padding: 5px; position: absolute; width: 38px; z-index: 100; left: 405px; top: 261px; height: 67px; transform: translate(3px, 50px); font-size: 36px; font-family: Pacifico;}
+#cuenta3{padding: 5px; position: absolute; width: 38px; z-index: 100; left: 326px; top: 262px; height: 67px; transform: translate(3px, 50px); font-size: 36px; font-family: Pacifico;}
+#cuenta2{padding: 5px; position: absolute; width: 38px; z-index: 100; left: 248px; top: 262px; height: 67px; transform: translate(3px, 50px); font-size: 36px; font-family: Pacifico;}
+#mismo5{padding: 5px; position: absolute; width: 38px; z-index: 100; left: 484px; top: 262px; height: 67px; transform: translate(-1px, 3px); font-size: 48px; font-family: "Roboto Slab";}
+#mismo3{padding: 5px; position: absolute; width: 38px; z-index: 100; left: 326px; top: 262px; height: 67px; transform: translate(0px, 4px); font-size: 48px; font-family: "Roboto Slab";}
+#mismo1{padding: 5px; position: absolute; width: 38px; z-index: 100; left: 169px; top: 262px; height: 67px; transform: translate(0px, 4px); font-size: 48px; font-family: "Roboto Slab";}
+#mismo2{padding: 5px; position: absolute; width: 38px; z-index: 100; left: 248px; top: 262px; height: 67px; transform: translate(0px, 4px); font-size: 48px; font-family: "Roboto Slab";}
+#mismo4{padding: 5px; position: absolute; width: 38px; z-index: 100; left: 404px; top: 262px; height: 67px; transform: translate(0px, 4px); font-size: 48px; font-family: "Roboto Slab";}
